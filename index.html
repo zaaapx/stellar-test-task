@@ -26,7 +26,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .muted{color:var(--muted)} .sec{color:var(--text-2)}
 .s{font-size:14px;line-height:1.5}
 .u{text-decoration:underline;text-underline-offset:3px}
-h1.display{font-weight:300;font-size:56px;line-height:1.1;letter-spacing:.04em;text-transform:uppercase}
+h1.display{font-weight:300;font-size:40px;line-height:1.1;letter-spacing:.04em;text-transform:uppercase}
 h2{font-weight:400;font-size:32px;line-height:1.2;letter-spacing:.06em;text-transform:uppercase}
 h3{font-weight:400;font-size:20px;line-height:1.3}
 .ic{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
@@ -85,11 +85,14 @@ h3{font-weight:400;font-size:20px;line-height:1.3}
 .price{display:flex;align-items:baseline;gap:12px}
 .price b{font-weight:400;font-size:32px;line-height:1.2}
 .swatches{display:flex;gap:12px;margin-top:14px}
-.sw{width:40px;height:40px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;border:1.5px solid transparent}
+.swatches{gap:16px}
+.sw{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:14px;color:var(--text-2)}
+.sw .dot{width:40px;height:40px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;border:1.5px solid transparent}
 .sw i{width:28px;height:28px;border-radius:50%;border:1px solid #D8C6CC}
-.sw.on{border-color:var(--strong)}
-.sw.off{opacity:.5;cursor:not-allowed}
-.sw.off::after{content:"";position:absolute;width:30px;height:1.5px;background:var(--muted);transform:rotate(-45deg)}
+.sw.on{color:var(--text)}
+.sw.on .dot{border-color:var(--strong)}
+.sw.off{opacity:.5;cursor:not-allowed;color:var(--muted)}
+.sw.off .dot::after{content:"";position:absolute;width:30px;height:1.5px;background:var(--muted);transform:rotate(-45deg)}
 .sizes{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:14px}
 .size{height:48px;border:1px solid var(--border);background:#fff;font-size:16px}
 .size.on{border:1.5px solid var(--strong);font-weight:500}
@@ -194,7 +197,8 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
   .dots i{width:6px;height:2px;background:#fff;opacity:.6}
   .dots i.on{width:20px;opacity:1}
   .buy{position:static;padding:24px 20px 0;gap:24px}
-  h1.display{font-size:40px}
+  h1.display{font-size:32px}
+  .vdiv{display:none}
   h2{font-size:24px}
   .price b{font-size:28px}
   .sizes{grid-template-columns:repeat(5,1fr)}
@@ -299,27 +303,21 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
 
     <aside class="buy">
       <div class="row">
-        <a class="caps sec u" href="#">Колекція Dazzle 2026</a>
-        <div class="switch">
-          <a class="circ line" href="#" aria-label="Попередня модель"><svg class="ic sm"><use href="#i-left"/></svg></a>
-          <span class="s sec">12 / 24</span>
-          <a class="circ line" href="#" aria-label="Наступна модель"><svg class="ic sm"><use href="#i-right"/></svg></a>
-        </div>
+        <a class="circ line" href="#" aria-label="Попередня модель"><svg class="ic sm"><use href="#i-left"/></svg></a>
+        <span class="s sec">Арт. J-1165</span>
+        <a class="circ line" href="#" aria-label="Наступна модель"><svg class="ic sm"><use href="#i-right"/></svg></a>
       </div>
-      <div>
-        <p class="caps muted">Весільна сукня</p>
-        <h1 class="display">J-1165</h1>
-      </div>
-      <div class="price"><b>42 500 ₴</b><span class="s muted">роздрібна ціна</span></div>
+      <h1 class="display">Весільна сукня J-1165</h1>
       <p class="sec">Сукня-русалка з мережива з бісером, ручна вишивка ліфа, знімна атласна верхня спідниця та знімні рукави — два образи в одному.</p>
+      <div class="price"><b>42 500 ₴</b><span class="s muted">роздрібна ціна</span></div>
       <div class="rule"></div>
 
       <div>
         <p><span class="caps muted">Колір</span>&nbsp; <span class="s" id="colorName">Айворі</span></p>
         <div class="swatches" id="swatches">
-          <button class="sw on" data-name="Айворі" aria-label="Айворі"><i style="background:#F3ECDF"></i></button>
-          <button class="sw" data-name="Білий" aria-label="Білий"><i style="background:#FFFFFF"></i></button>
-          <button class="sw off" data-name="Шампань" aria-label="Шампань — немає в наявності" disabled><i style="background:#E6D3B8"></i></button>
+          <button class="sw" data-name="Білий"><span class="dot"><i style="background:#FFFFFF"></i></span><span class="lbl">Білий</span></button>
+          <button class="sw on" data-name="Айворі"><span class="dot"><i style="background:#F3ECDF"></i></span><span class="lbl">Айворі</span></button>
+          <button class="sw off" data-name="Шампань" aria-label="Шампань — немає в наявності" disabled><span class="dot"><i style="background:#E6D3B8"></i></span><span class="lbl">Шампань</span></button>
         </div>
       </div>
 
@@ -329,13 +327,11 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
           <a class="s u" href="#" style="display:flex;gap:6px;align-items:center;text-decoration-line:underline"><svg class="ic sm"><use href="#i-ruler"/></svg>Таблиця розмірів</a>
         </div>
         <div class="sizes" id="sizes"></div>
-        <p class="avail s" id="avail">44 EU, айворі — в наявності для примірки</p>
         <a class="s sec u" href="#" style="display:block;margin-top:12px">Немає вашого розміру? Пошиємо за вашими мірками</a>
       </div>
 
       <div class="cta">
         <a class="btn btn-primary" href="#booking">Записатися на примірку</a>
-        <p class="note s muted">Безкоштовно · у шоурумі в Чернівцях або в салоні-партнері у вашому місті</p>
         <a class="btn btn-secondary" href="#faq">Отримати консультацію</a>
       </div>
       <div class="util">
@@ -480,7 +476,7 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
       <p class="caps" style="opacity:1;font-size:12px">Персональний підбір</p>
       <h2>Не впевнені, що це ваша сукня?</h2>
       <p>Розкажіть про дату весілля та побажання — стилістка підбере 3–5 моделей і зателефонує протягом 15 хвилин.</p>
-      <div class="acts"><a class="btn btn-inverse" href="#booking">Записатися на примірку</a><a class="caps u" href="#booking" style="font-size:14px">Отримати консультацію</a></div>
+      <div class="acts"><a class="btn btn-inverse" href="#booking">Записатися на примірку</a></div>
     </div>
   </section>
 </main>
@@ -535,16 +531,14 @@ sizes.forEach(s=>{const b=document.createElement('button');b.className='size'+(s
   b.onclick=()=>{size=s;[...sz.children].forEach(c=>c.classList.toggle('on',c===b));update();};sz.appendChild(b);});
 document.querySelectorAll('#swatches .sw:not(.off)').forEach(s=>s.onclick=()=>{color=s.dataset.name;document.querySelectorAll('#swatches .sw').forEach(x=>x.classList.toggle('on',x===s));update();});
 function update(){document.getElementById('sizeName').textContent=size;document.getElementById('colorName').textContent=color;
-  document.getElementById('avail').textContent=size+' EU, '+color.toLowerCase()+' — в наявності для примірки';
-  document.getElementById('selSummary').textContent=color+' · '+size+' EU';
+    document.getElementById('selSummary').textContent=color+' · '+size+' EU';
   document.getElementById('stickySel').textContent=size+' · '+color.toLowerCase();}
 
 // sticky bar on mobile when main CTA leaves viewport
 const sticky=document.getElementById('sticky'),mainCta=document.querySelector('.cta .btn-primary'),form=document.getElementById('booking');
-let ctaVisible=true,formVisible=false;
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.target===mainCta)ctaVisible=e.isIntersecting||e.boundingClientRect.top>0;if(e.target===form)formVisible=e.isIntersecting;});
-  sticky.classList.toggle('show',!ctaVisible&&!formVisible);});
-io.observe(mainCta);io.observe(form);
+function stick(){const c=mainCta.getBoundingClientRect(),f=form.getBoundingClientRect();
+  const show=c.bottom<0&&!(f.top<innerHeight&&f.bottom>0);sticky.classList.toggle('show',show);}
+addEventListener('scroll',stick,{passive:true});addEventListener('resize',stick);stick();
 
 // tabs
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b)));
