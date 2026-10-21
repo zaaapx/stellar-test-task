@@ -240,6 +240,14 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
 .sum div{display:grid;grid-template-columns:110px 1fr;gap:12px;font-size:14px}
 .sum dt{color:var(--muted)}
 body.lock{overflow:hidden}
+.fav,.favmain{transition:transform .15s}
+.fav:active,.favmain:active{transform:scale(.92)}
+.fav.on svg,.favmain.on svg{fill:var(--strong);stroke:var(--strong)}
+.favhead{position:relative}
+.cnt{position:absolute;top:-6px;right:-8px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--strong);color:#fff;font-size:11px;line-height:18px;text-align:center}
+.toast{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);background:var(--text);color:#fff;padding:12px 20px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:60}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:1100px){.toast{bottom:110px}}
 .form.lead .stylist{align-items:flex-start;gap:16px}
 .form.lead .stylist img{width:56px;height:56px}
 .b2b{border-top:1px solid var(--border)}
@@ -356,7 +364,7 @@ body.lock{overflow:hidden}
     <a class="logo" href="#"><b>JEORJETT</b><small>FASHION GROUP</small></a>
     <div class="right">
       <button aria-label="Пошук"><svg class="ic"><use href="#i-search"/></svg></button>
-      <button aria-label="Обране"><svg class="ic"><use href="#i-heart"/></svg></button>
+      <button aria-label="Обране" class="favhead"><svg class="ic"><use href="#i-heart"/></svg><span class="cnt" id="favCnt" hidden>0</span></button>
       <button class="acc" aria-label="Кабінет"><svg class="ic"><use href="#i-user"/></svg></button>
     </div>
   </div></div>
@@ -417,7 +425,7 @@ body.lock{overflow:hidden}
         <button class="btn btn-secondary" data-contact="consult">Отримати консультацію</button>
       </div>
       <div class="util">
-        <button><svg class="ic sm"><use href="#i-heart"/></svg>Зберегти</button>
+        <button type="button" class="favmain" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg><span>Зберегти</span></button>
         <button><svg class="ic sm"><use href="#i-share"/></svg>Поділитися</button>
       </div>
       <div class="trust">
@@ -517,10 +525,10 @@ body.lock{overflow:hidden}
       <a class="u" href="#" style="display:flex;gap:8px;align-items:center">Усі аксесуари <svg class="ic sm"><use href="#i-arrow"/></svg></a>
     </div>
     <div class="cards">
-      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://jeorjettdress.com/thumbnail.php?page=item-first_w&file=/catalogphoto/9.JPG" alt="Фата AA238"><span class="circ fav"><svg class="ic sm"><use href="#i-heart"/></svg></span></div><div class="meta"><span>Фата AA238</span><span class="s muted">Соборна, мереживний край</span><span>3 900 ₴</span></div></a>
-      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://jeorjettdress.com/thumbnail.php?page=item-first_w&file=/catalogphoto/73ff148ef9074a0df9b10acb27e187ea.jpg" alt="Фата AA237"><span class="circ fav"><svg class="ic sm"><use href="#i-heart"/></svg></span></div><div class="meta"><span>Фата AA237</span><span class="s muted">Довга, мереживо по краю</span><span>3 400 ₴</span></div></a>
-      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://jeorjettdress.com/thumbnail.php?page=item-first_w&file=/catalogphoto/IMGC5394.jpg" alt="Прикраса VI-027"><span class="circ fav"><svg class="ic sm"><use href="#i-heart"/></svg></span></div><div class="meta"><span>Прикраса VI-027</span><span class="s muted">Для волосся, айворі</span><span>2 400 ₴</span></div></a>
-      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://jeorjettdress.com/thumbnail.php?page=item-first_w&file=/catalogphoto/IMGC5414.jpg" alt="Гребінь VI-025"><span class="circ fav"><svg class="ic sm"><use href="#i-heart"/></svg></span></div><div class="meta"><span>Гребінь VI-025</span><span class="s muted">Перли та кристали, айворі</span><span>2 800 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://jeorjettdress.com/thumbnail.php?page=item-first_w&file=/catalogphoto/9.JPG" alt="Фата AA238"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button></div><div class="meta"><span>Фата AA238</span><span class="s muted">Соборна, мереживний край</span><span>3 900 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://jeorjettdress.com/thumbnail.php?page=item-first_w&file=/catalogphoto/73ff148ef9074a0df9b10acb27e187ea.jpg" alt="Фата AA237"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button></div><div class="meta"><span>Фата AA237</span><span class="s muted">Довга, мереживо по краю</span><span>3 400 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://jeorjettdress.com/thumbnail.php?page=item-first_w&file=/catalogphoto/IMGC5394.jpg" alt="Прикраса VI-027"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button></div><div class="meta"><span>Прикраса VI-027</span><span class="s muted">Для волосся, айворі</span><span>2 400 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://jeorjettdress.com/thumbnail.php?page=item-first_w&file=/catalogphoto/IMGC5414.jpg" alt="Гребінь VI-025"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button></div><div class="meta"><span>Гребінь VI-025</span><span class="s muted">Перли та кристали, айворі</span><span>2 800 ₴</span></div></a>
     </div>
   </div></section>
 
@@ -545,10 +553,10 @@ body.lock{overflow:hidden}
       <div class="navs"><a class="u" href="#">Вся колекція</a><span style="width:12px"></span><button class="circ line" aria-label="Назад"><svg class="ic sm"><use href="#i-left"/></svg></button><button class="circ line" aria-label="Вперед"><svg class="ic sm"><use href="#i-right"/></svg></button></div>
     </div>
     <div class="cards">
-      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Bijou/Bijou_(4).jpg?width=600" alt="J-1166"><span class="circ fav"><svg class="ic sm"><use href="#i-heart"/></svg></span></div><div class="meta"><span>J-1166</span><span class="s muted">Dazzle 2026 · Русалка</span><span>39 900 ₴</span></div></a>
-      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Debora/Debora_(1).jpg?width=600" alt="J-1167"><span class="circ fav"><svg class="ic sm"><use href="#i-heart"/></svg></span></div><div class="meta"><span>J-1167</span><span class="s muted">Dazzle 2026 · Пряма</span><span>36 500 ₴</span></div></a>
-      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Elegance/Elegance_(6ROTATE).jpg?width=600" alt="J-1170"><span class="circ fav"><svg class="ic sm"><use href="#i-heart"/></svg></span></div><div class="meta"><span>J-1170</span><span class="s muted">Dazzle 2026 · Русалка</span><span>44 900 ₴</span></div></a>
-      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Gabi/Gabi_(2).jpg?width=600" alt="J-1172"><span class="circ fav"><svg class="ic sm"><use href="#i-heart"/></svg></span></div><div class="meta"><span>J-1172</span><span class="s muted">Dazzle 2026 · Корсет</span><span>41 200 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Bijou/Bijou_(4).jpg?width=600" alt="J-1166"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button></div><div class="meta"><span>J-1166</span><span class="s muted">Dazzle 2026 · Русалка</span><span>39 900 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Debora/Debora_(1).jpg?width=600" alt="J-1167"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button></div><div class="meta"><span>J-1167</span><span class="s muted">Dazzle 2026 · Пряма</span><span>36 500 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Elegance/Elegance_(6ROTATE).jpg?width=600" alt="J-1170"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button></div><div class="meta"><span>J-1170</span><span class="s muted">Dazzle 2026 · Русалка</span><span>44 900 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Gabi/Gabi_(2).jpg?width=600" alt="J-1172"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button></div><div class="meta"><span>J-1172</span><span class="s muted">Dazzle 2026 · Корсет</span><span>41 200 ₴</span></div></a>
     </div>
   </div></section>
 
@@ -650,6 +658,7 @@ body.lock{overflow:hidden}
   <div class="dw-foot"><button class="btn btn-secondary" id="dwBack">Назад</button><button class="btn btn-primary" id="dwNext">Далі</button></div>
 </aside>
 
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="sticky" id="sticky">
   <div class="p"><b>42 500 ₴</b><br><span class="s muted" id="stickySel">44 · айворі</span></div>
   <button class="btn btn-primary" data-fit>Записатися на примірку</button>
@@ -771,6 +780,18 @@ const inView=el=>{const r=el.getBoundingClientRect();return r.top<innerHeight&&r
 function stick(){const c=mainCta.getBoundingClientRect();
   const show=c.bottom<0&&!inView(forms.consult)&&!inView(forms.wholesale)&&!drawer.classList.contains('on');sticky.classList.toggle('show',show);}
 addEventListener('scroll',stick,{passive:true});addEventListener('resize',stick);
+
+// ---------- favourites ----------
+const favs=new Set();const toast=document.getElementById('toast');let tt;
+function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('on'),2000);}
+function toggleFav(key,btn,label){const on=!favs.has(key);on?favs.add(key):favs.delete(key);
+  document.querySelectorAll(`[data-fav="${CSS.escape(key)}"]`).forEach(b=>{b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);b.setAttribute('aria-label',on?'Прибрати з обраного':'Додати в обране');const s=b.querySelector('span');if(s&&b.classList.contains('favmain'))s.textContent=on?'Збережено':'Зберегти';});
+  const c=document.getElementById('favCnt');c.textContent=favs.size;c.hidden=!favs.size;say(on?label+' — додано в обране':label+' — прибрано з обраного');}
+document.querySelector('.favmain').dataset.fav='J-1165';
+document.querySelectorAll('.card').forEach(card=>{const b=card.querySelector('.fav');const name=card.querySelector('.meta span').textContent;b.dataset.fav=name;});
+document.querySelectorAll('[data-fav]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const k=b.dataset.fav;toggleFav(k,b,k==='J-1165'?'Сукня J-1165':k);}));
+// demo links: don't jump to top
+document.querySelectorAll('a[href="#"]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
 
 // tabs
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b)));
