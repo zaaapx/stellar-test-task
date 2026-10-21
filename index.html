@@ -188,6 +188,7 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
 .drawer.on{transform:none;visibility:visible}
 .dw-head{display:flex;justify-content:space-between;align-items:flex-start;padding:28px 32px 20px}
 .dw-head h3{font-size:24px;text-transform:uppercase;letter-spacing:.06em;margin-top:6px}
+.dw-x:focus{outline:none}.dw-x:focus-visible{outline:2px solid var(--strong)}
 .dw-x{width:40px;height:40px;display:flex;align-items:center;justify-content:center;margin:-8px -8px 0 0}
 .dw-prog{height:2px;background:var(--border);margin:0 32px}
 .dw-prog i{display:block;height:100%;background:var(--strong);width:33%;transition:width .3s}
@@ -577,7 +578,7 @@ body.lock{overflow:hidden}
 <div class="ovl" id="ovl"></div>
 <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dwTitle" aria-hidden="true">
   <div class="dw-head">
-    <div><p class="caps muted" id="dwStep">Крок 1 з 3</p><h3 id="dwTitle">Сукня і салон</h3></div>
+    <div><p class="caps muted" id="dwStep">Крок 1 / 3</p><h3 id="dwTitle">Сукня і салон</h3></div>
     <button class="dw-x" id="dwClose" aria-label="Закрити"><svg class="ic"><use href="#i-close"/></svg></button>
   </div>
   <div class="dw-prog"><i id="dwBar"></i></div>
@@ -695,7 +696,7 @@ function renderCal(){const g=document.getElementById('calGrid');g.innerHTML='';c
   document.getElementById('calNext').disabled=new Date(v.getFullYear(),v.getMonth()+1,1)>maxDay;}
 document.getElementById('calPrev').onclick=()=>{st.view=new Date(st.view.getFullYear(),st.view.getMonth()-1,1);renderCal();};
 document.getElementById('calNext').onclick=()=>{st.view=new Date(st.view.getFullYear(),st.view.getMonth()+1,1);renderCal();};
-const SLOTS={'Ранок':['10:00','10:30','11:00','11:30'],'День':['12:00','12:30','13:00','14:00','14:30','15:00'],'Вечір':['16:00','16:30','17:00','17:30','18:00','18:30']};
+const SLOTS={'Ранок':['09:00','09:30','10:00','10:30','11:00','11:30'],'День':['12:00','12:30','13:00','14:00','14:30','15:00'],'Вечір':['16:00','16:30','17:00','17:30','18:00','18:30']};
 function renderSlots(){const el=document.getElementById('slots');if(!st.date){return;}el.innerHTML='';let k=st.date.getDate();
   Object.entries(SLOTS).forEach(([grp,ts])=>{const w=document.createElement('div');w.className='slot-g';w.innerHTML=`<p class="caps muted">${grp}</p>`;const r=document.createElement('div');r.className='slot-r';
     ts.forEach((t,i)=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.disabled=((k+i*5)%4===0);if(st.time===t)b.className='on';b.onclick=()=>{st.time=t;renderSlots();updFoot();};r.appendChild(b);});w.appendChild(r);el.appendChild(w);});}
@@ -711,7 +712,7 @@ function updFoot(){const s=st.step;nextB.disabled=(s===2&&!(st.date&&st.time))||
   nextB.textContent=s===3?'Записатися':s===4?'Повернутися до сукні':'Далі';backB.style.display=(s===1||s===4)?'none':'';
   document.querySelector('.dw-foot').style.gridTemplateColumns=(s===1||s===4)?'1fr':'1fr 2fr';}
 function go(s){st.step=s;drawer.querySelectorAll('.step').forEach(x=>x.hidden=+x.dataset.step!==s);
-  document.getElementById('dwTitle').textContent=TITLES[s];document.getElementById('dwStep').textContent=s<4?'Крок '+s+' з 3':'Запис на примірку';
+  document.getElementById('dwTitle').textContent=TITLES[s];document.getElementById('dwStep').textContent=s<4?'Крок '+s+' / 3':'Запис на примірку';
   document.getElementById('dwBar').style.width=(s>=4?100:s*33.34)+'%';
   if(s===2){renderCal();renderSlots();} if(s===3)document.getElementById('dSum').innerHTML=summary(); if(s===4)document.getElementById('dSum2').innerHTML=summary();
   document.getElementById('dwBody').scrollTop=0;updFoot();}
