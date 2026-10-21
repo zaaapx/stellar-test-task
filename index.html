@@ -240,6 +240,14 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
 .sum div{display:grid;grid-template-columns:110px 1fr;gap:12px;font-size:14px}
 .sum dt{color:var(--muted)}
 body.lock{overflow:hidden}
+.form.lead .stylist{align-items:flex-start;gap:16px}
+.form.lead .stylist img{width:56px;height:56px}
+.b2b{border-top:1px solid var(--border)}
+.perks{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:28px 32px}
+.perks li{display:flex;gap:14px;align-items:flex-start}
+.perks .ic{color:var(--strong);margin-top:2px}
+.b2b .form{background:var(--bg-alt)}
+.b2b .form input{background:#fff}
 
 /* mobile */
 @media (max-width:1100px){
@@ -281,6 +289,7 @@ body.lock{overflow:hidden}
   .ugc figure{flex:0 0 140px}
   .cards .card{flex:0 0 160px;scroll-snap-align:start}
   .reviews{grid-template-columns:1fr}
+  .perks{grid-template-columns:1fr;gap:20px}
   .review:nth-child(n+2){display:none}
   .review{padding:20px}
   summary{font-size:16px}
@@ -333,6 +342,7 @@ body.lock{overflow:hidden}
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
   <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></symbol>
+  <symbol id="i-hanger" viewBox="0 0 24 24"><path d="M12 7a2 2 0 1 1 2-2c0 1.2-2 1.5-2 3v1L3 15.5c-.8.6-.4 1.5.5 1.5h17c.9 0 1.3-.9.5-1.5L12 9"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L12 16.9l-5.25 2.7 1-5.8L3.5 9.7l5.9-.9z"/></symbol>
 </svg>
 
@@ -461,30 +471,17 @@ body.lock{overflow:hidden}
         <div><span class="n">03</span><div><h3>Приміряйте та оберіть деталі</h3><p class="sec">Рукави, верхня спідниця, підгонка — обговорюємо на місці</p></div></div>
       </div>
       <button class="btn btn-primary" data-fit style="width:auto">Записатися на примірку</button>
-      <div class="stylist"><img src="https://lucesposa.com/_nuxt/image-anna.-CMbvi40.jpg" alt="Стилістка Ганна"><div><h3>Ганна, стилістка шоуруму</h3><p class="s sec">Допоможе з розміром, образом і підгонкою</p></div></div>
     </div>
-    <form class="form" id="contact" novalidate>
-      <h3>Залишились питання?</h3>
-      <div class="seg" role="tablist" aria-label="Тип звернення">
-        <button type="button" role="tab" class="on" data-mode="consult" aria-selected="true">Консультація</button>
-        <button type="button" role="tab" data-mode="wholesale" aria-selected="false">Оптові ціни</button>
-      </div>
-      <p class="s sec" id="cHint">Стилістка відповість на питання про модель, розмір і терміни пошиття.</p>
+    <form class="form lead" id="consult" novalidate>
+      <div class="stylist"><img src="https://lucesposa.com/_nuxt/image-anna.-CMbvi40.jpg" alt="Стилістка Ганна"><div><h3>Залишились питання?</h3><p class="s sec">Ганна, стилістка шоуруму, відповість про модель, розмір і терміни пошиття</p></div></div>
       <div class="cfields">
         <label><span class="caps muted">Ім’я</span><input name="name" placeholder="Ваше ім’я" required></label>
         <label><span class="caps muted">Телефон</span><input name="phone" type="tel" placeholder="+380" required></label>
-        <label class="w-only"><span class="caps muted">Назва салону</span><input name="salon" placeholder="Назва вашого салону"></label>
-        <label class="w-only"><span class="caps muted">Місто</span><input name="city" placeholder="Місто"></label>
-        <label class="w-only"><span class="caps muted">Email</span><input name="email" type="email" placeholder="name@salon.com"></label>
-        <label class="c-only"><span class="caps muted">Ваше питання</span><textarea name="q" rows="3" placeholder="Наприклад: чи можна вкоротити шлейф?"></textarea></label>
-        <button class="btn btn-primary" type="submit" id="cBtn">Отримати консультацію</button>
+        <label><span class="caps muted">Ваше питання</span><textarea name="q" rows="3" placeholder="Наприклад: чи можна вкоротити шлейф?"></textarea></label>
+        <button class="btn btn-secondary" type="submit">Отримати консультацію</button>
         <p class="s muted">Натискаючи кнопку, ви погоджуєтесь з політикою конфіденційності</p>
       </div>
-      <div class="cdone" hidden>
-        <span class="okic"><svg class="ic"><use href="#i-check"/></svg></span>
-        <h3>Дякуємо, заявку отримали</h3>
-        <p class="sec">Менеджер зв’яжеться з вами протягом 15 хвилин, щоб уточнити деталі.</p>
-      </div>
+      <div class="cdone" hidden><span class="okic"><svg class="ic"><use href="#i-check"/></svg></span><h3>Дякуємо, питання отримали</h3><p class="sec">Стилістка зв’яжеться з вами протягом 15 хвилин.</p></div>
     </form>
   </div></section>
 
@@ -502,10 +499,10 @@ body.lock{overflow:hidden}
       <a class="btn btn-secondary" href="#" style="width:auto">Залишити відгук</a>
     </div>
     <div class="ugc">
-      <figure><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Dorotea/Dorotea_(5).jpg?width=600" alt=""><figcaption>@olena.bride</figcaption></figure>
-      <figure><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Ethereal/Ethereal_(1Rotate).jpg?width=600" alt=""><figcaption>@mariia_wedding</figcaption></figure>
-      <figure><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Dorotea/Dorotea_(2).jpg?width=600" alt=""><figcaption>@iryna.k</figcaption></figure>
-      <figure><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Eveil/Eveil_(5).jpg?width=600" alt=""><figcaption>@sofi.wed</figcaption></figure>
+      <figure><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Dorotea/Dorotea_(5).jpg?width=600" alt=""></figure>
+      <figure><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Ethereal/Ethereal_(1Rotate).jpg?width=600" alt=""></figure>
+      <figure><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Dorotea/Dorotea_(2).jpg?width=600" alt=""></figure>
+      <figure><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Eveil/Eveil_(5).jpg?width=600" alt=""></figure>
     </div>
     <div class="reviews">
       <div class="review"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>Сукня наживо ще краща, ніж на фото. Верхню спідницю зняла після церемонії — два образи за один день, і ніхто не вірив, що це одна сукня.</p><p class="s muted">Олена · 38 EU · Київ · 06.2026</p></div>
@@ -564,6 +561,37 @@ body.lock{overflow:hidden}
       <div class="acts"><button class="btn btn-inverse" data-fit>Записатися на примірку</button></div>
     </div>
   </section>
+
+  <section class="block b2b" id="wholesale"><div class="wrap two">
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <div>
+        <p class="caps muted">Для весільних салонів</p>
+        <h2 style="margin-top:12px">Оптова співпраця</h2>
+        <p class="sec" style="font-size:18px;margin-top:16px">Jeorjett — виробник весільних суконь з Чернівців. Постачаємо салонам в Україні та Європі напряму, без посередників.</p>
+      </div>
+      <ul class="perks">
+        <li><svg class="ic"><use href="#i-hanger"/></svg><div><h3>Від 5 одиниць</h3><p class="s sec">Мінімальне замовлення — можна комбінувати моделі</p></div></li>
+        <li><svg class="ic"><use href="#i-scissors"/></svg><div><h3>3–7 днів</h3><p class="s sec">Термін виконання замовлення</p></div></li>
+        <li><svg class="ic"><use href="#i-truck"/></svg><div><h3>Україна та ЄС</h3><p class="s sec">Доставка з шоуруму в Чернівцях</p></div></li>
+        <li><svg class="ic"><use href="#i-card"/></svg><div><h3>Знижки партнерам</h3><p class="s sec">Для постійних клієнтів і салонів-партнерів</p></div></li>
+      </ul>
+      <a class="s u sec" href="#">Вже партнер? Увійти в кабінет</a>
+    </div>
+    <form class="form lead" id="wform" novalidate>
+      <h3>Отримати оптовий прайс</h3>
+      <p class="s sec">Надішлемо прайс і умови співпраці. Менеджер зв’яжеться протягом 15 хвилин.</p>
+      <div class="cfields">
+        <label><span class="caps muted">Ім’я</span><input name="name" placeholder="Ваше ім’я" required></label>
+        <label><span class="caps muted">Телефон</span><input name="phone" type="tel" placeholder="+380" required></label>
+        <label><span class="caps muted">Назва салону</span><input name="salon" placeholder="Назва вашого салону"></label>
+        <label><span class="caps muted">Місто</span><input name="city" placeholder="Місто"></label>
+        <label><span class="caps muted">Email</span><input name="email" type="email" placeholder="name@salon.com"></label>
+        <button class="btn btn-primary" type="submit">Отримати оптові ціни</button>
+        <p class="s muted">Натискаючи кнопку, ви погоджуєтесь з політикою конфіденційності</p>
+      </div>
+      <div class="cdone" hidden><span class="okic"><svg class="ic"><use href="#i-check"/></svg></span><h3>Дякуємо, заявку отримали</h3><p class="sec">Менеджер зв’яжеться з вами протягом 15 хвилин і надішле прайс.</p></div>
+    </form>
+  </div></section>
 </main>
 
 <footer><div class="wrap">
@@ -727,20 +755,21 @@ nextB.onclick=()=>{if(st.step===4)return closeFit();if(st.step===3&&!valid3())re
 backB.onclick=()=>go(Math.max(1,st.step-1));
 dForm.addEventListener('input',updFoot);dForm.addEventListener('change',updFoot);
 
-// ---------- consult / wholesale form ----------
-const cForm=document.getElementById('contact');
-const HINTS={consult:['Стилістка відповість на питання про модель, розмір і терміни пошиття.','Отримати консультацію'],wholesale:['Надішлемо оптовий прайс і умови співпраці для салонів — мінімальне замовлення від 5 суконь.','Отримати оптові ціни']};
-function setMode(m){cForm.dataset.mode=m;cForm.querySelectorAll('.seg button').forEach(b=>{const on=b.dataset.mode===m;b.classList.toggle('on',on);b.setAttribute('aria-selected',on);});
-  document.getElementById('cHint').textContent=HINTS[m][0];document.getElementById('cBtn').textContent=HINTS[m][1];}
-cForm.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));setMode('consult');
-document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',()=>{setMode(b.dataset.contact);['.cfields','.seg','#cHint'].forEach(s=>cForm.querySelector(s).hidden=false);cForm.querySelector('.cdone').hidden=true;cForm.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>cForm.elements.name.focus({preventScroll:true}),500);}));
-cForm.addEventListener('submit',e=>{e.preventDefault();const f=cForm.elements;if(f.name.value.trim().length<2||f.phone.value.replace(/\D/g,'').length<9){(f.name.value.trim().length<2?f.name:f.phone).focus();return;}
-  ['.cfields','.seg','#cHint'].forEach(s=>cForm.querySelector(s).hidden=true);cForm.querySelector('.cdone').hidden=false;});
+// ---------- lead forms: consultation + wholesale ----------
+const forms={consult:document.getElementById('consult'),wholesale:document.getElementById('wform')};
+Object.values(forms).forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();const x=f.elements;
+  if(x.name.value.trim().length<2){x.name.focus();return;} if(x.phone.value.replace(/\D/g,'').length<9){x.phone.focus();return;}
+  f.querySelectorAll('.cfields,.lead>p.s').forEach(n=>n.hidden=true);f.querySelector('.cdone').hidden=false;}));
+document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',()=>{const f=forms[b.dataset.contact];
+  f.querySelectorAll('.cfields,.lead>p.s').forEach(n=>n.hidden=false);f.querySelector('.cdone').hidden=true;
+  f.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>f.elements.name.focus({preventScroll:true}),500);}));
+const cForm=forms.consult;
 
 // ---------- sticky bar (mobile) ----------
 const sticky=document.getElementById('sticky'),mainCta=document.querySelector('.cta .btn-primary');
-function stick(){const c=mainCta.getBoundingClientRect(),f=cForm.getBoundingClientRect();
-  const show=c.bottom<0&&!(f.top<innerHeight&&f.bottom>0)&&!drawer.classList.contains('on');sticky.classList.toggle('show',show);}
+const inView=el=>{const r=el.getBoundingClientRect();return r.top<innerHeight&&r.bottom>0;};
+function stick(){const c=mainCta.getBoundingClientRect();
+  const show=c.bottom<0&&!inView(forms.consult)&&!inView(forms.wholesale)&&!drawer.classList.contains('on');sticky.classList.toggle('show',show);}
 addEventListener('scroll',stick,{passive:true});addEventListener('resize',stick);
 
 // tabs
