@@ -12,7 +12,7 @@
 :root{
   --bg-page:#FFFFFF; --bg-alt:#FBEFF2; --bg-inverse:#A3475F; --surface:#FFFFFF;
   --text:#2B2226; --text-2:#5E4A51; --muted:#7B656C; --inverse:#FFFFFF;
-  --border:#EED9DF; --strong:#A3475F; --success:#3F7A55; --shadow-pop:0 4px 12px rgba(43,34,38,.06); --shadow-bar:0 -4px 20px rgba(43,34,38,.12);
+  --border:#EED9DF; --strong:#A3475F; --success:#3F7A55; --strong-hover:#8E3B52; --strong-press:#7A3346; --alt-hover:#F6E1E7; --shadow-pop:0 4px 12px rgba(43,34,38,.06); --shadow-bar:0 -4px 20px rgba(43,34,38,.12);
   --pad:120px; --gap:48px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -34,11 +34,9 @@ h2{font-weight:400;font-size:32px;line-height:1.2;letter-spacing:.06em;text-tran
 h3{font-weight:400;font-size:20px;line-height:1.3}
 .ic{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .ic.sm{width:18px;height:18px}
-.btn{display:flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 32px;font-size:14px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;width:100%;transition:opacity .2s,background .2s}
+.btn{transition:background-color .15s ease-out,border-color .15s ease-out,color .15s ease-out,transform .1s ease-out;display:flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 32px;font-size:14px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;width:100%;transition:opacity .2s,background .2s}
 .btn-primary{background:var(--bg-inverse);color:var(--inverse)}
-.btn-primary:hover{opacity:.9}
 .btn-secondary{border:1px solid var(--strong);color:var(--text)}
-.btn-secondary:hover{background:var(--bg-alt)}
 .btn-tonal{background:var(--bg-alt)}
 .btn-inverse{background:#fff;color:var(--text);width:auto}
 .circ{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#fff;flex:none}
@@ -225,7 +223,6 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
 .cal-g button{height:40px;font-size:15px}
 .cal-g button:disabled{color:#CBB7BD;cursor:default}
 .cal-g button.on{background:var(--bg-inverse);color:#fff}
-.cal-g button:not(:disabled):not(.on):hover{background:var(--bg-alt)}
 .slot-g{margin-top:8px}
 .slot-g p{margin:16px 0 8px}
 .slot-r{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
@@ -251,7 +248,6 @@ body.lock{overflow:hidden}
 .dd-m{position:absolute;top:calc(100% + 12px);left:-20px;min-width:260px;background:#fff;border:1px solid var(--border);box-shadow:var(--shadow-pop);padding:8px 0;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(-4px);transition:.18s;z-index:30}
 .dd.open .dd-m{opacity:1;visibility:visible;transform:none}
 .dd-m a{padding:10px 20px;font-size:15px;color:var(--text)}
-.dd-m a:hover{background:var(--bg-alt)}
 .dd-m a.on{color:var(--strong);font-weight:500}
 .lang .dd-t{font-size:12px;padding:0}
 .lang .dd-m{left:-12px;min-width:180px;top:calc(100% + 10px)}
@@ -354,6 +350,41 @@ body.lock{overflow:hidden}
   .gallery{grid-template-columns:88px minmax(0,600px)}
   .main{width:100%;height:auto;aspect-ratio:2/3}
 }
+/* ---------- interaction states ---------- */
+:where(a,button,input,textarea,summary,[tabindex="0"]):focus-visible{outline:2px solid var(--strong);outline-offset:2px}
+.circ,.size,.sw .dot,.cities button,.slot-r button,.cal-g button,.salon,.dd-t,.dd-m a,.links a,.util button,.thumbs button,.tabs button,.u,summary,.card img,.mm-l a{transition:background-color .15s ease-out,border-color .15s ease-out,color .15s ease-out,opacity .15s ease-out,transform .3s ease-out}
+.btn:active:not(:disabled){transform:scale(.98)}
+.btn-primary:active:not(:disabled){background:var(--strong-press)}
+.btn:disabled{cursor:not-allowed}
+@media (hover:hover){
+  .btn-primary:hover:not(:disabled){background:var(--strong-hover)}
+  .btn-secondary:hover:not(:disabled){background:var(--bg-alt)}
+  .btn-tonal:hover{background:var(--alt-hover)}
+  .btn-inverse:hover{background:var(--bg-alt)}
+  .circ:hover{background:var(--bg-alt)}
+  .circ.line:hover{border-color:var(--strong);background:var(--bg-alt)}
+  .main .circ:hover{background:#fff;transform:translateY(-50%) scale(1.06)}
+  .main .br:hover,.card .fav:hover{transform:scale(1.06)}
+  .fav:hover svg,.favmain:hover svg{stroke:var(--strong)}
+  .favmain:hover,.util button:hover{color:var(--strong)}
+  .size:not(.off):not(.on):hover{border-color:var(--strong)}
+  .sw:not(.off):not(.on):hover .dot{border-color:var(--border)}
+  .cities button:not(.on):hover{border-color:var(--strong)}
+  .slot-r button:not(:disabled):not(.on):hover{border-color:var(--strong)}
+  .cal-g button:not(:disabled):not(.on):hover{background:var(--bg-alt)}
+  .salon:not(.on):hover{background:#FDF7F9}
+  .maplink:hover{color:var(--strong-hover)}
+  .dd-t:hover,.navbar .right button:hover,.tabs button:not(.on):hover{color:var(--strong)}
+  .dd-m a:hover{background:var(--bg-alt)}
+  .links a:hover span,.links a:hover .ic{color:var(--strong)}
+  .u:hover,.crumbs a:hover,.topbar nav a:hover,footer a:hover,.mm-l a:hover{color:var(--strong)}
+  summary:hover{color:var(--strong)}
+  .thumbs button:hover{opacity:1}
+  .card:hover img{transform:scale(1.03)}
+  .card:hover .meta span:first-child{color:var(--strong)}
+  .dw-x:hover,#mmClose:hover{color:var(--strong)}
+}
+.card .im{overflow:hidden}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
