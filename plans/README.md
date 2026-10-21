@@ -6,12 +6,12 @@ Audit of `index.html` with unslop 1.0.3 (detector `scripts/detect.mjs`, sections
 ## Execution order (design system first)
 | # | Plan | Severity | Flags | Status |
 |---|---|---|---|---|
-| 001 | shadow-tokens | orange (E-3, E-8) | TOUCHES-DS | open |
-| 002 | lead-text-class | judgement | TOUCHES-DS | open |
-| 003 | main-image-src | red (I-1a) | — | open |
-| 004 | reduced-motion | orange (G-9) | — | open |
-| 005 | dialog-focus | judgement (a11y) | — | open |
-| 006 | copy-dashes | orange (H-1) | — | open |
+| 001 | shadow-tokens | orange (E-3, E-8) | TOUCHES-DS | done |
+| 002 | lead-text-class | judgement | TOUCHES-DS | done |
+| 003 | main-image-src | red (I-1a) | — | done |
+| 004 | reduced-motion | orange (G-9) | — | done |
+| 005 | dialog-focus | judgement (a11y) | — | done |
+| 006 | copy-dashes | orange (H-1) | — | done |
 | 007 | ugc-imagery | judgement | REQUIRES-APPROVAL | blocked on owner |
 
 ## Checked and discarded
