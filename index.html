@@ -173,6 +173,71 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
 .fcols ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:14px}
 .fbot{display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:24px;margin-top:56px}
 .sticky{display:none}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border)}
+.seg button{height:44px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2)}
+.seg button.on{background:var(--bg-inverse);color:#fff}
+.cfields{display:flex;flex-direction:column;gap:20px}
+.form textarea{border:1px solid var(--border);padding:14px 16px;font:inherit;color:var(--text);resize:vertical}
+.form textarea:focus{outline:1.5px solid var(--strong);outline-offset:-1px}
+.form[data-mode=consult] .w-only,.form[data-mode=wholesale] .c-only{display:none}
+.okic{width:56px;height:56px;border-radius:50%;background:var(--bg-alt);color:var(--strong);display:flex;align-items:center;justify-content:center}
+.cdone,.done{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.ovl{position:fixed;inset:0;background:rgba(43,34,38,.45);opacity:0;pointer-events:none;transition:opacity .25s;z-index:40}
+.ovl.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:520px;max-width:100%;background:#fff;z-index:50;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s ease;visibility:hidden}
+.drawer.on{transform:none;visibility:visible}
+.dw-head{display:flex;justify-content:space-between;align-items:flex-start;padding:28px 32px 20px}
+.dw-head h3{font-size:24px;text-transform:uppercase;letter-spacing:.06em;margin-top:6px}
+.dw-x{width:40px;height:40px;display:flex;align-items:center;justify-content:center;margin:-8px -8px 0 0}
+.dw-prog{height:2px;background:var(--border);margin:0 32px}
+.dw-prog i{display:block;height:100%;background:var(--strong);width:33%;transition:width .3s}
+.dw-body{flex:1;overflow-y:auto;padding:28px 32px}
+.step{display:flex;flex-direction:column;gap:28px}
+.step[hidden]{display:none}
+.dw-foot{display:grid;grid-template-columns:1fr 2fr;gap:12px;padding:20px 32px 28px;border-top:1px solid var(--border)}
+.dw-foot .btn{height:52px}
+.dw-foot .btn:disabled{opacity:.4;cursor:not-allowed}
+.dw-dress{display:flex;gap:16px;align-items:center;background:var(--bg-alt);padding:12px}
+.dw-dress img{width:56px;height:84px;object-fit:cover}
+.drawer .sizes{grid-template-columns:repeat(5,1fr)}
+.cities{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.cities button{padding:10px 16px;border:1px solid var(--border);font-size:14px}
+.cities button.on{border:1.5px solid var(--strong);font-weight:500}
+.salons{display:flex;flex-direction:column;margin-top:12px;border:1px solid var(--border)}
+.salon{display:flex;gap:14px;padding:16px;border-bottom:1px solid var(--border);cursor:pointer;text-align:left}
+.salon:last-child{border-bottom:0}
+.salon .rd{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--muted);flex:none;margin-top:2px;position:relative}
+.salon.on{background:var(--bg-alt)}
+.salon.on .rd{border-color:var(--strong)}
+.salon.on .rd::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--strong)}
+.salon .nm{font-weight:500}
+.maplink{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-size:14px;text-decoration:underline;text-underline-offset:3px;color:var(--strong)}
+.maplink .ic{width:16px;height:16px}
+.cal{border:1px solid var(--border);padding:16px}
+.cal-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-h b{font-weight:500;text-transform:capitalize}
+.cal-w,.cal-g{display:grid;grid-template-columns:repeat(7,1fr);text-align:center}
+.cal-w span{font-size:12px;color:var(--muted);padding:6px 0}
+.cal-g button{height:40px;font-size:15px}
+.cal-g button:disabled{color:#CBB7BD;cursor:default}
+.cal-g button.on{background:var(--bg-inverse);color:#fff}
+.cal-g button:not(:disabled):not(.on):hover{background:var(--bg-alt)}
+.slot-g{margin-top:8px}
+.slot-g p{margin:16px 0 8px}
+.slot-r{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.slot-r button{height:44px;border:1px solid var(--border);font-size:15px}
+.slot-r button:disabled{background:var(--bg-alt);border-color:var(--bg-alt);color:#CBB7BD;cursor:not-allowed}
+.slot-r button.on{border:1.5px solid var(--strong);font-weight:500}
+.dform{display:flex;flex-direction:column;gap:18px}
+.dform label{display:flex;flex-direction:column;gap:8px}
+.dform input:not([type=checkbox]){height:52px;border:1px solid var(--border);padding:0 16px;font:inherit;color:var(--text)}
+.dform input:focus{outline:1.5px solid var(--strong);outline-offset:-1px}
+.dform .chk{flex-direction:row;align-items:flex-start;gap:12px}
+.dform .chk input{width:20px;height:20px;accent-color:var(--strong);flex:none;margin-top:2px}
+.sum{background:var(--bg-alt);padding:20px;display:flex;flex-direction:column;gap:10px;width:100%}
+.sum div{display:grid;grid-template-columns:110px 1fr;gap:12px;font-size:14px}
+.sum dt{color:var(--muted)}
+body.lock{overflow:hidden}
 
 /* mobile */
 @media (max-width:1100px){
@@ -232,6 +297,8 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
   .sticky .p{line-height:1.3}
   .sticky .p b{font-weight:500}
   .sticky .btn{flex:1;padding:0 12px}
+  .drawer{width:100%}
+  .dw-head{padding:20px 20px 16px}.dw-prog{margin:0 20px}.dw-body{padding:24px 20px}.dw-foot{padding:16px 20px calc(16px + env(safe-area-inset-bottom))}
 }
 @media (min-width:1101px) and (max-width:1440px){
   :root{--pad:60px}
@@ -261,6 +328,9 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
   <symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/><path d="M8 8.5L20 18M8 15.5L20 6"/></symbol>
   <symbol id="i-factory" viewBox="0 0 24 24"><path d="M3 20V10l5 3V10l5 3V6h4l1 4h3v10z"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L12 16.9l-5.25 2.7 1-5.8L3.5 9.7l5.9-.9z"/></symbol>
 </svg>
 
@@ -290,7 +360,6 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
         <div class="thumbs" id="thumbs"></div>
         <div class="main">
           <img id="mainImg" alt="Весільна сукня J-1165, вид спереду" src="">
-          <div class="tl"><span class="chip inv">Новинка</span><span class="chip">2 образи в 1</span></div>
           <button class="circ prev" aria-label="Попереднє фото"><svg class="ic"><use href="#i-left"/></svg></button>
           <button class="circ next" aria-label="Наступне фото"><svg class="ic"><use href="#i-right"/></svg></button>
           <span class="chip bl" id="counter">1 / 6</span>
@@ -332,8 +401,8 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
       </div>
 
       <div class="cta">
-        <a class="btn btn-primary" href="#booking">Записатися на примірку</a>
-        <a class="btn btn-secondary" href="#faq">Отримати консультацію</a>
+        <button class="btn btn-primary" data-fit>Записатися на примірку</button>
+        <button class="btn btn-secondary" data-contact="consult">Отримати консультацію</button>
       </div>
       <div class="util">
         <button><svg class="ic sm"><use href="#i-heart"/></svg>Зберегти</button>
@@ -348,7 +417,7 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
         <a href="#"><svg class="ic sm"><use href="#i-truck"/></svg><span>Доставка та повернення</span><svg class="ic sm"><use href="#i-arrow"/></svg></a>
         <a href="#"><svg class="ic sm"><use href="#i-card"/></svg><span>Оплата</span><svg class="ic sm"><use href="#i-arrow"/></svg></a>
       </div>
-      <a class="btn btn-tonal" href="#">Оптові ціни для салонів</a>
+      <button class="btn btn-tonal" data-contact="wholesale">Оптові ціни для салонів</button>
     </aside>
   </div>
 
@@ -378,29 +447,42 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
     </div>
   </div></section>
 
-  <section class="block alt" id="booking"><div class="wrap two">
-    <div style="display:flex;flex-direction:column;gap:40px">
+  <section class="block alt" id="fitting"><div class="wrap two">
+    <div style="display:flex;flex-direction:column;gap:40px;align-items:flex-start">
       <div>
         <h2>Як проходить примірка</h2>
         <p class="sec" style="font-size:18px;margin-top:16px">Примірка безкоштовна і ні до чого не зобов’язує. Ми підготуємо сукню вашого розміру та кілька схожих моделей.</p>
       </div>
-      <div class="steps">
-        <div><span class="n">01</span><div><h3>Залиште заявку</h3><p class="sec">2 хвилини: ім’я, телефон і дата весілля</p></div></div>
-        <div><span class="n">02</span><div><h3>Підтвердимо час</h3><p class="sec">Менеджер зателефонує протягом 15 хвилин у робочий час</p></div></div>
+      <div class="steps" style="align-self:stretch">
+        <div><span class="n">01</span><div><h3>Оберіть салон, дату й час</h3><p class="sec">2 хвилини онлайн, без дзвінків</p></div></div>
+        <div><span class="n">02</span><div><h3>Менеджер підтвердить запис</h3><p class="sec">Зателефонує протягом 15 хвилин, щоб уточнити деталі</p></div></div>
         <div><span class="n">03</span><div><h3>Приміряйте та оберіть деталі</h3><p class="sec">Рукави, верхня спідниця, підгонка — обговорюємо на місці</p></div></div>
       </div>
+      <button class="btn btn-primary" data-fit style="width:auto">Записатися на примірку</button>
       <div class="stylist"><img src="https://lucesposa.com/_nuxt/image-anna.-CMbvi40.jpg" alt="Стилістка Ганна"><div><h3>Ганна, стилістка шоуруму</h3><p class="s sec">Допоможе з розміром, образом і підгонкою</p></div></div>
-      <div class="loc"><svg class="ic"><use href="#i-pin"/></svg><div><p>Шоурум Jeorjett, Чернівці · Пн–Сб 10:00–19:00</p><a class="s sec u" href="#">Знайти салон-партнера у вашому місті</a></div></div>
     </div>
-    <form class="form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Заявку надіслано';">
-      <h3>Запис на примірку</h3>
-      <div class="sel"><img src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Dorotea/Dorotea_(1).jpg?width=200" alt=""><div><p class="s">Сукня J-1165</p><p class="s muted" id="selSummary">Айворі · 44 EU</p></div></div>
-      <label><span class="caps muted">Ім’я</span><input placeholder="Ваше ім’я" required></label>
-      <label><span class="caps muted">Телефон</span><input type="tel" placeholder="+380" required></label>
-      <label><span class="caps muted">Дата весілля</span><input placeholder="дд.мм.рррр"></label>
-      <label><span class="caps muted">Місто примірки</span><input placeholder="Чернівці"></label>
-      <button class="btn btn-primary" type="submit">Записатися</button>
-      <p class="s muted">Натискаючи кнопку, ви погоджуєтесь з політикою конфіденційності</p>
+    <form class="form" id="contact" novalidate>
+      <h3>Залишились питання?</h3>
+      <div class="seg" role="tablist" aria-label="Тип звернення">
+        <button type="button" role="tab" class="on" data-mode="consult" aria-selected="true">Консультація</button>
+        <button type="button" role="tab" data-mode="wholesale" aria-selected="false">Оптові ціни</button>
+      </div>
+      <p class="s sec" id="cHint">Стилістка відповість на питання про модель, розмір і терміни пошиття.</p>
+      <div class="cfields">
+        <label><span class="caps muted">Ім’я</span><input name="name" placeholder="Ваше ім’я" required></label>
+        <label><span class="caps muted">Телефон</span><input name="phone" type="tel" placeholder="+380" required></label>
+        <label class="w-only"><span class="caps muted">Назва салону</span><input name="salon" placeholder="Назва вашого салону"></label>
+        <label class="w-only"><span class="caps muted">Місто</span><input name="city" placeholder="Місто"></label>
+        <label class="w-only"><span class="caps muted">Email</span><input name="email" type="email" placeholder="name@salon.com"></label>
+        <label class="c-only"><span class="caps muted">Ваше питання</span><textarea name="q" rows="3" placeholder="Наприклад: чи можна вкоротити шлейф?"></textarea></label>
+        <button class="btn btn-primary" type="submit" id="cBtn">Отримати консультацію</button>
+        <p class="s muted">Натискаючи кнопку, ви погоджуєтесь з політикою конфіденційності</p>
+      </div>
+      <div class="cdone" hidden>
+        <span class="okic"><svg class="ic"><use href="#i-check"/></svg></span>
+        <h3>Дякуємо, заявку отримали</h3>
+        <p class="sec">Менеджер зв’яжеться з вами протягом 15 хвилин, щоб уточнити деталі.</p>
+      </div>
     </form>
   </div></section>
 
@@ -447,7 +529,7 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
     <div class="faq-l">
       <h2>Часті питання</h2>
       <p class="sec">Не знайшли відповідь? Залиште питання — менеджер зателефонує протягом 15 хвилин.</p>
-      <a class="btn btn-secondary" href="#booking">Поставити питання</a>
+      <button class="btn btn-secondary" data-contact="consult">Поставити питання</button>
     </div>
     <div>
       <details open><summary>Скільки часу шиється сукня? <svg class="ic"><use href="#i-plus"/></svg></summary><p>Сукню стандартного розміру шиємо від 3–7 днів. Індивідуальне пошиття за мірками та зміни моделі — від 2 тижнів, точний термін назве менеджер.</p></details>
@@ -477,7 +559,7 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
       <p class="caps" style="opacity:1;font-size:12px">Персональний підбір</p>
       <h2>Не впевнені, що це ваша сукня?</h2>
       <p>Розкажіть про дату весілля та побажання — стилістка підбере 3–5 моделей і зателефонує протягом 15 хвилин.</p>
-      <div class="acts"><a class="btn btn-inverse" href="#booking">Записатися на примірку</a></div>
+      <div class="acts"><button class="btn btn-inverse" data-fit>Записатися на примірку</button></div>
     </div>
   </section>
 </main>
@@ -492,9 +574,55 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
   <div class="fbot s muted"><span>© 2026 Jeorjettdress.com</span><span>Політика конфіденційності · UA · RO · EN · RU</span></div>
 </div></footer>
 
+<div class="ovl" id="ovl"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dwTitle" aria-hidden="true">
+  <div class="dw-head">
+    <div><p class="caps muted" id="dwStep">Крок 1 з 3</p><h3 id="dwTitle">Сукня і салон</h3></div>
+    <button class="dw-x" id="dwClose" aria-label="Закрити"><svg class="ic"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="dw-prog"><i id="dwBar"></i></div>
+  <div class="dw-body" id="dwBody">
+    <div class="step" data-step="1">
+      <div class="dw-dress"><img src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Dorotea/Dorotea_(1).jpg?width=200" alt=""><div><p>Весільна сукня J-1165</p><p class="s muted">Колекція Dazzle 2026</p></div></div>
+      <div><p><span class="caps muted">Колір</span>&nbsp; <span class="s" id="dColorName">Айворі</span></p><div class="swatches" id="dSwatches"></div></div>
+      <div><div class="row"><p><span class="caps muted">Розмір EU</span>&nbsp; <span class="s" id="dSizeName">44</span></p><a class="s u" href="#" onclick="return false">Таблиця розмірів</a></div><div class="sizes" id="dSizes"></div></div>
+      <div class="rule"></div>
+      <div><p class="caps muted">Місто</p><div class="cities" id="dCities"></div></div>
+      <div><p class="caps muted">Салон</p><div class="salons" id="dSalons"></div></div>
+    </div>
+    <div class="step" data-step="2" hidden>
+      <div class="cal">
+        <div class="cal-h"><button type="button" class="circ line" id="calPrev" aria-label="Попередній місяць"><svg class="ic sm"><use href="#i-left"/></svg></button><b id="calTitle"></b><button type="button" class="circ line" id="calNext" aria-label="Наступний місяць"><svg class="ic sm"><use href="#i-right"/></svg></button></div>
+        <div class="cal-w"><span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Нд</span></div>
+        <div class="cal-g" id="calGrid"></div>
+      </div>
+      <div id="slots"><p class="s muted">Оберіть дату, щоб побачити вільний час</p></div>
+    </div>
+    <div class="step" data-step="3" hidden>
+      <form id="dForm" class="dform" novalidate>
+        <label><span class="caps muted">Ім’я та прізвище</span><input name="name" required placeholder="Олена Коваль"></label>
+        <label><span class="caps muted">Телефон</span><input name="phone" type="tel" required placeholder="+380"></label>
+        <label><span class="caps muted">Email · необов’язково</span><input name="email" type="email" placeholder="name@mail.com"></label>
+        <label><span class="caps muted">Дата весілля · необов’язково</span><input name="wd" placeholder="дд.мм.рррр"></label>
+        <label class="chk"><input type="checkbox" name="ok" required><span class="s">Я погоджуюсь на обробку персональних даних та з <a class="u" href="#" onclick="return false">політикою конфіденційності</a></span></label>
+      </form>
+      <div class="sum" id="dSum"></div>
+    </div>
+    <div class="step" data-step="4" hidden>
+      <div class="done">
+        <span class="okic"><svg class="ic"><use href="#i-check"/></svg></span>
+        <h3>Заявку на примірку прийнято</h3>
+        <p class="sec">Менеджер зв’яжеться з вами протягом 15 хвилин, щоб уточнити деталі та підтвердити запис.</p>
+        <div class="sum" id="dSum2"></div>
+      </div>
+    </div>
+  </div>
+  <div class="dw-foot"><button class="btn btn-secondary" id="dwBack">Назад</button><button class="btn btn-primary" id="dwNext">Далі</button></div>
+</aside>
+
 <div class="sticky" id="sticky">
   <div class="p"><b>42 500 ₴</b><br><span class="s muted" id="stickySel">44 · айворі</span></div>
-  <a class="btn btn-primary" href="#booking">Записатися на примірку</a>
+  <button class="btn btn-primary" data-fit>Записатися на примірку</button>
 </div>
 
 <script>
@@ -524,25 +652,98 @@ mainEl.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
 mainEl.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40)show(cur+(d<0?1:-1));});
 show(0);
 
-// sizes
-const sizes=[34,36,38,40,42,44,46,48,50],off=[48,50];let size=44,color='Айворі';
-const sz=document.getElementById('sizes');
-sizes.forEach(s=>{const b=document.createElement('button');b.className='size'+(s===size?' on':'')+(off.includes(s)?' off':'');b.textContent=s;
-  if(off.includes(s)){b.disabled=true;b.setAttribute('aria-label',s+' — немає в наявності');}
-  b.onclick=()=>{size=s;[...sz.children].forEach(c=>c.classList.toggle('on',c===b));update();};sz.appendChild(b);});
-document.querySelectorAll('#swatches .sw:not(.off)').forEach(s=>s.onclick=()=>{color=s.dataset.name;document.querySelectorAll('#swatches .sw').forEach(x=>x.classList.toggle('on',x===s));update();});
-function update(){document.getElementById('sizeName').textContent=size;document.getElementById('colorName').textContent=color;
-    document.getElementById('selSummary').textContent=color+' · '+size+' EU';
-  document.getElementById('stickySel').textContent=size+' · '+color.toLowerCase();}
+// ---------- selection (page + drawer share state) ----------
+const SIZES=[34,36,38,40,42,44,46,48,50],OFF_SIZES=[48,50];
+const COLORS=[{n:'Білий',c:'#FFFFFF'},{n:'Айворі',c:'#F3ECDF'},{n:'Шампань',c:'#E6D3B8',off:true}];
+const st={size:44,color:'Айворі',city:'Чернівці',salon:0,date:null,time:null,step:1,view:null};
+function renderSizes(el,onPick){el.innerHTML='';SIZES.forEach(s=>{const b=document.createElement('button');b.type='button';b.className='size'+(s===st.size?' on':'')+(OFF_SIZES.includes(s)?' off':'');b.textContent=s;
+  if(OFF_SIZES.includes(s)){b.disabled=true;b.setAttribute('aria-label',s+' — немає в наявності');}else b.setAttribute('aria-pressed',s===st.size);
+  b.onclick=()=>{st.size=s;syncAll();};el.appendChild(b);});}
+function renderSwatches(el){el.innerHTML='';COLORS.forEach(o=>{const b=document.createElement('button');b.type='button';b.className='sw'+(o.n===st.color?' on':'')+(o.off?' off':'');
+  b.innerHTML=`<span class="dot"><i style="background:${o.c}"></i></span><span class="lbl">${o.n}</span>`;if(o.off){b.disabled=true;b.setAttribute('aria-label',o.n+' — немає в наявності');}
+  b.onclick=()=>{st.color=o.n;syncAll();};el.appendChild(b);});}
+function syncAll(){
+  renderSizes(document.getElementById('sizes'));renderSwatches(document.getElementById('swatches'));
+  renderSizes(document.getElementById('dSizes'));renderSwatches(document.getElementById('dSwatches'));
+  ['sizeName','dSizeName'].forEach(id=>document.getElementById(id).textContent=st.size);
+  ['colorName','dColorName'].forEach(id=>document.getElementById(id).textContent=st.color);
+  document.getElementById('stickySel').textContent=st.size+' · '+st.color.toLowerCase();}
 
-// sticky bar on mobile when main CTA leaves viewport
-const sticky=document.getElementById('sticky'),mainCta=document.querySelector('.cta .btn-primary'),form=document.getElementById('booking');
-function stick(){const c=mainCta.getBoundingClientRect(),f=form.getBoundingClientRect();
-  const show=c.bottom<0&&!(f.top<innerHeight&&f.bottom>0);sticky.classList.toggle('show',show);}
-addEventListener('scroll',stick,{passive:true});addEventListener('resize',stick);stick();
+// ---------- salons ----------
+const SALONS={
+  'Чернівці':[{n:'Шоурум Jeorjett',a:'Чернівці, вул. Головна, 120',h:'Пн–Сб 10:00–19:00'}],
+  'Київ':[{n:'Салон-партнер «Bianca»',a:'Київ, вул. Велика Васильківська, 45',h:'Щодня 10:00–20:00'},{n:'Салон-партнер «White Room»',a:'Київ, просп. Берестейський, 12',h:'Пн–Сб 11:00–19:00'}],
+  'Львів':[{n:'Салон-партнер «Aurelia»',a:'Львів, вул. Городоцька, 30',h:'Пн–Сб 10:00–19:00'}],
+  'Одеса':[{n:'Салон-партнер «Mare»',a:'Одеса, вул. Дерибасівська, 15',h:'Щодня 10:00–19:00'}]};
+const mapUrl=a=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(a);
+function renderCities(){const el=document.getElementById('dCities');el.innerHTML='';Object.keys(SALONS).forEach(c=>{const b=document.createElement('button');b.type='button';b.textContent=c;b.className=c===st.city?'on':'';b.onclick=()=>{st.city=c;st.salon=0;renderCities();renderSalons();};el.appendChild(b);});}
+function renderSalons(){const el=document.getElementById('dSalons');el.innerHTML='';SALONS[st.city].forEach((s,i)=>{const d=document.createElement('div');d.className='salon'+(i===st.salon?' on':'');d.setAttribute('role','radio');d.setAttribute('aria-checked',i===st.salon);d.tabIndex=0;
+  d.innerHTML=`<span class="rd"></span><div><p class="nm">${s.n}</p><p class="s sec">${s.a}</p><p class="s muted">${s.h}</p><a class="maplink" href="${mapUrl(s.a)}" target="_blank" rel="noopener">Відкрити в Google Maps<svg class="ic"><use href="#i-ext"/></svg></a></div>`;
+  d.onclick=e=>{if(e.target.closest('a'))return;st.salon=i;renderSalons();};d.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();d.click();}};el.appendChild(d);});}
+
+// ---------- calendar ----------
+const MONTHS=['січень','лютий','березень','квітень','травень','червень','липень','серпень','вересень','жовтень','листопад','грудень'];
+const today=new Date();today.setHours(0,0,0,0);const maxDay=new Date(today);maxDay.setDate(maxDay.getDate()+60);
+st.view=new Date(today.getFullYear(),today.getMonth(),1);
+const avail=d=>d>today&&d<=maxDay&&d.getDay()!==0;
+function renderCal(){const g=document.getElementById('calGrid');g.innerHTML='';const v=st.view;document.getElementById('calTitle').textContent=MONTHS[v.getMonth()]+' '+v.getFullYear();
+  const first=(new Date(v.getFullYear(),v.getMonth(),1).getDay()+6)%7;const days=new Date(v.getFullYear(),v.getMonth()+1,0).getDate();
+  for(let i=0;i<first;i++)g.appendChild(document.createElement('span'));
+  for(let d=1;d<=days;d++){const dt=new Date(v.getFullYear(),v.getMonth(),d);const b=document.createElement('button');b.type='button';b.textContent=d;b.disabled=!avail(dt);
+    if(st.date&&+st.date===+dt)b.className='on';b.onclick=()=>{st.date=dt;st.time=null;renderCal();renderSlots();updFoot();};g.appendChild(b);}
+  document.getElementById('calPrev').disabled=v<=new Date(today.getFullYear(),today.getMonth(),1);
+  document.getElementById('calNext').disabled=new Date(v.getFullYear(),v.getMonth()+1,1)>maxDay;}
+document.getElementById('calPrev').onclick=()=>{st.view=new Date(st.view.getFullYear(),st.view.getMonth()-1,1);renderCal();};
+document.getElementById('calNext').onclick=()=>{st.view=new Date(st.view.getFullYear(),st.view.getMonth()+1,1);renderCal();};
+const SLOTS={'Ранок':['10:00','10:30','11:00','11:30'],'День':['12:00','12:30','13:00','14:00','14:30','15:00'],'Вечір':['16:00','16:30','17:00','17:30','18:00','18:30']};
+function renderSlots(){const el=document.getElementById('slots');if(!st.date){return;}el.innerHTML='';let k=st.date.getDate();
+  Object.entries(SLOTS).forEach(([grp,ts])=>{const w=document.createElement('div');w.className='slot-g';w.innerHTML=`<p class="caps muted">${grp}</p>`;const r=document.createElement('div');r.className='slot-r';
+    ts.forEach((t,i)=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.disabled=((k+i*5)%4===0);if(st.time===t)b.className='on';b.onclick=()=>{st.time=t;renderSlots();updFoot();};r.appendChild(b);});w.appendChild(r);el.appendChild(w);});}
+
+// ---------- drawer flow ----------
+const drawer=document.getElementById('drawer'),ovl=document.getElementById('ovl'),nextB=document.getElementById('dwNext'),backB=document.getElementById('dwBack');
+const TITLES={1:'Сукня і салон',2:'Дата і час',3:'Ваші контакти',4:'Готово'};
+const fmtDate=d=>d.getDate()+' '+['січня','лютого','березня','квітня','травня','червня','липня','серпня','вересня','жовтня','листопада','грудня'][d.getMonth()]+', '+['нд','пн','вт','ср','чт','пт','сб'][d.getDay()];
+function summary(){const s=SALONS[st.city][st.salon];return `<dl><div><dt>Сукня</dt><dd>J-1165 · ${st.color.toLowerCase()} · ${st.size} EU</dd></div><div><dt>Салон</dt><dd>${s.n}<br><span class="sec">${s.a}</span><br><a class="maplink" href="${mapUrl(s.a)}" target="_blank" rel="noopener">Відкрити в Google Maps<svg class="ic"><use href="#i-ext"/></svg></a></dd></div><div><dt>Дата</dt><dd>${st.date?fmtDate(st.date):'—'}</dd></div><div><dt>Час</dt><dd>${st.time||'—'}</dd></div></dl>`;}
+const dForm=document.getElementById('dForm');
+function valid3(){const f=dForm.elements;return f.name.value.trim().length>1&&f.phone.value.replace(/\D/g,'').length>=9&&f.ok.checked;}
+function updFoot(){const s=st.step;nextB.disabled=(s===2&&!(st.date&&st.time))||(s===3&&!valid3());
+  nextB.textContent=s===3?'Записатися':s===4?'Повернутися до сукні':'Далі';backB.style.display=(s===1||s===4)?'none':'';
+  document.querySelector('.dw-foot').style.gridTemplateColumns=(s===1||s===4)?'1fr':'1fr 2fr';}
+function go(s){st.step=s;drawer.querySelectorAll('.step').forEach(x=>x.hidden=+x.dataset.step!==s);
+  document.getElementById('dwTitle').textContent=TITLES[s];document.getElementById('dwStep').textContent=s<4?'Крок '+s+' з 3':'Запис на примірку';
+  document.getElementById('dwBar').style.width=(s>=4?100:s*33.34)+'%';
+  if(s===2){renderCal();renderSlots();} if(s===3)document.getElementById('dSum').innerHTML=summary(); if(s===4)document.getElementById('dSum2').innerHTML=summary();
+  document.getElementById('dwBody').scrollTop=0;updFoot();}
+let lastFocus=null;
+function openFit(){lastFocus=document.activeElement;syncAll();renderCities();renderSalons();go(1);drawer.classList.add('on');ovl.classList.add('on');drawer.setAttribute('aria-hidden','false');document.body.classList.add('lock');stick();setTimeout(()=>document.getElementById('dwClose').focus(),300);}
+function closeFit(){drawer.classList.remove('on');ovl.classList.remove('on');drawer.setAttribute('aria-hidden','true');document.body.classList.remove('lock');if(st.step===4){st.date=null;st.time=null;dForm.reset();document.getElementById('slots').innerHTML='<p class="s muted">Оберіть дату, щоб побачити вільний час</p>';}stick();lastFocus&&lastFocus.focus();}
+document.querySelectorAll('[data-fit]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();openFit();}));
+document.getElementById('dwClose').onclick=closeFit;ovl.onclick=closeFit;
+addEventListener('keydown',e=>{if(e.key==='Escape'&&drawer.classList.contains('on'))closeFit();});
+nextB.onclick=()=>{if(st.step===4)return closeFit();if(st.step===3&&!valid3())return;go(st.step+1);};
+backB.onclick=()=>go(Math.max(1,st.step-1));
+dForm.addEventListener('input',updFoot);dForm.addEventListener('change',updFoot);
+
+// ---------- consult / wholesale form ----------
+const cForm=document.getElementById('contact');
+const HINTS={consult:['Стилістка відповість на питання про модель, розмір і терміни пошиття.','Отримати консультацію'],wholesale:['Надішлемо оптовий прайс і умови співпраці для салонів — мінімальне замовлення від 5 суконь.','Отримати оптові ціни']};
+function setMode(m){cForm.dataset.mode=m;cForm.querySelectorAll('.seg button').forEach(b=>{const on=b.dataset.mode===m;b.classList.toggle('on',on);b.setAttribute('aria-selected',on);});
+  document.getElementById('cHint').textContent=HINTS[m][0];document.getElementById('cBtn').textContent=HINTS[m][1];}
+cForm.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));setMode('consult');
+document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',()=>{setMode(b.dataset.contact);cForm.querySelector('.cfields').hidden=false;cForm.querySelector('.cdone').hidden=true;cForm.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>cForm.elements.name.focus({preventScroll:true}),500);}));
+cForm.addEventListener('submit',e=>{e.preventDefault();const f=cForm.elements;if(f.name.value.trim().length<2||f.phone.value.replace(/\D/g,'').length<9){(f.name.value.trim().length<2?f.name:f.phone).focus();return;}
+  cForm.querySelector('.cfields').hidden=true;cForm.querySelector('.cdone').hidden=false;});
+
+// ---------- sticky bar (mobile) ----------
+const sticky=document.getElementById('sticky'),mainCta=document.querySelector('.cta .btn-primary');
+function stick(){const c=mainCta.getBoundingClientRect(),f=cForm.getBoundingClientRect();
+  const show=c.bottom<0&&!(f.top<innerHeight&&f.bottom>0)&&!drawer.classList.contains('on');sticky.classList.toggle('show',show);}
+addEventListener('scroll',stick,{passive:true});addEventListener('resize',stick);
 
 // tabs
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b)));
+syncAll();stick();
 </script>
 </body>
 </html>
