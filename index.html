@@ -363,9 +363,6 @@ body.lock{overflow:hidden}
   .btn-inverse:hover{background:var(--bg-alt)}
   .circ:hover{background:var(--bg-alt)}
   .circ.line:hover{border-color:var(--strong);background:var(--bg-alt)}
-  .main{cursor:zoom-in}
-  .main img{transition:transform .35s ease-out}
-  .main.zoom img{transform:scale(1.25)}
   .main .prev,.main .next,.main .br{opacity:0;transition:opacity .2s ease-out,background-color .15s ease-out,transform .2s ease-out}
   .main:hover .prev,.main:hover .next,.main:hover .br,.main:focus-within .prev,.main:focus-within .next,.main:focus-within .br{opacity:1}
   .main .circ{cursor:pointer}
@@ -769,11 +766,6 @@ function show(i){cur=(i+photos.length)%photos.length;mainImg.src=photos[cur].src
 document.querySelector('.main .prev').onclick=()=>show(cur-1);
 document.querySelector('.main .next').onclick=()=>show(cur+1);
 let sx=0;const mainEl=document.querySelector('.main');
-// hover zoom 125% following the cursor (mouse only)
-const zoomable=matchMedia('(hover:hover) and (pointer:fine)');
-mainEl.addEventListener('mouseenter',()=>{if(zoomable.matches)mainEl.classList.add('zoom');});
-mainEl.addEventListener('mouseleave',()=>{mainEl.classList.remove('zoom');mainImg.style.transformOrigin='';});
-mainEl.addEventListener('mousemove',e=>{if(!zoomable.matches)return;const r=mainEl.getBoundingClientRect();mainImg.style.transformOrigin=((e.clientX-r.left)/r.width*100)+'% '+((e.clientY-r.top)/r.height*100)+'%';});
 
 mainEl.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
 mainEl.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40)show(cur+(d<0?1:-1));});
