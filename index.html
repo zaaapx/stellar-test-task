@@ -432,7 +432,7 @@ body.lock{overflow:hidden}
         <a class="circ line" href="#" aria-label="Наступна модель"><svg class="ic sm"><use href="#i-right"/></svg></a>
       </div>
       <h1 class="display">Весільна сукня <span style="white-space:nowrap">J-1165</span></h1>
-      <p class="sec">Сукня-русалка з мережива з бісером, ручна вишивка ліфа, знімна атласна верхня спідниця та знімні рукави — два образи в одному.</p>
+      <p class="sec">Сукня-русалка з мережива з бісером, ручна вишивка ліфа, знімна атласна верхня спідниця та знімні рукави: два образи в одному.</p>
       <div class="price"><b>42 500 ₴</b><span class="s muted">роздрібна ціна</span></div>
       <div class="rule"></div>
 
@@ -441,7 +441,7 @@ body.lock{overflow:hidden}
         <div class="swatches" id="swatches">
           <button class="sw" data-name="Білий"><span class="dot"><i style="background:#FFFFFF"></i></span><span class="lbl">Білий</span></button>
           <button class="sw on" data-name="Айворі"><span class="dot"><i style="background:#F3ECDF"></i></span><span class="lbl">Айворі</span></button>
-          <button class="sw off" data-name="Шампань" aria-label="Шампань — немає в наявності" disabled><span class="dot"><i style="background:#E6D3B8"></i></span><span class="lbl">Шампань</span></button>
+          <button class="sw off" data-name="Шампань" aria-label="Шампань, немає в наявності" disabled><span class="dot"><i style="background:#E6D3B8"></i></span><span class="lbl">Шампань</span></button>
         </div>
       </div>
 
@@ -535,7 +535,7 @@ body.lock{overflow:hidden}
           <b>4,9</b>
           <div><div class="stars" aria-label="5 з 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p class="s muted">38 відгуків</p></div>
           <div class="vdiv"></div>
-          <div><p class="s">Розмір відповідає — 92%</p><div class="fitbar"><i></i></div></div>
+          <div><p class="s">Розмір відповідає: 92%</p><div class="fitbar"><i></i></div></div>
         </div>
       </div>
       <a class="btn btn-secondary" href="#" style="width:auto">Залишити відгук</a>
@@ -573,11 +573,11 @@ body.lock{overflow:hidden}
       <button class="btn btn-secondary" data-contact="consult">Поставити питання</button>
     </div>
     <div>
-      <details open><summary>Скільки часу шиється сукня? <svg class="ic"><use href="#i-plus"/></svg></summary><p>Сукню стандартного розміру шиємо від 3–7 днів. Індивідуальне пошиття за мірками та зміни моделі — від 2 тижнів, точний термін назве менеджер.</p></details>
-      <details><summary>Чи можна змінити модель — рукави, спідницю, колір? <svg class="ic"><use href="#i-plus"/></svg></summary><p>Так, більшість змін можлива: довжина рукавів, верхня спідниця, відтінок. Обговоримо на примірці.</p></details>
+      <details open><summary>Скільки часу шиється сукня? <svg class="ic"><use href="#i-plus"/></svg></summary><p>Сукню стандартного розміру шиємо від 3–7 днів. Індивідуальне пошиття за мірками та зміни моделі від 2 тижнів, точний термін назве менеджер.</p></details>
+      <details><summary>Чи можна змінити модель: рукави, спідницю, колір? <svg class="ic"><use href="#i-plus"/></svg></summary><p>Так, більшість змін можлива: довжина рукавів, верхня спідниця, відтінок. Обговоримо на примірці.</p></details>
       <details><summary>Скільки коштує підгонка? <svg class="ic"><use href="#i-plus"/></svg></summary><p>Базова підгонка по фігурі входить у вартість сукні.</p></details>
       <details><summary>Де приміряти сукню в моєму місті? <svg class="ic"><use href="#i-plus"/></svg></summary><p>У шоурумі в Чернівцях або в одному із салонів-партнерів в Україні та ЄС.</p></details>
-      <details><summary>Як відбувається доставка та оплата? <svg class="ic"><use href="#i-plus"/></svg></summary><p>Доставляємо Україною та в ЄС. Деталі — на сторінках «Доставка та повернення» і «Оплата».</p></details>
+      <details><summary>Як відбувається доставка та оплата? <svg class="ic"><use href="#i-plus"/></svg></summary><p>Доставляємо Україною та в ЄС. Деталі на сторінках «Доставка та повернення» і «Оплата».</p></details>
     </div>
   </div></section>
 
@@ -725,7 +725,7 @@ photos.forEach((p,i)=>{
   b.onclick=()=>show(i);thumbs.appendChild(b);
   dots.appendChild(document.createElement('i'));
 });
-function show(i){cur=(i+photos.length)%photos.length;mainImg.src=photos[cur].src;mainImg.alt='Весільна сукня J-1165 — '+photos[cur].alt;
+function show(i){cur=(i+photos.length)%photos.length;mainImg.src=photos[cur].src;mainImg.alt='Весільна сукня J-1165, '+photos[cur].alt;
   [...thumbs.children].forEach((t,j)=>t.classList.toggle('on',j===cur));[...dots.children].forEach((d,j)=>d.classList.toggle('on',j===cur));counter.textContent=(cur+1)+' / '+photos.length;}
 document.querySelector('.main .prev').onclick=()=>show(cur-1);
 document.querySelector('.main .next').onclick=()=>show(cur+1);
@@ -739,10 +739,10 @@ const SIZES=[34,36,38,40,42,44,46,48,50],OFF_SIZES=[48,50];
 const COLORS=[{n:'Білий',c:'#FFFFFF'},{n:'Айворі',c:'#F3ECDF'},{n:'Шампань',c:'#E6D3B8',off:true}];
 const st={size:44,color:'Айворі',city:'Чернівці',salon:0,date:null,time:null,step:1,view:null};
 function renderSizes(el,onPick){el.innerHTML='';SIZES.forEach(s=>{const b=document.createElement('button');b.type='button';b.className='size'+(s===st.size?' on':'')+(OFF_SIZES.includes(s)?' off':'');b.textContent=s;
-  if(OFF_SIZES.includes(s)){b.disabled=true;b.setAttribute('aria-label',s+' — немає в наявності');}else b.setAttribute('aria-pressed',s===st.size);
+  if(OFF_SIZES.includes(s)){b.disabled=true;b.setAttribute('aria-label',s+', немає в наявності');}else b.setAttribute('aria-pressed',s===st.size);
   b.onclick=()=>{st.size=s;syncAll();};el.appendChild(b);});}
 function renderSwatches(el){el.innerHTML='';COLORS.forEach(o=>{const b=document.createElement('button');b.type='button';b.className='sw'+(o.n===st.color?' on':'')+(o.off?' off':'');
-  b.innerHTML=`<span class="dot"><i style="background:${o.c}"></i></span><span class="lbl">${o.n}</span>`;if(o.off){b.disabled=true;b.setAttribute('aria-label',o.n+' — немає в наявності');}
+  b.innerHTML=`<span class="dot"><i style="background:${o.c}"></i></span><span class="lbl">${o.n}</span>`;if(o.off){b.disabled=true;b.setAttribute('aria-label',o.n+', немає в наявності');}
   b.onclick=()=>{st.color=o.n;syncAll();};el.appendChild(b);});}
 function syncAll(){
   renderSizes(document.getElementById('sizes'));renderSwatches(document.getElementById('swatches'));
@@ -829,7 +829,7 @@ const favs=new Set();const toast=document.getElementById('toast');let tt;
 function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('on'),2000);}
 function toggleFav(key,btn,label){const on=!favs.has(key);on?favs.add(key):favs.delete(key);
   document.querySelectorAll(`[data-fav="${CSS.escape(key)}"]`).forEach(b=>{b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);b.setAttribute('aria-label',on?'Прибрати з обраного':'Додати в обране');const s=b.querySelector('span');if(s&&b.classList.contains('favmain'))s.textContent=on?'Збережено':'Зберегти';});
-  const c=document.getElementById('favCnt');c.textContent=favs.size;c.hidden=!favs.size;say(on?label+' — додано в обране':label+' — прибрано з обраного');}
+  const c=document.getElementById('favCnt');c.textContent=favs.size;c.hidden=!favs.size;say(on?label+': додано в обране':label+': прибрано з обраного');}
 document.querySelector('.favmain').dataset.fav='J-1165';
 document.querySelectorAll('.card').forEach(card=>{const b=card.querySelector('.fav');const name=card.querySelector('.meta span').textContent;b.dataset.fav=name;});
 document.querySelectorAll('[data-fav]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const k=b.dataset.fav;toggleFav(k,b,k==='J-1165'?'Сукня J-1165':k);}));
