@@ -733,9 +733,9 @@ const HINTS={consult:['Стилістка відповість на питанн
 function setMode(m){cForm.dataset.mode=m;cForm.querySelectorAll('.seg button').forEach(b=>{const on=b.dataset.mode===m;b.classList.toggle('on',on);b.setAttribute('aria-selected',on);});
   document.getElementById('cHint').textContent=HINTS[m][0];document.getElementById('cBtn').textContent=HINTS[m][1];}
 cForm.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));setMode('consult');
-document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',()=>{setMode(b.dataset.contact);cForm.querySelector('.cfields').hidden=false;cForm.querySelector('.cdone').hidden=true;cForm.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>cForm.elements.name.focus({preventScroll:true}),500);}));
+document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',()=>{setMode(b.dataset.contact);['.cfields','.seg','#cHint'].forEach(s=>cForm.querySelector(s).hidden=false);cForm.querySelector('.cdone').hidden=true;cForm.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>cForm.elements.name.focus({preventScroll:true}),500);}));
 cForm.addEventListener('submit',e=>{e.preventDefault();const f=cForm.elements;if(f.name.value.trim().length<2||f.phone.value.replace(/\D/g,'').length<9){(f.name.value.trim().length<2?f.name:f.phone).focus();return;}
-  cForm.querySelector('.cfields').hidden=true;cForm.querySelector('.cdone').hidden=false;});
+  ['.cfields','.seg','#cHint'].forEach(s=>cForm.querySelector(s).hidden=true);cForm.querySelector('.cdone').hidden=false;});
 
 // ---------- sticky bar (mobile) ----------
 const sticky=document.getElementById('sticky'),mainCta=document.querySelector('.cta .btn-primary');
