@@ -240,6 +240,31 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
 .sum div{display:grid;grid-template-columns:110px 1fr;gap:12px;font-size:14px}
 .sum dt{color:var(--muted)}
 body.lock{overflow:hidden}
+.logo img{height:52px;width:auto;display:block;margin:0 auto}
+.flogo img{height:56px;margin:0}
+.dd{position:relative}
+.dd-t{display:flex;align-items:center;gap:6px;font-size:15px;letter-spacing:.02em;padding:6px 0}
+.dd-t .chev{width:16px;height:16px;transition:transform .2s}
+.dd.open .dd-t .chev{transform:rotate(180deg)}
+.dd-m{position:absolute;top:calc(100% + 12px);left:-20px;min-width:260px;background:#fff;border:1px solid var(--border);box-shadow:0 12px 32px rgba(43,34,38,.08);padding:8px 0;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(-4px);transition:.18s;z-index:30}
+.dd.open .dd-m{opacity:1;visibility:visible;transform:none}
+.dd-m a{padding:10px 20px;font-size:15px;color:var(--text)}
+.dd-m a:hover{background:var(--bg-alt)}
+.dd-m a.on{color:var(--strong);font-weight:500}
+.lang .dd-t{font-size:12px;padding:0}
+.lang .dd-m{left:-12px;min-width:180px;top:calc(100% + 10px)}
+.mmenu{position:fixed;inset:0;background:#fff;z-index:55;display:flex;flex-direction:column;transform:translateX(-100%);transition:transform .3s;visibility:hidden}
+.mmenu.on{transform:none;visibility:visible}
+.mm-head{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--border)}
+.mm-head .logo img{height:40px;margin:0}
+.mm-body{flex:1;overflow-y:auto;padding:8px 20px 32px}
+.mm-body summary{font-size:18px;padding:4px 0}
+.mm-l{display:flex;flex-direction:column;margin-top:8px}
+.mm-l a{padding:10px 0;font-size:16px;color:var(--text-2)}
+.mm-l a.on{color:var(--strong);font-weight:500}
+.mm-links{display:flex;flex-direction:column;gap:14px;padding:24px 0;border-bottom:1px solid var(--border)}
+.mm-lang{display:flex;gap:20px;padding-top:24px}
+.mm-lang a{color:var(--muted)} .mm-lang a.on{color:var(--text)}
 .fav,.favmain{transition:transform .15s}
 .fav:active,.favmain:active{transform:scale(.92)}
 .fav.on svg,.favmain.on svg{fill:var(--strong);stroke:var(--strong)}
@@ -261,7 +286,8 @@ body.lock{overflow:hidden}
 @media (max-width:1100px){
   :root{--pad:20px;--gap:24px}
   body{font-size:16px}
-  .topbar,.crumbs,.navbar .left a{display:none}
+  .topbar,.crumbs,.navbar .left .dd{display:none}
+  .logo img{height:40px}
   .navbar .wrap{grid-template-columns:1fr auto 1fr;padding-top:14px;padding-bottom:14px}
   .burger{display:block}
   .navbar .right{gap:16px}
@@ -351,17 +377,18 @@ body.lock{overflow:hidden}
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
   <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></symbol>
   <symbol id="i-hanger" viewBox="0 0 24 24"><path d="M12 7a2 2 0 1 1 2-2c0 1.2-2 1.5-2 3v1L3 15.5c-.8.6-.4 1.5.5 1.5h17c.9 0 1.3-.9.5-1.5L12 9"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L12 16.9l-5.25 2.7 1-5.8L3.5 9.7l5.9-.9z"/></symbol>
 </svg>
 
 <header>
   <div class="topbar"><div class="wrap">
-    <div class="langs caps"><span>UA</span><span class="muted">RO</span><span class="muted">EN</span><span class="muted">RU</span></div>
+    <div class="dd lang"><button class="dd-t caps" aria-haspopup="true" aria-expanded="false">UA<svg class="ic chev"><use href="#i-down"/></svg></button><div class="dd-m" role="menu"><a href="#" class="on" role="menuitem" data-code="UA">Українська</a><a href="#" role="menuitem" data-code="RO">Română</a><a href="#" role="menuitem" data-code="EN">English</a><a href="#" role="menuitem" data-code="RU">Русский</a></div></div>
     <nav class="s sec"><a href="#">Про компанію</a><a href="#">Умови співпраці</a><a href="#">Відео</a><a href="#">Розмірна сітка</a><a href="#">Контакти</a></nav>
   </div></div>
   <div class="navbar"><div class="wrap">
-    <div class="left"><button class="burger" aria-label="Меню"><svg class="ic"><use href="#i-menu"/></svg></button><a href="#">Весільні сукні</a><a href="#">Аксесуари</a></div>
-    <a class="logo" href="#"><b>JEORJETT</b><small>FASHION GROUP</small></a>
+    <div class="left"><button class="burger" aria-label="Меню"><svg class="ic"><use href="#i-menu"/></svg></button><div class="dd"><button class="dd-t" aria-haspopup="true" aria-expanded="false">Весільні сукні<svg class="ic chev"><use href="#i-down"/></svg></button><div class="dd-m" role="menu"><a href="#" role="menuitem">Усі сукні</a><a href="#" role="menuitem">Endless Grace 2027</a><a href="#" role="menuitem" class="on">Dazzle 2026</a><a href="#" role="menuitem">Lumiere 2026</a><a href="#" role="menuitem">Dreams 2025</a><a href="#" role="menuitem">Muse 2024</a></div></div><div class="dd"><button class="dd-t" aria-haspopup="true" aria-expanded="false">Аксесуари<svg class="ic chev"><use href="#i-down"/></svg></button><div class="dd-m" role="menu"><a href="#" role="menuitem">Усі аксесуари</a><a href="#" role="menuitem">Біжутерія та прикраси для волосся</a><a href="#" role="menuitem">Фати 2026</a><a href="#" role="menuitem">Фати 2023</a></div></div></div>
+    <a class="logo" href="#"><img src="assets/logo-jeorjett.png" alt="Jeorjett Fashion Group"></a>
     <div class="right">
       <button aria-label="Пошук"><svg class="ic"><use href="#i-search"/></svg></button>
       <button aria-label="Обране" class="favhead"><svg class="ic"><use href="#i-heart"/></svg><span class="cnt" id="favCnt" hidden>0</span></button>
@@ -604,7 +631,7 @@ body.lock{overflow:hidden}
 
 <footer><div class="wrap">
   <div class="fcols">
-    <div><a class="logo" href="#" style="text-align:left;display:inline-block"><b>JEORJETT</b><small>FASHION GROUP</small></a><p class="s sec" style="margin-top:20px">Виробник весільних суконь. Чернівці, Україна.</p><p class="s" style="margin-top:20px;display:flex;gap:20px"><a class="u" href="https://www.instagram.com/jeorjett_fashion_group/">Instagram</a><a class="u" href="#">Facebook</a></p></div>
+    <div><a class="logo flogo" href="#"><img src="assets/logo-jeorjett.png" alt="Jeorjett Fashion Group"></a><p class="s sec" style="margin-top:20px">Виробник весільних суконь. Чернівці, Україна.</p><p class="s" style="margin-top:20px;display:flex;gap:20px"><a class="u" href="https://www.instagram.com/jeorjett_fashion_group/">Instagram</a><a class="u" href="#">Facebook</a></p></div>
     <div><p class="caps muted">Каталог</p><ul><li><a href="#">Весільні сукні</a></li><li><a href="#">Аксесуари</a></li><li><a href="#">Колекції</a></li></ul></div>
     <div><p class="caps muted">Компанія</p><ul><li><a href="#">Про компанію</a></li><li><a href="#">Умови співпраці</a></li><li><a href="#">Продаж оптом</a></li><li><a href="#">Блог</a></li></ul></div>
     <div><p class="caps muted">Покупцям</p><ul><li><a href="#">Розмірна сітка</a></li><li><a href="#">Доставка та повернення</a></li><li><a href="#">Оплата</a></li><li><a href="#">Контакти</a></li></ul></div>
@@ -612,6 +639,15 @@ body.lock{overflow:hidden}
   <div class="fbot s muted"><span>© 2026 Jeorjettdress.com</span><span>Політика конфіденційності · UA · RO · EN · RU</span></div>
 </div></footer>
 
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <div class="mm-head"><a class="logo" href="#"><img src="assets/logo-jeorjett.png" alt="Jeorjett Fashion Group"></a><button class="dw-x" id="mmClose" aria-label="Закрити меню"><svg class="ic"><use href="#i-close"/></svg></button></div>
+  <div class="mm-body">
+    <details open><summary>Весільні сукні <svg class="ic"><use href="#i-plus"/></svg></summary><div class="mm-l"><a href="#" role="menuitem">Усі сукні</a><a href="#" role="menuitem">Endless Grace 2027</a><a href="#" role="menuitem" class="on">Dazzle 2026</a><a href="#" role="menuitem">Lumiere 2026</a><a href="#" role="menuitem">Dreams 2025</a><a href="#" role="menuitem">Muse 2024</a></div></details>
+    <details><summary>Аксесуари <svg class="ic"><use href="#i-plus"/></svg></summary><div class="mm-l"><a href="#" role="menuitem">Усі аксесуари</a><a href="#" role="menuitem">Біжутерія та прикраси для волосся</a><a href="#" role="menuitem">Фати 2026</a><a href="#" role="menuitem">Фати 2023</a></div></details>
+    <div class="mm-links s sec"><a href="#">Про компанію</a><a href="#">Умови співпраці</a><a href="#">Відео</a><a href="#">Розмірна сітка</a><a href="#">Контакти</a></div>
+    <div class="mm-lang caps"><a href="#" class="on">UA</a><a href="#">RO</a><a href="#">EN</a><a href="#">RU</a></div>
+  </div>
+</div>
 <div class="ovl" id="ovl"></div>
 <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dwTitle" aria-hidden="true">
   <div class="dw-head">
@@ -792,6 +828,20 @@ document.querySelectorAll('.card').forEach(card=>{const b=card.querySelector('.f
 document.querySelectorAll('[data-fav]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const k=b.dataset.fav;toggleFav(k,b,k==='J-1165'?'Сукня J-1165':k);}));
 // demo links: don't jump to top
 document.querySelectorAll('a[href="#"]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+
+// ---------- dropdowns & mobile menu ----------
+document.querySelectorAll('.dd').forEach(dd=>{const t=dd.querySelector('.dd-t');let tm;
+  const set=o=>{dd.classList.toggle('open',o);t.setAttribute('aria-expanded',o);};
+  t.addEventListener('click',e=>{e.stopPropagation();const o=!dd.classList.contains('open');document.querySelectorAll('.dd.open').forEach(x=>x!==dd&&x.classList.remove('open'));set(o);});
+  dd.addEventListener('mouseenter',()=>{if(matchMedia('(hover:hover)').matches){clearTimeout(tm);set(true);}});
+  dd.addEventListener('mouseleave',()=>{if(matchMedia('(hover:hover)').matches)tm=setTimeout(()=>set(false),150);});
+  dd.querySelectorAll('.dd-m a').forEach(a=>a.addEventListener('click',()=>{if(dd.classList.contains('lang')){t.firstChild.textContent=a.dataset.code;dd.querySelectorAll('a').forEach(x=>x.classList.toggle('on',x===a));}set(false);}));});
+document.addEventListener('click',()=>document.querySelectorAll('.dd.open').forEach(d=>{d.classList.remove('open');d.querySelector('.dd-t').setAttribute('aria-expanded',false);}));
+addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.dd.open').forEach(d=>d.classList.remove('open'));});
+const mmenu=document.getElementById('mmenu');
+document.querySelector('.burger').onclick=()=>{mmenu.classList.add('on');mmenu.setAttribute('aria-hidden','false');document.body.classList.add('lock');};
+document.getElementById('mmClose').onclick=()=>{mmenu.classList.remove('on');mmenu.setAttribute('aria-hidden','true');document.body.classList.remove('lock');};
+document.querySelectorAll('.mm-lang a').forEach(a=>a.addEventListener('click',()=>document.querySelectorAll('.mm-lang a').forEach(x=>x.classList.toggle('on',x===a))));
 
 // tabs
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b)));
