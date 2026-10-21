@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Весільна сукня J-1165 — Jeorjett Dress</title>
+<meta name="description" content="Сукня-русалка з мережива з бісером, знімна атласна верхня спідниця та знімні рукави. Запис на безкоштовну примірку.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-page:#FFFFFF; --bg-alt:#FBEFF2; --bg-inverse:#A3475F; --surface:#FFFFFF;
+  --text:#2B2226; --text-2:#5E4A51; --muted:#7B656C; --inverse:#FFFFFF;
+  --border:#EED9DF; --strong:#A3475F; --success:#3F7A55;
+  --pad:120px; --gap:48px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',system-ui,sans-serif;color:var(--text);background:var(--bg-page);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{max-width:1440px;margin:0 auto;padding:0 var(--pad)}
+.caps{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;line-height:1.4}
+.muted{color:var(--muted)} .sec{color:var(--text-2)}
+.s{font-size:14px;line-height:1.5}
+.u{text-decoration:underline;text-underline-offset:3px}
+h1.display{font-weight:300;font-size:56px;line-height:1.1;letter-spacing:.04em;text-transform:uppercase}
+h2{font-weight:400;font-size:32px;line-height:1.2;letter-spacing:.06em;text-transform:uppercase}
+h3{font-weight:400;font-size:20px;line-height:1.3}
+.ic{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ic.sm{width:18px;height:18px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 32px;font-size:14px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;width:100%;transition:opacity .2s,background .2s}
+.btn-primary{background:var(--bg-inverse);color:var(--inverse)}
+.btn-primary:hover{opacity:.9}
+.btn-secondary{border:1px solid var(--strong);color:var(--text)}
+.btn-secondary:hover{background:var(--bg-alt)}
+.btn-tonal{background:var(--bg-alt)}
+.btn-inverse{background:#fff;color:var(--text);width:auto}
+.circ{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#fff;flex:none}
+.circ.line{background:transparent;border:1px solid var(--border);width:36px;height:36px}
+.chip{display:inline-block;padding:6px 12px;background:#fff;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+.chip.inv{background:var(--bg-inverse);color:#fff}
+.rule{height:1px;background:var(--border)}
+
+/* header */
+.topbar{background:var(--bg-alt)}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:10px;padding-bottom:10px}
+.topbar nav{display:flex;gap:32px}
+.langs{display:flex;gap:16px}
+.navbar{border-bottom:1px solid var(--border);background:#fff;position:sticky;top:0;z-index:20}
+.navbar .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding-top:20px;padding-bottom:20px}
+.navbar .left{display:flex;gap:40px;font-size:15px;letter-spacing:.02em}
+.navbar .right{display:flex;gap:24px;justify-content:flex-end}
+.logo{text-align:center;text-decoration:none;line-height:1}
+.logo b{display:block;font-weight:300;font-size:26px;letter-spacing:.3em}
+.logo small{display:block;font-size:9px;letter-spacing:.4em;color:var(--muted);margin-top:4px}
+.burger{display:none}
+.crumbs{display:flex;gap:10px;padding-top:24px;padding-bottom:24px;font-size:14px;color:var(--muted)}
+.crumbs span:last-child{color:var(--text)}
+.crumbs-m{display:none}
+
+/* hero */
+.hero{display:grid;grid-template-columns:704px 1fr;gap:var(--gap);padding-bottom:96px;align-items:start}
+.gallery{display:grid;grid-template-columns:88px 600px;gap:16px}
+.thumbs{display:flex;flex-direction:column;gap:21px}
+.thumbs button{position:relative;width:88px;height:132px;opacity:.75;transition:opacity .2s;outline:1.5px solid transparent;outline-offset:-1.5px}
+.thumbs button img{width:100%;height:100%;object-fit:cover}
+.thumbs button.on{opacity:1;outline-color:var(--strong)}
+.thumbs .play{position:absolute;inset:0;margin:auto;width:36px;height:36px}
+.main{position:relative;width:600px;height:900px;overflow:hidden;background:var(--bg-alt)}
+.main img{width:100%;height:100%;object-fit:cover}
+.main .tl{position:absolute;top:20px;left:20px;display:flex;gap:8px}
+.main .prev,.main .next{position:absolute;top:50%;transform:translateY(-50%)}
+.main .prev{left:20px} .main .next{right:20px}
+.main .bl{position:absolute;left:20px;bottom:20px}
+.main .br{position:absolute;right:20px;bottom:20px}
+.main .vid{position:absolute;right:20px;bottom:20px;display:none;gap:6px;align-items:center;padding:6px 12px;background:#fff}
+.dots{display:none}
+.cap{padding-left:104px;margin-top:16px}
+.buy{display:flex;flex-direction:column;gap:28px;position:sticky;top:100px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.switch{display:flex;align-items:center;gap:12px}
+.price{display:flex;align-items:baseline;gap:12px}
+.price b{font-weight:400;font-size:32px;line-height:1.2}
+.swatches{display:flex;gap:12px;margin-top:14px}
+.sw{width:40px;height:40px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;border:1.5px solid transparent}
+.sw i{width:28px;height:28px;border-radius:50%;border:1px solid #D8C6CC}
+.sw.on{border-color:var(--strong)}
+.sw.off{opacity:.5;cursor:not-allowed}
+.sw.off::after{content:"";position:absolute;width:30px;height:1.5px;background:var(--muted);transform:rotate(-45deg)}
+.sizes{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:14px}
+.size{height:48px;border:1px solid var(--border);background:#fff;font-size:16px}
+.size.on{border:1.5px solid var(--strong);font-weight:500}
+.size.off{background:var(--bg-alt);border-color:var(--bg-alt);color:var(--muted);text-decoration:line-through;cursor:not-allowed}
+.avail{display:flex;align-items:center;gap:10px;margin-top:14px}
+.avail::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--success)}
+.cta{display:flex;flex-direction:column;gap:12px}
+.cta .note{text-align:center}
+.util{display:flex;justify-content:center;gap:32px}
+.util button{display:flex;align-items:center;gap:8px;font-size:14px}
+.trust{background:var(--bg-alt);padding:24px;display:flex;flex-direction:column;gap:16px}
+.trust div{display:flex;align-items:center;gap:14px;font-size:14px}
+.links a{display:flex;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--border);text-decoration:none}
+.links a span{flex:1}
+
+/* sections */
+section.block{padding:96px 0}
+section.alt{background:var(--bg-alt)}
+section.top-line{border-top:1px solid var(--border)}
+.two{display:grid;grid-template-columns:1fr 448px;gap:96px}
+.details-img{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.details-img img{aspect-ratio:2/3;object-fit:cover;width:100%}
+.details-img p{margin-top:12px}
+.specs dl div{display:flex;justify-content:space-between;gap:24px;padding:14px 0;border-bottom:1px solid var(--border);font-size:14px}
+.specs dt{color:var(--muted)} .specs dd{text-align:right}
+.steps>div{display:flex;gap:24px;padding:20px 0;border-bottom:1px solid var(--border)}
+.steps .n{font-weight:300;font-size:32px;line-height:1.1;color:var(--muted);letter-spacing:.04em}
+.stylist{display:flex;align-items:center;gap:20px}
+.stylist img{width:72px;height:72px;border-radius:50%;object-fit:cover}
+.loc{display:flex;gap:12px}
+.form{background:#fff;padding:40px;display:flex;flex-direction:column;gap:20px;align-self:start}
+.sel{display:flex;gap:12px;align-items:center;background:var(--bg-page);border:1px solid var(--border);padding:12px}
+.sel img{width:40px;height:60px;object-fit:cover}
+.form label{display:flex;flex-direction:column;gap:8px}
+.form input{height:52px;border:1px solid var(--border);padding:0 16px;font:inherit;color:var(--text)}
+.form input:focus{outline:1.5px solid var(--strong);outline-offset:-1px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:48px}
+.rating{display:flex;align-items:center;gap:16px;margin-top:16px}
+.rating b{font-weight:400;font-size:32px}
+.stars{display:flex;gap:2px;color:var(--text)}
+.stars svg{width:16px;height:16px;fill:currentColor}
+.vdiv{width:1px;height:40px;background:var(--border)}
+.fitbar{width:200px;height:4px;background:var(--border);margin-top:8px}
+.fitbar i{display:block;height:100%;width:92%;background:var(--text)}
+.ugc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ugc figure{position:relative}
+.ugc img{aspect-ratio:3/4;object-fit:cover;width:100%}
+.ugc figcaption{position:absolute;left:16px;bottom:16px;background:#fff;padding:5px 10px;font-size:14px}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.review{background:var(--bg-alt);padding:32px;display:flex;flex-direction:column;gap:16px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.card{text-decoration:none;display:flex;flex-direction:column;gap:14px}
+.card .im{position:relative}
+.card img{aspect-ratio:3/4;object-fit:cover;width:100%}
+.card .fav{position:absolute;top:14px;right:14px;width:36px;height:36px}
+.card .meta{display:flex;flex-direction:column;gap:4px}
+.faq{display:grid;grid-template-columns:384px 1fr;gap:96px}
+.faq-l{display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+.faq-l .btn{width:auto}
+details{border-bottom:1px solid var(--border);padding:24px 0}
+summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:20px;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+summary .ic{transition:transform .2s}
+details[open] summary .ic{transform:rotate(45deg)}
+details p{margin-top:12px;color:var(--text-2)}
+.tabs{display:flex;gap:40px;align-items:flex-end}
+.tabs button{text-transform:uppercase;letter-spacing:.06em;font-size:20px;color:var(--muted);padding-bottom:12px;border-bottom:2px solid transparent}
+.tabs button.on{font-size:32px;color:var(--text);border-color:var(--strong);padding-bottom:10px;line-height:1.2}
+.navs{display:flex;align-items:center;gap:12px}
+.final{display:grid;grid-template-columns:1fr 1fr;background:var(--bg-inverse);color:#fff}
+.final img{width:100%;height:600px;object-fit:cover}
+.final .txt{padding:0 120px 0 96px;display:flex;flex-direction:column;justify-content:center;gap:24px}
+.final .txt p{opacity:.85;font-size:18px}
+.final .acts{display:flex;align-items:center;gap:32px;margin-top:8px}
+footer{background:var(--bg-alt);padding:80px 0 40px}
+.fcols{display:grid;grid-template-columns:repeat(4,1fr);gap:48px}
+.fcols ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:14px}
+.fbot{display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:24px;margin-top:56px}
+.sticky{display:none}
+
+/* mobile */
+@media (max-width:1100px){
+  :root{--pad:20px;--gap:24px}
+  body{font-size:16px}
+  .topbar,.navbar .left,.crumbs{display:none}
+  .navbar .wrap{grid-template-columns:1fr auto 1fr;padding-top:14px;padding-bottom:14px}
+  .burger{display:block}
+  .navbar .right{gap:16px}
+  .navbar .right .acc{display:none}
+  .logo b{font-size:20px} .logo small{font-size:7px}
+  .crumbs-m{display:flex;align-items:center;gap:8px;padding:12px 20px;font-size:14px;color:var(--text-2)}
+  .hero{display:block;padding:0 0 48px}
+  .gallery{display:block}
+  .thumbs,.cap{display:none}
+  .main{width:100%;height:auto;aspect-ratio:3/4}
+  .main .prev,.main .next{width:40px;height:40px}
+  .main .prev{left:16px}.main .next{right:16px}
+  .main .tl{top:16px;left:16px}
+  .main .bl,.main .br{display:none}
+  .main .vid{display:flex;right:16px;bottom:16px}
+  .dots{display:flex;gap:6px;position:absolute;left:16px;bottom:26px}
+  .dots i{width:6px;height:2px;background:#fff;opacity:.6}
+  .dots i.on{width:20px;opacity:1}
+  .buy{position:static;padding:24px 20px 0;gap:24px}
+  h1.display{font-size:40px}
+  h2{font-size:24px}
+  .price b{font-size:28px}
+  .sizes{grid-template-columns:repeat(5,1fr)}
+  section.block{padding:48px 0}
+  .two,.faq{grid-template-columns:1fr;gap:32px}
+  .details-img{display:flex;overflow-x:auto;gap:10px;scroll-snap-type:x mandatory}
+  .details-img figure{flex:0 0 150px}
+  .form{padding:24px 20px}
+  .head{flex-direction:column;align-items:flex-start;margin-bottom:24px;gap:16px}
+  .rating{flex-wrap:wrap}
+  .ugc,.cards{display:flex;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;margin-right:-20px;padding-right:20px}
+  .ugc figure{flex:0 0 140px}
+  .cards .card{flex:0 0 160px;scroll-snap-align:start}
+  .reviews{grid-template-columns:1fr}
+  .review:nth-child(n+2){display:none}
+  .review{padding:20px}
+  summary{font-size:16px}
+  .tabs button:not(.on){display:none}
+  .tabs button.on{font-size:24px;border:0;padding:0}
+  .navs .circ{display:none}
+  .final{grid-template-columns:1fr}
+  .final img{height:300px}
+  .final .txt{padding:32px 20px 40px;gap:16px}
+  .final .acts{flex-direction:column;align-items:stretch;gap:16px}
+  .final .acts .btn{width:100%}
+  .fcols{grid-template-columns:1fr;gap:28px}
+  .fbot{flex-direction:column;gap:12px;margin-top:28px}
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;align-items:center;gap:12px;padding:12px 16px calc(16px + env(safe-area-inset-bottom));background:#fff;box-shadow:0 -4px 20px rgba(43,34,38,.12);transform:translateY(110%);transition:transform .25s}
+  .sticky.show{transform:none}
+  .sticky .p{line-height:1.3}
+  .sticky .p b{font-weight:500}
+  .sticky .btn{flex:1;padding:0 12px}
+}
+@media (min-width:1101px) and (max-width:1440px){
+  :root{--pad:60px}
+  .hero{grid-template-columns:minmax(0,704px) 1fr}
+  .gallery{grid-template-columns:88px minmax(0,600px)}
+  .main{width:100%;height:auto;aspect-ratio:2/3}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 3v12M8 7l4-4 4 4M5 13v6h14v-6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5z"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="1"/><path d="M3 10h18"/></symbol>
+  <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M3 16.5L16.5 3 21 7.5 7.5 21z"/><path d="M7 12.5l2 2M10 9.5l2 2M13 6.5l2 2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+  <symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/><path d="M8 8.5L20 18M8 15.5L20 6"/></symbol>
+  <symbol id="i-factory" viewBox="0 0 24 24"><path d="M3 20V10l5 3V10l5 3V6h4l1 4h3v10z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L12 16.9l-5.25 2.7 1-5.8L3.5 9.7l5.9-.9z"/></symbol>
+</svg>
+
+<header>
+  <div class="topbar"><div class="wrap">
+    <div class="langs caps"><span>UA</span><span class="muted">RO</span><span class="muted">EN</span><span class="muted">RU</span></div>
+    <nav class="s sec"><a href="#">Про компанію</a><a href="#">Умови співпраці</a><a href="#">Відео</a><a href="#">Розмірна сітка</a><a href="#">Контакти</a></nav>
+  </div></div>
+  <div class="navbar"><div class="wrap">
+    <div class="left"><button class="burger" aria-label="Меню"><svg class="ic"><use href="#i-menu"/></svg></button><a href="#">Весільні сукні</a><a href="#">Аксесуари</a></div>
+    <a class="logo" href="#"><b>JEORJETT</b><small>FASHION GROUP</small></a>
+    <div class="right">
+      <button aria-label="Пошук"><svg class="ic"><use href="#i-search"/></svg></button>
+      <button aria-label="Обране"><svg class="ic"><use href="#i-heart"/></svg></button>
+      <button class="acc" aria-label="Кабінет"><svg class="ic"><use href="#i-user"/></svg></button>
+    </div>
+  </div></div>
+</header>
+
+<main>
+  <div class="wrap crumbs"><a href="#">Головна</a><span>/</span><a href="#">Весільні сукні</a><span>/</span><a href="#">Dazzle 2026</a><span>/</span><span>J-1165</span></div>
+  <a class="crumbs-m" href="#"><svg class="ic sm"><use href="#i-left"/></svg>Dazzle 2026</a>
+
+  <div class="wrap hero" style="padding-left:var(--pad);padding-right:var(--pad)">
+    <div>
+      <div class="gallery">
+        <div class="thumbs" id="thumbs"></div>
+        <div class="main">
+          <img id="mainImg" alt="Весільна сукня J-1165, вид спереду" src="">
+          <div class="tl"><span class="chip inv">Новинка</span><span class="chip">2 образи в 1</span></div>
+          <button class="circ prev" aria-label="Попереднє фото"><svg class="ic"><use href="#i-left"/></svg></button>
+          <button class="circ next" aria-label="Наступне фото"><svg class="ic"><use href="#i-right"/></svg></button>
+          <span class="chip bl" id="counter">1 / 6</span>
+          <button class="circ br" aria-label="На весь екран"><svg class="ic"><use href="#i-expand"/></svg></button>
+          <div class="dots" id="dots"></div>
+          <span class="vid caps"><svg class="ic sm"><use href="#i-play"/></svg>Відео</span>
+        </div>
+      </div>
+      <p class="cap s muted">Модель на фото: зріст 175 см, розмір 36 EU</p>
+    </div>
+
+    <aside class="buy">
+      <div class="row">
+        <a class="caps sec u" href="#">Колекція Dazzle 2026</a>
+        <div class="switch">
+          <a class="circ line" href="#" aria-label="Попередня модель"><svg class="ic sm"><use href="#i-left"/></svg></a>
+          <span class="s sec">12 / 24</span>
+          <a class="circ line" href="#" aria-label="Наступна модель"><svg class="ic sm"><use href="#i-right"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <p class="caps muted">Весільна сукня</p>
+        <h1 class="display">J-1165</h1>
+      </div>
+      <div class="price"><b>42 500 ₴</b><span class="s muted">роздрібна ціна</span></div>
+      <p class="sec">Сукня-русалка з мережива з бісером, ручна вишивка ліфа, знімна атласна верхня спідниця та знімні рукави — два образи в одному.</p>
+      <div class="rule"></div>
+
+      <div>
+        <p><span class="caps muted">Колір</span>&nbsp; <span class="s" id="colorName">Айворі</span></p>
+        <div class="swatches" id="swatches">
+          <button class="sw on" data-name="Айворі" aria-label="Айворі"><i style="background:#F3ECDF"></i></button>
+          <button class="sw" data-name="Білий" aria-label="Білий"><i style="background:#FFFFFF"></i></button>
+          <button class="sw off" data-name="Шампань" aria-label="Шампань — немає в наявності" disabled><i style="background:#E6D3B8"></i></button>
+        </div>
+      </div>
+
+      <div>
+        <div class="row">
+          <p><span class="caps muted">Розмір EU</span>&nbsp; <span class="s" id="sizeName">44</span></p>
+          <a class="s u" href="#" style="display:flex;gap:6px;align-items:center;text-decoration-line:underline"><svg class="ic sm"><use href="#i-ruler"/></svg>Таблиця розмірів</a>
+        </div>
+        <div class="sizes" id="sizes"></div>
+        <p class="avail s" id="avail">44 EU, айворі — в наявності для примірки</p>
+        <a class="s sec u" href="#" style="display:block;margin-top:12px">Немає вашого розміру? Пошиємо за вашими мірками</a>
+      </div>
+
+      <div class="cta">
+        <a class="btn btn-primary" href="#booking">Записатися на примірку</a>
+        <p class="note s muted">Безкоштовно · у шоурумі в Чернівцях або в салоні-партнері у вашому місті</p>
+        <a class="btn btn-secondary" href="#faq">Отримати консультацію</a>
+      </div>
+      <div class="util">
+        <button><svg class="ic sm"><use href="#i-heart"/></svg>Зберегти</button>
+        <button><svg class="ic sm"><use href="#i-share"/></svg>Поділитися</button>
+      </div>
+      <div class="trust">
+        <div><svg class="ic"><use href="#i-factory"/></svg>Власне виробництво в Чернівцях — без посередників</div>
+        <div><svg class="ic"><use href="#i-scissors"/></svg>Підгонка та зміни моделі під вашу фігуру</div>
+        <div><svg class="ic"><use href="#i-truck"/></svg>Пошиття від 3–7 днів · доставка Україною та в ЄС</div>
+      </div>
+      <div class="links">
+        <a href="#"><svg class="ic sm"><use href="#i-truck"/></svg><span>Доставка та повернення</span><svg class="ic sm"><use href="#i-arrow"/></svg></a>
+        <a href="#"><svg class="ic sm"><use href="#i-card"/></svg><span>Оплата</span><svg class="ic sm"><use href="#i-arrow"/></svg></a>
+      </div>
+      <a class="btn btn-tonal" href="#">Оптові ціни для салонів</a>
+    </aside>
+  </div>
+
+  <section class="block top-line"><div class="wrap two">
+    <div>
+      <h2>Про модель</h2>
+      <p class="sec" style="font-size:18px;margin-top:32px">J-1165 — сукня-русалка з напівпрозорого мережива з бісером. V-подібний ліф вишитий вручну бісером, кристалами та паєтками, а баска й атласні вставки делікатно моделюють силует. Знімна довга атласна верхня спідниця кріпиться під баскою — на церемонію вона додає об’єму та шлейфу, а на вечірку знімається. Знімні мереживні рукави на ґудзиках завершують образ.</p>
+      <div class="details-img">
+        <figure><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Dorotea/Dorotea_(4).jpg?width=700" alt="Ручна вишивка ліфа"><p class="s sec">Ручна вишивка ліфа</p></figure>
+        <figure><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Dorotea/Dorotea_(6).jpg?width=700" alt="Силует без верхньої спідниці"><p class="s sec">Силует без верхньої спідниці</p></figure>
+        <figure><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Dorotea/Dorotea_(3).jpg?width=700" alt="Атласна спідниця зі шлейфом"><p class="s sec">Атласна спідниця зі шлейфом</p></figure>
+      </div>
+    </div>
+    <div class="specs">
+      <h3>Характеристики</h3>
+      <dl style="margin-top:16px">
+        <div><dt>Колекція</dt><dd>Dazzle 2026</dd></div>
+        <div><dt>Силует</dt><dd>Русалка</dd></div>
+        <div><dt>Ліф</dt><dd>V-подібний, ручна вишивка</dd></div>
+        <div><dt>Тканина</dt><dd>Мереживо з бісером, атлас</dd></div>
+        <div><dt>Колір</dt><dd>Айворі, білий</dd></div>
+        <div><dt>Довжина</dt><dd>В підлогу, невеликий шлейф</dd></div>
+        <div><dt>Рукави</dt><dd>Знімні, мереживо на ґудзиках</dd></div>
+        <div><dt>Трансформація</dt><dd>Знімна верхня спідниця</dd></div>
+        <div><dt>Розміри</dt><dd>34–50 EU, пошиття за мірками</dd></div>
+      </dl>
+    </div>
+  </div></section>
+
+  <section class="block alt" id="booking"><div class="wrap two">
+    <div style="display:flex;flex-direction:column;gap:40px">
+      <div>
+        <h2>Як проходить примірка</h2>
+        <p class="sec" style="font-size:18px;margin-top:16px">Примірка безкоштовна і ні до чого не зобов’язує. Ми підготуємо сукню вашого розміру та кілька схожих моделей.</p>
+      </div>
+      <div class="steps">
+        <div><span class="n">01</span><div><h3>Залиште заявку</h3><p class="sec">2 хвилини: ім’я, телефон і дата весілля</p></div></div>
+        <div><span class="n">02</span><div><h3>Підтвердимо час</h3><p class="sec">Менеджер зателефонує протягом 15 хвилин у робочий час</p></div></div>
+        <div><span class="n">03</span><div><h3>Приміряйте та оберіть деталі</h3><p class="sec">Рукави, верхня спідниця, підгонка — обговорюємо на місці</p></div></div>
+      </div>
+      <div class="stylist"><img src="https://lucesposa.com/_nuxt/image-anna.-CMbvi40.jpg" alt="Стилістка Ганна"><div><h3>Ганна, стилістка шоуруму</h3><p class="s sec">Допоможе з розміром, образом і підгонкою</p></div></div>
+      <div class="loc"><svg class="ic"><use href="#i-pin"/></svg><div><p>Шоурум Jeorjett, Чернівці · Пн–Сб 10:00–19:00</p><a class="s sec u" href="#">Знайти салон-партнера у вашому місті</a></div></div>
+    </div>
+    <form class="form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Заявку надіслано';">
+      <h3>Запис на примірку</h3>
+      <div class="sel"><img src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Dorotea/Dorotea_(1).jpg?width=200" alt=""><div><p class="s">Сукня J-1165</p><p class="s muted" id="selSummary">Айворі · 44 EU</p></div></div>
+      <label><span class="caps muted">Ім’я</span><input placeholder="Ваше ім’я" required></label>
+      <label><span class="caps muted">Телефон</span><input type="tel" placeholder="+380" required></label>
+      <label><span class="caps muted">Дата весілля</span><input placeholder="дд.мм.рррр"></label>
+      <label><span class="caps muted">Місто примірки</span><input placeholder="Чернівці"></label>
+      <button class="btn btn-primary" type="submit">Записатися</button>
+      <p class="s muted">Натискаючи кнопку, ви погоджуєтесь з політикою конфіденційності</p>
+    </form>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <div class="head">
+      <div>
+        <h2>Відгуки наречених</h2>
+        <div class="rating">
+          <b>4,9</b>
+          <div><div class="stars" aria-label="5 з 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p class="s muted">38 відгуків</p></div>
+          <div class="vdiv"></div>
+          <div><p class="s">Розмір відповідає — 92%</p><div class="fitbar"><i></i></div></div>
+        </div>
+      </div>
+      <a class="btn btn-secondary" href="#" style="width:auto">Залишити відгук</a>
+    </div>
+    <div class="ugc">
+      <figure><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Dorotea/Dorotea_(5).jpg?width=600" alt=""><figcaption>@olena.bride</figcaption></figure>
+      <figure><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Ethereal/Ethereal_(1Rotate).jpg?width=600" alt=""><figcaption>@mariia_wedding</figcaption></figure>
+      <figure><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Dorotea/Dorotea_(2).jpg?width=600" alt=""><figcaption>@iryna.k</figcaption></figure>
+      <figure><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Eveil/Eveil_(5).jpg?width=600" alt=""><figcaption>@sofi.wed</figcaption></figure>
+    </div>
+    <div class="reviews">
+      <div class="review"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>Сукня наживо ще краща, ніж на фото. Верхню спідницю зняла після церемонії — два образи за один день, і ніхто не вірив, що це одна сукня.</p><p class="s muted">Олена · 38 EU · Київ · 06.2026</p></div>
+      <div class="review"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>Корсет підігнали за одну примірку, сіла ідеально. Стилістка Ганна допомогла з фатою і прикрасами.</p><p class="s muted">Ірина · 40 EU · Львів · 08.2026</p></div>
+      <div class="review"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>Бісер і вишивка дуже акуратні, нічого не колеться. Протанцювала в ній до ранку.</p><p class="s muted">Марія · 36 EU · Чернівці · 09.2026</p></div>
+    </div>
+  </div></section>
+
+  <section class="block top-line"><div class="wrap">
+    <div class="head">
+      <div><h2>Доповніть образ</h2><p class="sec" style="margin-top:12px">Фати та прикраси Jeorjett, які пасують до J-1165</p></div>
+      <a class="u" href="#" style="display:flex;gap:8px;align-items:center">Усі аксесуари <svg class="ic sm"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="cards">
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://jeorjettdress.com/thumbnail.php?page=item-first_w&file=/catalogphoto/9.JPG" alt="Фата AA238"><span class="circ fav"><svg class="ic sm"><use href="#i-heart"/></svg></span></div><div class="meta"><span>Фата AA238</span><span class="s muted">Соборна, мереживний край</span><span>3 900 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://jeorjettdress.com/thumbnail.php?page=item-first_w&file=/catalogphoto/73ff148ef9074a0df9b10acb27e187ea.jpg" alt="Фата AA237"><span class="circ fav"><svg class="ic sm"><use href="#i-heart"/></svg></span></div><div class="meta"><span>Фата AA237</span><span class="s muted">Довга, мереживо по краю</span><span>3 400 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://jeorjettdress.com/thumbnail.php?page=item-first_w&file=/catalogphoto/IMGC5394.jpg" alt="Прикраса VI-027"><span class="circ fav"><svg class="ic sm"><use href="#i-heart"/></svg></span></div><div class="meta"><span>Прикраса VI-027</span><span class="s muted">Для волосся, айворі</span><span>2 400 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://jeorjettdress.com/thumbnail.php?page=item-first_w&file=/catalogphoto/IMGC5414.jpg" alt="Гребінь VI-025"><span class="circ fav"><svg class="ic sm"><use href="#i-heart"/></svg></span></div><div class="meta"><span>Гребінь VI-025</span><span class="s muted">Перли та кристали, айворі</span><span>2 800 ₴</span></div></a>
+    </div>
+  </div></section>
+
+  <section class="block alt" id="faq"><div class="wrap faq">
+    <div class="faq-l">
+      <h2>Часті питання</h2>
+      <p class="sec">Не знайшли відповідь? Залиште питання — менеджер зателефонує протягом 15 хвилин.</p>
+      <a class="btn btn-secondary" href="#booking">Поставити питання</a>
+    </div>
+    <div>
+      <details open><summary>Скільки часу шиється сукня? <svg class="ic"><use href="#i-plus"/></svg></summary><p>Сукню стандартного розміру шиємо від 3–7 днів. Індивідуальне пошиття за мірками та зміни моделі — від 2 тижнів, точний термін назве менеджер.</p></details>
+      <details><summary>Чи можна змінити модель — рукави, спідницю, колір? <svg class="ic"><use href="#i-plus"/></svg></summary><p>Так, більшість змін можлива: довжина рукавів, верхня спідниця, відтінок. Обговоримо на примірці.</p></details>
+      <details><summary>Скільки коштує підгонка? <svg class="ic"><use href="#i-plus"/></svg></summary><p>Базова підгонка по фігурі входить у вартість сукні.</p></details>
+      <details><summary>Де приміряти сукню в моєму місті? <svg class="ic"><use href="#i-plus"/></svg></summary><p>У шоурумі в Чернівцях або в одному із салонів-партнерів в Україні та ЄС.</p></details>
+      <details><summary>Як відбувається доставка та оплата? <svg class="ic"><use href="#i-plus"/></svg></summary><p>Доставляємо Україною та в ЄС. Деталі — на сторінках «Доставка та повернення» і «Оплата».</p></details>
+    </div>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <div class="head" style="align-items:center">
+      <div class="tabs"><button class="on">Ще з Dazzle 2026</button><button>Схожі силуети</button><button>Ви переглядали</button></div>
+      <div class="navs"><a class="u" href="#">Вся колекція</a><span style="width:12px"></span><button class="circ line" aria-label="Назад"><svg class="ic sm"><use href="#i-left"/></svg></button><button class="circ line" aria-label="Вперед"><svg class="ic sm"><use href="#i-right"/></svg></button></div>
+    </div>
+    <div class="cards">
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Bijou/Bijou_(4).jpg?width=600" alt="J-1166"><span class="circ fav"><svg class="ic sm"><use href="#i-heart"/></svg></span></div><div class="meta"><span>J-1166</span><span class="s muted">Dazzle 2026 · Русалка</span><span>39 900 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Debora/Debora_(1).jpg?width=600" alt="J-1167"><span class="circ fav"><svg class="ic sm"><use href="#i-heart"/></svg></span></div><div class="meta"><span>J-1167</span><span class="s muted">Dazzle 2026 · Пряма</span><span>36 500 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Elegance/Elegance_(6ROTATE).jpg?width=600" alt="J-1170"><span class="circ fav"><svg class="ic sm"><use href="#i-heart"/></svg></span></div><div class="meta"><span>J-1170</span><span class="s muted">Dazzle 2026 · Русалка</span><span>44 900 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Gabi/Gabi_(2).jpg?width=600" alt="J-1172"><span class="circ fav"><svg class="ic sm"><use href="#i-heart"/></svg></span></div><div class="meta"><span>J-1172</span><span class="s muted">Dazzle 2026 · Корсет</span><span>41 200 ₴</span></div></a>
+    </div>
+  </div></section>
+
+  <section class="final">
+    <img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Dorotea/Dorotea_(5).jpg?width=1000" alt="">
+    <div class="txt">
+      <p class="caps" style="opacity:1;font-size:12px">Персональний підбір</p>
+      <h2>Не впевнені, що це ваша сукня?</h2>
+      <p>Розкажіть про дату весілля та побажання — стилістка підбере 3–5 моделей і зателефонує протягом 15 хвилин.</p>
+      <div class="acts"><a class="btn btn-inverse" href="#booking">Записатися на примірку</a><a class="caps u" href="#booking" style="font-size:14px">Отримати консультацію</a></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div class="fcols">
+    <div><a class="logo" href="#" style="text-align:left;display:inline-block"><b>JEORJETT</b><small>FASHION GROUP</small></a><p class="s sec" style="margin-top:20px">Виробник весільних суконь. Чернівці, Україна.</p><p class="s" style="margin-top:20px;display:flex;gap:20px"><a class="u" href="https://www.instagram.com/jeorjett_fashion_group/">Instagram</a><a class="u" href="#">Facebook</a></p></div>
+    <div><p class="caps muted">Каталог</p><ul><li><a href="#">Весільні сукні</a></li><li><a href="#">Аксесуари</a></li><li><a href="#">Колекції</a></li></ul></div>
+    <div><p class="caps muted">Компанія</p><ul><li><a href="#">Про компанію</a></li><li><a href="#">Умови співпраці</a></li><li><a href="#">Продаж оптом</a></li><li><a href="#">Блог</a></li></ul></div>
+    <div><p class="caps muted">Покупцям</p><ul><li><a href="#">Розмірна сітка</a></li><li><a href="#">Доставка та повернення</a></li><li><a href="#">Оплата</a></li><li><a href="#">Контакти</a></li></ul></div>
+  </div>
+  <div class="fbot s muted"><span>© 2026 Jeorjettdress.com</span><span>Політика конфіденційності · UA · RO · EN · RU</span></div>
+</div></footer>
+
+<div class="sticky" id="sticky">
+  <div class="p"><b>42 500 ₴</b><br><span class="s muted" id="stickySel">44 · айворі</span></div>
+  <a class="btn btn-primary" href="#booking">Записатися на примірку</a>
+</div>
+
+<script>
+const B='https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Dorotea/Dorotea_';
+const photos=[
+  {src:B+'(1).jpg?width=1400',alt:'Вид спереду'},
+  {src:B+'(2).jpg?width=1400',alt:'Шлейф верхньої спідниці'},
+  {src:B+'(3).jpg?width=1400',alt:'Вид ззаду'},
+  {src:B+'(4).jpg?width=1400',alt:'Корсет крупним планом'},
+  {src:B+'(6).jpg?width=1400',alt:'Силует без верхньої спідниці'},
+  {src:'https://i.vimeocdn.com/video/2072830652-cf6a5d559b36d7779166c3bb186e7aae7c432c9aeb762077931509fb25bed77d-d_1280?region=us',alt:'Відео',video:true}
+];
+let cur=0;
+const mainImg=document.getElementById('mainImg'),thumbs=document.getElementById('thumbs'),dots=document.getElementById('dots'),counter=document.getElementById('counter');
+photos.forEach((p,i)=>{
+  const b=document.createElement('button');b.setAttribute('aria-label',p.alt);
+  b.innerHTML=`<img src="${p.src.replace('width=1400','width=200')}" alt="">`+(p.video?'<span class="circ play"><svg class="ic sm"><use href="#i-play"/></svg></span>':'');
+  b.onclick=()=>show(i);thumbs.appendChild(b);
+  dots.appendChild(document.createElement('i'));
+});
+function show(i){cur=(i+photos.length)%photos.length;mainImg.src=photos[cur].src;mainImg.alt='Весільна сукня J-1165 — '+photos[cur].alt;
+  [...thumbs.children].forEach((t,j)=>t.classList.toggle('on',j===cur));[...dots.children].forEach((d,j)=>d.classList.toggle('on',j===cur));counter.textContent=(cur+1)+' / '+photos.length;}
+document.querySelector('.main .prev').onclick=()=>show(cur-1);
+document.querySelector('.main .next').onclick=()=>show(cur+1);
+let sx=0;const mainEl=document.querySelector('.main');
+mainEl.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
+mainEl.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40)show(cur+(d<0?1:-1));});
+show(0);
+
+// sizes
+const sizes=[34,36,38,40,42,44,46,48,50],off=[48,50];let size=44,color='Айворі';
+const sz=document.getElementById('sizes');
+sizes.forEach(s=>{const b=document.createElement('button');b.className='size'+(s===size?' on':'')+(off.includes(s)?' off':'');b.textContent=s;
+  if(off.includes(s)){b.disabled=true;b.setAttribute('aria-label',s+' — немає в наявності');}
+  b.onclick=()=>{size=s;[...sz.children].forEach(c=>c.classList.toggle('on',c===b));update();};sz.appendChild(b);});
+document.querySelectorAll('#swatches .sw:not(.off)').forEach(s=>s.onclick=()=>{color=s.dataset.name;document.querySelectorAll('#swatches .sw').forEach(x=>x.classList.toggle('on',x===s));update();});
+function update(){document.getElementById('sizeName').textContent=size;document.getElementById('colorName').textContent=color;
+  document.getElementById('avail').textContent=size+' EU, '+color.toLowerCase()+' — в наявності для примірки';
+  document.getElementById('selSummary').textContent=color+' · '+size+' EU';
+  document.getElementById('stickySel').textContent=size+' · '+color.toLowerCase();}
+
+// sticky bar on mobile when main CTA leaves viewport
+const sticky=document.getElementById('sticky'),mainCta=document.querySelector('.cta .btn-primary'),form=document.getElementById('booking');
+let ctaVisible=true,formVisible=false;
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.target===mainCta)ctaVisible=e.isIntersecting||e.boundingClientRect.top>0;if(e.target===form)formVisible=e.isIntersecting;});
+  sticky.classList.toggle('show',!ctaVisible&&!formVisible);});
+io.observe(mainCta);io.observe(form);
+
+// tabs
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b)));
+</script>
+</body>
+</html>
