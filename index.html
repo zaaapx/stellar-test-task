@@ -27,7 +27,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .muted{color:var(--muted)} .sec{color:var(--text-2)}
 .s{font-size:14px;line-height:1.5}
 .lead{font-size:18px;line-height:1.6;margin-top:16px}
-.lead-gap{margin-top:32px}
+.lead-gap{margin-top:16px}
 .u{text-decoration:underline;text-underline-offset:3px}
 h1.display{font-weight:300;font-size:40px;line-height:1.1;letter-spacing:.04em;text-transform:uppercase}
 h2{font-weight:400;font-size:32px;line-height:1.2;letter-spacing:.06em;text-transform:uppercase}
@@ -81,6 +81,7 @@ h3{font-weight:400;font-size:20px;line-height:1.3}
 .dots{display:none}
 .cap{padding-left:104px;margin-top:16px}
 .buy{display:flex;flex-direction:column;gap:28px;position:sticky;top:100px}
+.buy-head{display:flex;flex-direction:column;gap:16px}
 .row{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .switch{display:flex;align-items:center;gap:12px;white-space:nowrap;flex:none}
 .price{display:flex;align-items:baseline;gap:12px}
@@ -115,7 +116,7 @@ section.alt{background:var(--bg-alt)}
 section.top-line{border-top:1px solid var(--border)}
 .two{display:grid;grid-template-columns:1fr 448px;gap:96px}
 .two>*,.faq>*{min-width:0}
-.details-img{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.details-img{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
 .details-img img{aspect-ratio:2/3;object-fit:cover;width:100%}
 .details-img p{margin-top:12px}
 .specs dl div{display:flex;justify-content:space-between;gap:24px;padding:16px 0;border-bottom:1px solid var(--border);font-size:14px}
@@ -133,6 +134,7 @@ section.top-line{border-top:1px solid var(--border)}
 .form input:focus{outline:1.5px solid var(--strong);outline-offset:-1px}
 .head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:48px}
 .rating{display:flex;align-items:center;gap:16px;margin-top:16px}
+.score{display:flex;align-items:center;gap:8px}
 .rating b{font-weight:400;font-size:32px}
 .stars{display:flex;gap:2px;color:var(--text)}
 .stars svg{width:16px;height:16px;fill:currentColor}
@@ -150,15 +152,19 @@ section.top-line{border-top:1px solid var(--border)}
 .card .im{position:relative}
 .card img{aspect-ratio:3/4;object-fit:cover;width:100%}
 .card .fav{position:absolute;top:16px;right:16px;width:36px;height:36px}
-.card .meta{display:flex;flex-direction:column;gap:4px}
+.card .meta{display:flex;flex-direction:column;gap:0}
+.card .meta span:last-child{margin-top:8px}
 .faq{display:grid;grid-template-columns:384px 1fr;gap:96px}
-.faq-l{display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+.fit-l{display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+.fit-l>.btn{margin-top:16px}
+.faq-l{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.faq-l .btn{margin-top:8px}
 .faq-l .btn{width:auto}
 details{border-bottom:1px solid var(--border);padding:24px 0}
 summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:20px;cursor:pointer}
 summary::-webkit-details-marker{display:none}
-summary .ic{transition:transform .2s}
-details[open] summary .ic{transform:rotate(45deg)}
+
+details[open] .pm .p,details:not([open]) .pm .m{display:none}
 details p{margin-top:12px;color:var(--text-2)}
 .tabs{display:flex;gap:40px;align-items:flex-end}
 .tabs button{text-transform:uppercase;letter-spacing:.06em;font-size:20px;color:var(--muted);padding-bottom:12px;border-bottom:2px solid transparent}
@@ -305,6 +311,8 @@ body.lock{overflow:hidden}
   .dots i{width:6px;height:2px;background:#fff;opacity:.6}
   .dots i.on{width:20px;opacity:1}
   .buy{position:static;padding:24px 20px 0;gap:24px}
+  .buy-head{gap:12px}
+  .buy-head .price{margin-top:12px}
   h1.display{font-size:32px}
   .vdiv{display:none}
   h2{font-size:24px}
@@ -410,6 +418,7 @@ button:disabled{cursor:not-allowed}
   <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="1"/><path d="M3 10h18"/></symbol>
   <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M3 16.5L16.5 3 21 7.5 7.5 21z"/><path d="M7 12.5l2 2M10 9.5l2 2M13 6.5l2 2"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
   <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
   <symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/><path d="M8 8.5L20 18M8 15.5L20 6"/></symbol>
@@ -466,9 +475,11 @@ button:disabled{cursor:not-allowed}
         <span class="s sec">Арт. J-1165</span>
         <a class="circ line" href="#" aria-label="Наступна модель"><svg class="ic sm"><use href="#i-right"/></svg></a>
       </div>
-      <h1 class="display">Весільна сукня <span style="white-space:nowrap">J-1165</span></h1>
-      <p class="sec">Сукня-русалка з мережива нюд, ручна вишивка ліфа перлами, знімний атласний шлейф з 3D-квітами та мереживна накидка: три образи в одній сукні.</p>
-      <div class="price"><b>42 500 ₴</b><span class="s muted">роздрібна ціна</span></div>
+      <div class="buy-head">
+        <h1 class="display">Весільна сукня <span style="white-space:nowrap">J-1165</span></h1>
+        <p class="sec">Сукня-русалка з мережива нюд, ручна вишивка ліфа перлами, знімний атласний шлейф з 3D-квітами та мереживна накидка: три образи в одній сукні.</p>
+        <div class="price"><b>42 500 ₴</b><span class="s muted">роздрібна ціна</span></div>
+      </div>
       <div class="rule"></div>
 
       <div>
@@ -538,7 +549,7 @@ button:disabled{cursor:not-allowed}
   </div></section>
 
   <section class="block alt" id="fitting"><div class="wrap two">
-    <div style="display:flex;flex-direction:column;gap:40px;align-items:flex-start">
+    <div class="fit-l">
       <div>
         <h2>Як проходить примірка</h2>
         <p class="sec lead">Примірка безкоштовна і ні до чого не зобов’язує. Ми підготуємо сукню вашого розміру та кілька схожих моделей.</p>
@@ -568,8 +579,9 @@ button:disabled{cursor:not-allowed}
       <div>
         <h2>Відгуки наречених</h2>
         <div class="rating">
-          <b>4,9</b>
+          <div class="score"><b>4,9</b>
           <div><div class="stars" aria-label="5 з 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p class="s muted">38 відгуків</p></div>
+          </div>
           <div class="vdiv"></div>
           <div><p class="s">Розмір відповідає: 92%</p><div class="fitbar"><i></i></div></div>
         </div>
@@ -609,11 +621,11 @@ button:disabled{cursor:not-allowed}
       <button class="btn btn-secondary" data-contact="consult">Поставити питання</button>
     </div>
     <div>
-      <details open><summary>Скільки часу шиється сукня? <svg class="ic"><use href="#i-plus"/></svg></summary><p>Сукню стандартного розміру шиємо від 3–7 днів. Індивідуальне пошиття за мірками та зміни моделі від 2 тижнів, точний термін назве менеджер.</p></details>
-      <details><summary>Чи можна змінити модель: шлейф, накидку, колір? <svg class="ic"><use href="#i-plus"/></svg></summary><p>Так, більшість змін можлива: довжина шлейфу, накидка, відтінок. Обговоримо на примірці.</p></details>
-      <details><summary>Скільки коштує підгонка? <svg class="ic"><use href="#i-plus"/></svg></summary><p>Базова підгонка по фігурі входить у вартість сукні.</p></details>
-      <details><summary>Де приміряти сукню в моєму місті? <svg class="ic"><use href="#i-plus"/></svg></summary><p>У шоурумі в Чернівцях або в одному із салонів-партнерів в Україні та ЄС.</p></details>
-      <details><summary>Як відбувається доставка та оплата? <svg class="ic"><use href="#i-plus"/></svg></summary><p>Доставляємо Україною та в ЄС. Деталі на сторінках «Доставка та повернення» і «Оплата».</p></details>
+      <details open><summary>Скільки часу шиється сукня? <svg class="ic pm" aria-hidden="true"><use class="p" href="#i-plus"/><use class="m" href="#i-minus"/></svg></summary><p>Сукню стандартного розміру шиємо від 3–7 днів. Індивідуальне пошиття за мірками та зміни моделі від 2 тижнів, точний термін назве менеджер.</p></details>
+      <details><summary>Чи можна змінити модель: шлейф, накидку, колір? <svg class="ic pm" aria-hidden="true"><use class="p" href="#i-plus"/><use class="m" href="#i-minus"/></svg></summary><p>Так, більшість змін можлива: довжина шлейфу, накидка, відтінок. Обговоримо на примірці.</p></details>
+      <details><summary>Скільки коштує підгонка? <svg class="ic pm" aria-hidden="true"><use class="p" href="#i-plus"/><use class="m" href="#i-minus"/></svg></summary><p>Базова підгонка по фігурі входить у вартість сукні.</p></details>
+      <details><summary>Де приміряти сукню в моєму місті? <svg class="ic pm" aria-hidden="true"><use class="p" href="#i-plus"/><use class="m" href="#i-minus"/></svg></summary><p>У шоурумі в Чернівцях або в одному із салонів-партнерів в Україні та ЄС.</p></details>
+      <details><summary>Як відбувається доставка та оплата? <svg class="ic pm" aria-hidden="true"><use class="p" href="#i-plus"/><use class="m" href="#i-minus"/></svg></summary><p>Доставляємо Україною та в ЄС. Деталі на сторінках «Доставка та повернення» і «Оплата».</p></details>
     </div>
   </div></section>
 
@@ -685,8 +697,8 @@ button:disabled{cursor:not-allowed}
 <div class="mmenu" id="mmenu" aria-hidden="true">
   <div class="mm-head"><a class="logo" href="#"><img src="assets/logo-jeorjett.png" alt="Jeorjett Fashion Group"></a><button class="dw-x" id="mmClose" aria-label="Закрити меню"><svg class="ic"><use href="#i-close"/></svg></button></div>
   <div class="mm-body">
-    <details open><summary>Весільні сукні <svg class="ic"><use href="#i-plus"/></svg></summary><div class="mm-l"><a href="#" role="menuitem">Усі сукні</a><a href="#" role="menuitem">Endless Grace 2027</a><a href="#" role="menuitem" class="on">Dazzle 2026</a><a href="#" role="menuitem">Lumiere 2026</a><a href="#" role="menuitem">Dreams 2025</a><a href="#" role="menuitem">Muse 2024</a></div></details>
-    <details><summary>Аксесуари <svg class="ic"><use href="#i-plus"/></svg></summary><div class="mm-l"><a href="#" role="menuitem">Усі аксесуари</a><a href="#" role="menuitem">Біжутерія та прикраси для волосся</a><a href="#" role="menuitem">Фати 2026</a><a href="#" role="menuitem">Фати 2023</a></div></details>
+    <details open><summary>Весільні сукні <svg class="ic pm" aria-hidden="true"><use class="p" href="#i-plus"/><use class="m" href="#i-minus"/></svg></summary><div class="mm-l"><a href="#" role="menuitem">Усі сукні</a><a href="#" role="menuitem">Endless Grace 2027</a><a href="#" role="menuitem" class="on">Dazzle 2026</a><a href="#" role="menuitem">Lumiere 2026</a><a href="#" role="menuitem">Dreams 2025</a><a href="#" role="menuitem">Muse 2024</a></div></details>
+    <details><summary>Аксесуари <svg class="ic pm" aria-hidden="true"><use class="p" href="#i-plus"/><use class="m" href="#i-minus"/></svg></summary><div class="mm-l"><a href="#" role="menuitem">Усі аксесуари</a><a href="#" role="menuitem">Біжутерія та прикраси для волосся</a><a href="#" role="menuitem">Фати 2026</a><a href="#" role="menuitem">Фати 2023</a></div></details>
     <div class="mm-links s sec"><a href="#">Про компанію</a><a href="#">Умови співпраці</a><a href="#">Відео</a><a href="#">Розмірна сітка</a><a href="#">Контакти</a></div>
     <div class="mm-lang caps"><a href="#" class="on">UA</a><a href="#">RO</a><a href="#">EN</a><a href="#">RU</a></div>
   </div>
