@@ -147,6 +147,7 @@ section.top-line{border-top:1px solid var(--border)}
 .ugc figcaption{position:absolute;left:16px;bottom:16px;background:#fff;padding:5px 12px;font-size:14px}
 .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
 .review{background:var(--bg-alt);padding:32px;display:flex;flex-direction:column;gap:16px}
+.rv-c{display:flex;flex-direction:column;gap:4px}
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .card{text-decoration:none;display:flex;flex-direction:column;gap:16px}
 .card .im{position:relative}
@@ -197,8 +198,9 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
 .dw-head h3{font-size:24px;text-transform:uppercase;letter-spacing:.06em;margin-top:6px}
 .dw-x:focus{outline:none}.dw-x:focus-visible{outline:2px solid var(--strong)}
 .dw-x{width:40px;height:40px;display:flex;align-items:center;justify-content:center;margin:-8px -8px 0 0}
-.dw-prog{height:2px;background:var(--border);margin:0 32px}
-.dw-prog i{display:block;height:100%;background:var(--strong);width:33%;transition:width .3s}
+.dw-prog{height:2px;margin:0 32px;display:flex;gap:4px}
+.dw-prog i{flex:1;height:100%;background:var(--border);transition:background .3s}
+.dw-prog i.on{background:var(--strong)}
 .dw-body{flex:1;overflow-y:auto;padding:28px 32px}
 .step{display:flex;flex-direction:column;gap:28px}
 .step[hidden]{display:none}
@@ -598,9 +600,9 @@ button:disabled{cursor:not-allowed}
       <figure><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Eveil/Eveil_(5).jpg?width=600" alt=""></figure>
     </div>
     <div class="reviews">
-      <div class="review"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>Сукня наживо ще краща, ніж на фото. Шлейф зняла після церемонії, і вийшло два образи за один день. Ніхто не вірив, що це одна сукня.</p><p class="s muted">Олена · 38 EU · Київ · 06.2026</p></div>
-      <div class="review"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>Корсет підігнали за одну примірку, сіла ідеально. Стилістка Ганна допомогла з фатою і прикрасами.</p><p class="s muted">Ірина · 40 EU · Львів · 08.2026</p></div>
-      <div class="review"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>Бісер і вишивка дуже акуратні, нічого не колеться. Протанцювала в ній до ранку.</p><p class="s muted">Марія · 36 EU · Чернівці · 09.2026</p></div>
+      <div class="review"><div class="rv-c"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>Сукня наживо ще краща, ніж на фото. Шлейф зняла після церемонії, і вийшло два образи за один день. Ніхто не вірив, що це одна сукня.</p></div><p class="s muted">Олена · 38 EU · Київ · 06.2026</p></div>
+      <div class="review"><div class="rv-c"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>Корсет підігнали за одну примірку, сіла ідеально. Стилістка Ганна допомогла з фатою і прикрасами.</p></div><p class="s muted">Ірина · 40 EU · Львів · 08.2026</p></div>
+      <div class="review"><div class="rv-c"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>Бісер і вишивка дуже акуратні, нічого не колеться. Протанцювала в ній до ранку.</p></div><p class="s muted">Марія · 36 EU · Чернівці · 09.2026</p></div>
     </div>
   </div></section>
 
@@ -712,7 +714,7 @@ button:disabled{cursor:not-allowed}
     <div><p class="caps muted" id="dwStep">Крок 1 / 3</p><h3 id="dwTitle">Сукня і салон</h3></div>
     <button class="dw-x" id="dwClose" aria-label="Закрити"><svg class="ic"><use href="#i-close"/></svg></button>
   </div>
-  <div class="dw-prog"><i id="dwBar"></i></div>
+  <div class="dw-prog" id="dwBar"><i></i><i></i><i></i></div>
   <div class="dw-body" id="dwBody">
     <div class="step" data-step="1">
       <div class="dw-dress"><img src="https://luce.b-cdn.net/storage/shop/category/LaBoheme2026/Amanda/Amanda(1).jpg?width=200" alt=""><div><p>Весільна сукня J-1165</p><p class="s muted">Колекція Dazzle 2026</p></div></div>
@@ -847,7 +849,7 @@ function updFoot(){const s=st.step;nextB.disabled=(s===2&&!(st.date&&st.time))||
   document.querySelector('.dw-foot').style.gridTemplateColumns=(s===1||s===4)?'1fr':'1fr 2fr';}
 function go(s){st.step=s;drawer.querySelectorAll('.step').forEach(x=>x.hidden=+x.dataset.step!==s);
   document.getElementById('dwTitle').textContent=TITLES[s];document.getElementById('dwStep').textContent=s<4?'Крок '+s+' / 3':'Запис на примірку';
-  document.getElementById('dwBar').style.width=(s>=4?100:s*33.34)+'%';
+  document.querySelectorAll('#dwBar i').forEach((b,k)=>b.classList.toggle('on',k<Math.min(s,3)));
   if(s===2){renderCal();renderSlots();} if(s===3)document.getElementById('dSum').innerHTML=summary(); if(s===4)document.getElementById('dSum2').innerHTML=summary();
   document.getElementById('dwBody').scrollTop=0;updFoot();}
 let lastFocus=null;
