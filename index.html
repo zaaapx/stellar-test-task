@@ -320,6 +320,9 @@ body.lock{overflow:hidden}
   .sizes{grid-template-columns:repeat(5,1fr)}
   section.block{padding:48px 0}
   .two,.faq{grid-template-columns:1fr;gap:32px}
+  .faq{display:flex;flex-direction:column;gap:16px}
+  .faq-l{display:contents}
+  .faq-l h2{order:1}.faq-l p{order:2}.faq>div:last-child{order:3}.faq-l .btn{order:4;margin-top:16px;width:100%}
   .details-img{display:flex;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory}
   .details-img figure{flex:0 0 150px}
   .form{padding:24px 20px}
