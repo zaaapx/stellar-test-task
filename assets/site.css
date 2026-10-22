@@ -464,3 +464,10 @@ button:disabled{cursor:not-allowed}
   .card .fav,.card .fitb{opacity:0;transition:opacity .2s ease-out,transform .2s ease-out,background-color .15s ease-out}
   .card:hover .fav,.card:hover .fitb,.card:focus-within .fav,.card:focus-within .fitb,.card .fav.on,.card .fitb.on{opacity:1}
 }
+/* related carousel */
+.navs .arrows{display:flex;gap:8px;margin-left:12px}
+.navs .circ.line{width:48px;height:48px}
+.cards.rel{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:calc((100% - 72px) / 4);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.cards.rel::-webkit-scrollbar{display:none}
+.cards.rel .card{scroll-snap-align:start}
+@media (max-width:1100px){.navs .arrows{display:none}}

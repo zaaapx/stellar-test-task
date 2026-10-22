@@ -241,13 +241,15 @@
   <section class="block"><div class="wrap">
     <div class="head" style="align-items:center">
       <div class="tabs"><button class="on">Ще з Dazzle 2026</button><button>Схожі силуети</button><button>Ви переглядали</button></div>
-      <div class="navs"><a class="u" href="#">Вся колекція</a><span style="width:12px"></span><button class="circ line" aria-label="Назад"><svg class="ic sm"><use href="#i-left"/></svg></button><button class="circ line" aria-label="Вперед"><svg class="ic sm"><use href="#i-right"/></svg></button></div>
+      <div class="navs"><a class="u" href="#">Вся колекція</a><div class="arrows"><button class="circ line" id="relPrev" aria-label="Попередні моделі" aria-controls="relCards" disabled><svg class="ic sm"><use href="#i-left"/></svg></button><button class="circ line" id="relNext" aria-label="Наступні моделі" aria-controls="relCards"><svg class="ic sm"><use href="#i-right"/></svg></button></div></div>
     </div>
-    <div class="cards">
+    <div class="cards rel" id="relCards">
       <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Bijou/Bijou_(4).jpg?width=600" alt="J-1166"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button><button type="button" class="circ fitb" data-fitadd="J-1166" aria-label="Додати до примірки" aria-pressed="false"><svg class="ic sm"><use href="#i-hanger"/></svg></button></div><div class="meta"><span>J-1166</span><span class="s muted">Dazzle 2026 · Русалка</span><span>39 900 ₴</span></div></a>
       <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Debora/Debora_(1).jpg?width=600" alt="J-1167"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button><button type="button" class="circ fitb" data-fitadd="J-1167" aria-label="Додати до примірки" aria-pressed="false"><svg class="ic sm"><use href="#i-hanger"/></svg></button></div><div class="meta"><span>J-1167</span><span class="s muted">Dazzle 2026 · Пряма</span><span>36 500 ₴</span></div></a>
       <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Elegance/Elegance_(6ROTATE).jpg?width=600" alt="J-1170"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button><button type="button" class="circ fitb" data-fitadd="J-1170" aria-label="Додати до примірки" aria-pressed="false"><svg class="ic sm"><use href="#i-hanger"/></svg></button></div><div class="meta"><span>J-1170</span><span class="s muted">Dazzle 2026 · Русалка</span><span>44 900 ₴</span></div></a>
       <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Gabi/Gabi_(2).jpg?width=600" alt="J-1172"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button><button type="button" class="circ fitb" data-fitadd="J-1172" aria-label="Додати до примірки" aria-pressed="false"><svg class="ic sm"><use href="#i-hanger"/></svg></button></div><div class="meta"><span>J-1172</span><span class="s muted">Dazzle 2026 · Корсет</span><span>41 200 ₴</span></div></a>
+          <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Ethereal/Ethereal_(1Rotate).jpg?width=600" alt="J-1174"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button><button type="button" class="circ fitb" data-fitadd="J-1174" aria-label="Додати до примірки" aria-pressed="false"><svg class="ic sm"><use href="#i-hanger"/></svg></button></div><div class="meta"><span>J-1174</span><span class="s muted">Dazzle 2026 · А-силует</span><span>38 700 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Eveil/Eveil_(5).jpg?width=600" alt="J-1175"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button><button type="button" class="circ fitb" data-fitadd="J-1175" aria-label="Додати до примірки" aria-pressed="false"><svg class="ic sm"><use href="#i-hanger"/></svg></button></div><div class="meta"><span>J-1175</span><span class="s muted">Dazzle 2026 · Пряма</span><span>35 900 ₴</span></div></a>
     </div>
   </div></section>
 
@@ -403,6 +405,13 @@ bindFavs();
 
 // tabs
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b)));
+// related carousel: arrows scroll one card, disabled at the ends
+const rel=document.getElementById('relCards'),rp=document.getElementById('relPrev'),rn=document.getElementById('relNext');
+const step=()=>{const c=rel.querySelector('.card');return c?c.getBoundingClientRect().width+parseFloat(getComputedStyle(rel).columnGap||0):rel.clientWidth;};
+function relArrows(){rp.disabled=rel.scrollLeft<=2;rn.disabled=rel.scrollLeft+rel.clientWidth>=rel.scrollWidth-2;}
+rp.onclick=()=>rel.scrollBy({left:-step(),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+rn.onclick=()=>rel.scrollBy({left:step(),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+rel.addEventListener('scroll',relArrows,{passive:true});addEventListener('resize',relArrows);relArrows();
 syncAll();stick();
 </script>
 </body>

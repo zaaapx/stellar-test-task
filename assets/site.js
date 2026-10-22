@@ -6,6 +6,8 @@ const CATALOG={
   'J-1166':{name:'Весільна сукня J-1166',coll:'Dazzle 2026',sil:'Русалка',price:39900,img:LB+'JardindeLumiere/Bijou/Bijou_(4).jpg?width=400',colors:['Білий','Айворі'],off:[50]},
   'J-1167':{name:'Весільна сукня J-1167',coll:'Dazzle 2026',sil:'Пряма',price:36500,img:LB+'JardindeLumiere/Debora/Debora_(1).jpg?width=400',colors:['Білий','Айворі'],off:[34]},
   'J-1170':{name:'Весільна сукня J-1170',coll:'Dazzle 2026',sil:'Русалка',price:44900,img:LB+'JardindeLumiere/Elegance/Elegance_(6ROTATE).jpg?width=400',colors:['Айворі'],off:[]},
+  'J-1174':{name:'Весільна сукня J-1174',coll:'Dazzle 2026',sil:'А-силует',price:38700,img:LB+'JardindeLumiere/Ethereal/Ethereal_(1Rotate).jpg?width=400',colors:['Білий','Айворі'],off:[]},
+  'J-1175':{name:'Весільна сукня J-1175',coll:'Dazzle 2026',sil:'Пряма',price:35900,img:LB+'JardindeLumiere/Eveil/Eveil_(5).jpg?width=400',colors:['Айворі'],off:[50]},
   'J-1172':{name:'Весільна сукня J-1172',coll:'Dazzle 2026',sil:'Корсет',price:41200,img:LB+'JardindeLumiere/Gabi/Gabi_(2).jpg?width=400',colors:['Білий','Айворі'],off:[48]}
 };
 const FIT_MAX=5;
