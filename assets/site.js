@@ -8,12 +8,22 @@ const CATALOG={
   'J-1170':{name:'Весільна сукня J-1170',coll:'Dazzle 2026',sil:'Русалка',price:44900,img:LB+'JardindeLumiere/Elegance/Elegance_(6ROTATE).jpg?width=400',colors:['Айворі'],off:[]},
   'J-1174':{name:'Весільна сукня J-1174',coll:'Dazzle 2026',sil:'А-силует',price:38700,img:LB+'JardindeLumiere/Ethereal/Ethereal_(1Rotate).jpg?width=400',colors:['Білий','Айворі'],off:[]},
   'J-1175':{name:'Весільна сукня J-1175',coll:'Dazzle 2026',sil:'Пряма',price:35900,img:LB+'JardindeLumiere/Eveil/Eveil_(5).jpg?width=400',colors:['Айворі'],off:[50]},
-  'J-1172':{name:'Весільна сукня J-1172',coll:'Dazzle 2026',sil:'Корсет',price:41200,img:LB+'JardindeLumiere/Gabi/Gabi_(2).jpg?width=400',colors:['Білий','Айворі'],off:[48]}
+  'J-1172':{name:'Весільна сукня J-1172',coll:'Dazzle 2026',sil:'Корсет',price:41200,img:LB+'JardindeLumiere/Gabi/Gabi_(2).jpg?width=400',colors:['Білий','Айворі'],off:[48]},
+  // accessories: tried on together with the dress, no size
+  'AA238':{acc:true,name:'Фата AA238',meta:'Соборна, мереживний край',price:3900,img:'assets/accessories/veil-aa238.jpg',colors:['Білий','Айворі']},
+  'AA237':{acc:true,name:'Фата AA237',meta:'Довга, мереживо по краю',price:3400,img:'assets/accessories/veil-aa237.jpg',colors:['Білий','Айворі']},
+  'VI-027':{acc:true,name:'Прикраса VI-027',meta:'Для волосся, айворі',price:2400,img:'assets/accessories/headpiece-vi027.jpg',colors:['Айворі']},
+  'VI-025':{acc:true,name:'Гребінь VI-025',meta:'Перли та кристали, айворі',price:2800,img:'assets/accessories/comb-vi025.jpg',colors:['Айворі']}
 };
 const FIT_MAX=5;
 const money=n=>n.toLocaleString('uk-UA').replace(/,/g,' ')+' ₴';
 const plural=(n,a,b,c)=>{const m=n%10,h=n%100;return n+' '+(m===1&&h!==11?a:m>=2&&m<=4&&(h<12||h>14)?b:c);};
 const dresses=n=>plural(n,'сукня','сукні','суконь');
+const accs=n=>plural(n,'аксесуар','аксесуари','аксесуарів');
+const isAcc=id=>!!(CATALOG[id]&&CATALOG[id].acc);
+const metaOf=id=>{const d=CATALOG[id];return d.acc?d.meta:d.coll+' · '+d.sil;};
+// "2 сукні, 1 аксесуар"
+function fitSummary(items){const d=items.filter(x=>!isAcc(x.id)).length,a=items.length-d;return [d?dresses(d):'',a?accs(a):''].filter(Boolean).join(', ');}
 
 // storage is a convenience: the page works without it
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
@@ -21,18 +31,19 @@ const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v)
 // ---------- fitting list ----------
 const fit={
   items:store.get('jj-fit',[]).filter(x=>CATALOG[x.id]),
+  dressCount(){return this.items.filter(x=>!isAcc(x.id)).length;},
   has(id){return this.items.some(x=>x.id===id);},
   get(id){return this.items.find(x=>x.id===id);},
   save(){store.set('jj-fit',this.items);document.dispatchEvent(new CustomEvent('fit:change'));},
   add(item){if(this.has(item.id)){Object.assign(this.get(item.id),item);this.save();return true;}
-    if(this.items.length>=FIT_MAX){say('До однієї примірки можна додати до '+FIT_MAX+' суконь');return false;}
+    if(!isAcc(item.id)&&this.dressCount()>=FIT_MAX){say('До однієї примірки можна додати до '+FIT_MAX+' суконь');return false;}
     this.items.push(item);this.save();say(item.id+' додано до примірки',/fitting\.html$/.test(location.pathname)?null:{href:'fitting.html',label:'Перейти'});return true;},
   update(id,patch){const x=this.get(id);if(x){Object.assign(x,patch);this.save();}},
   remove(id){this.items=this.items.filter(x=>x.id!==id);this.save();},
   clear(){this.items=[];this.save();}
 };
 function renderFitCount(){const c=document.getElementById('fitCnt');if(c){c.textContent=fit.items.length;c.hidden=!fit.items.length;}
-  const h=document.querySelector('.fithead');if(h)h.setAttribute('aria-label','Примірка'+(fit.items.length?', '+dresses(fit.items.length):''));}
+  const h=document.querySelector('.fithead');if(h)h.setAttribute('aria-label','Примірка'+(fit.items.length?', '+fitSummary(fit.items):''));}
 document.addEventListener('fit:change',renderFitCount);
 
 // ---------- toast ----------

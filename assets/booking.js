@@ -3,17 +3,17 @@ const listEl=document.getElementById('flList'),emptyEl=document.getElementById('
 const fitSticky=document.getElementById('sticky');
 
 function itemHTML(x){const d=CATALOG[x.id];
-  const sizeOpts=['<option value="">Підберемо в салоні</option>'].concat(SIZES.map(s=>`<option value="${s}"${x.size===s?' selected':''}${d.off.includes(s)?' disabled':''}>${s}${d.off.includes(s)?' · немає':''}</option>`)).join('');
+  const sizeOpts=d.acc?'':['<option value="">Підберемо в салоні</option>'].concat(SIZES.map(s=>`<option value="${s}"${x.size===s?' selected':''}${d.off.includes(s)?' disabled':''}>${s}${d.off.includes(s)?' · немає':''}</option>`)).join('');
   const colorOpts=d.colors.map(c=>`<option${x.color===c?' selected':''}>${c}</option>`).join('');
   return `<article class="fl-item" data-id="${x.id}">
     <a href="${d.url||'#'}"><img src="${d.img}" alt="${d.name}" width="120" height="180"></a>
     <div class="fl-info">
       <h3><a href="${d.url||'#'}">${d.name.replace(x.id,'<span style="white-space:nowrap">'+x.id+'</span>')}</a></h3>
-      <p class="s muted">${d.coll} · ${d.sil}</p>
+      <p class="s muted">${metaOf(x.id)}</p>
       <p class="fl-price">${money(d.price)}</p>
       <div class="fl-opts">
         <label><span class="caps muted">Колір</span><select data-k="color" aria-label="Колір, ${x.id}">${colorOpts}</select></label>
-        <label><span class="caps muted">Розмір EU</span><select data-k="size" aria-label="Розмір, ${x.id}">${sizeOpts}</select></label>
+        ${d.acc?'':`<label><span class="caps muted">Розмір EU</span><select data-k="size" aria-label="Розмір, ${x.id}">${sizeOpts}</select></label>`}
       </div>
     </div>
     <button type="button" class="fl-rm" aria-label="Прибрати ${x.id} з примірки"><svg class="ic"><use href="#i-close"/></svg><span>Прибрати</span></button>
@@ -21,12 +21,12 @@ function itemHTML(x){const d=CATALOG[x.id];
 
 function renderList(){const n=fit.items.length;
   gridEl.hidden=!n;emptyEl.hidden=!!n;
-  document.getElementById('flCount').textContent=n?dresses(n)+' з '+FIT_MAX:'';
+  const nd=fit.dressCount();document.getElementById('flCount').textContent=n?fitSummary(fit.items):'';
   listEl.innerHTML=fit.items.map(itemHTML).join('');
-  document.getElementById('sumCount').textContent=dresses(n);
-  document.querySelectorAll('#flCap i').forEach((i,k)=>i.classList.toggle('on',k<n));
-  document.getElementById('sumLeft').textContent=n<FIT_MAX?'Можна додати ще '+(FIT_MAX-n):'Список заповнено';
-  document.getElementById('stickyCount').textContent=n?dresses(n):'Підбір стилістки';
+  document.getElementById('sumCount').textContent=fitSummary(fit.items)||'—';
+  document.querySelectorAll('#flCap i').forEach((i,k)=>i.classList.toggle('on',k<nd));
+  document.getElementById('sumLeft').textContent=nd<FIT_MAX?'Суконь можна додати ще '+(FIT_MAX-nd)+' з '+FIT_MAX:'Суконь максимум, аксесуари можна додавати';
+  document.getElementById('stickyCount').textContent=n?fitSummary(fit.items):'Підбір стилістки';
   renderMore();stick();}
 listEl.addEventListener('change',e=>{const sel=e.target.closest('select');if(!sel)return;const id=sel.closest('.fl-item').dataset.id;
   fit.update(id,{[sel.dataset.k]:sel.dataset.k==='size'?(sel.value?+sel.value:null):sel.value});});
@@ -34,7 +34,7 @@ listEl.addEventListener('click',e=>{const b=e.target.closest('.fl-rm');if(!b)ret
   say(id+' прибрано з примірки');const first=listEl.querySelector('.fl-rm');(first||document.querySelector('.fl-empty .btn'))?.focus();});
 
 // "add more" cards: dresses that are not in the list yet
-function renderMore(){const el=document.getElementById('moreCards');const ids=Object.keys(CATALOG).filter(id=>!fit.has(id));
+function renderMore(){const el=document.getElementById('moreCards');const ids=Object.keys(CATALOG).filter(id=>!isAcc(id)&&!fit.has(id));
   document.getElementById('more').hidden=!ids.length;
   el.innerHTML=ids.slice(0,4).map(id=>{const d=CATALOG[id];return `<a class="card" href="${d.url||'#'}"><div class="im"><img loading="lazy" src="${d.img.replace('width=400','width=600')}" alt="${id}"><button type="button" class="circ fav" data-fav="${id}" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button><button type="button" class="circ fitb" data-fitadd="${id}" aria-label="Додати до примірки" aria-pressed="false"><svg class="ic sm"><use href="#i-hanger"/></svg></button></div><div class="meta"><span>${id}</span><span class="s muted">${d.coll} · ${d.sil}</span><span>${money(d.price)}</span></div></a>`;}).join('');
   el.querySelectorAll('a[href="#"]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
@@ -54,7 +54,7 @@ function renderSalons(){const el=document.getElementById('dSalons');el.innerHTML
   d.innerHTML=`<span class="rd"></span><div><p class="nm">${s.n}</p><p class="s sec">${s.a}</p><p class="s muted">${s.h}</p><a class="maplink" href="${mapUrl(s.a)}" target="_blank" rel="noopener">Відкрити в Google Maps<svg class="ic"><use href="#i-ext"/></svg></a></div>`;
   d.onclick=e=>{if(e.target.closest('a'))return;st.salon=i;renderSalons();};d.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();d.click();}};el.appendChild(d);});}
 function renderDressList(){const el=document.getElementById('dDresses');
-  el.innerHTML=fit.items.length?fit.items.map(x=>`<div class="dw-dress"><img src="${CATALOG[x.id].img}" alt=""><div><p>${CATALOG[x.id].name}</p><p class="s muted">${x.color} · ${x.size?x.size+' EU':'розмір підберемо'}</p></div></div>`).join('')
+  el.innerHTML=fit.items.length?fit.items.map(x=>`<div class="dw-dress"><img src="${CATALOG[x.id].img}" alt=""><div><p>${CATALOG[x.id].name}</p><p class="s muted">${x.color}${isAcc(x.id)?'':' · '+(x.size?x.size+' EU':'розмір підберемо')}</p></div></div>`).join('')
     :'<div class="dw-dress"><div><p>Підбір стилістки</p><p class="s muted">Стилістка підготує 3–5 моделей під ваш запит</p></div></div>';}
 
 const MONTHS=['січень','лютий','березень','квітень','травень','червень','липень','серпень','вересень','жовтень','листопад','грудень'];
@@ -80,8 +80,8 @@ const TITLES={1:'Місто і салон',2:'Дата і час',3:'Ваші к
 const fmtDate=d=>d.getDate()+' '+['січня','лютого','березня','квітня','травня','червня','липня','серпня','вересня','жовтня','листопада','грудня'][d.getMonth()]+', '+['нд','пн','вт','ср','чт','пт','сб'][d.getDay()];
 let booked=[];
 function summary(items){const s=SALONS[st.city][st.salon];
-  const dl=items.length?'<ul>'+items.map(x=>`<li>${x.id} · ${x.color.toLowerCase()} · ${x.size?x.size+' EU':'розмір підберемо'}</li>`).join('')+'</ul>':'Підбір стилістки';
-  return `<dl><div><dt>Сукні</dt><dd>${dl}</dd></div><div><dt>Салон</dt><dd>${s.n}<br><span class="sec">${s.a}</span><br><a class="maplink" href="${mapUrl(s.a)}" target="_blank" rel="noopener">Відкрити в Google Maps<svg class="ic"><use href="#i-ext"/></svg></a></dd></div><div><dt>Дата</dt><dd>${st.date?fmtDate(st.date):'—'}</dd></div><div><dt>Час</dt><dd>${st.time||'—'}</dd></div></dl>`;}
+  const dl=items.length?'<ul>'+items.map(x=>`<li>${x.id} · ${x.color.toLowerCase()}${isAcc(x.id)?'':' · '+(x.size?x.size+' EU':'розмір підберемо')}</li>`).join('')+'</ul>':'Підбір стилістки';
+  return `<dl><div><dt>Примірка</dt><dd>${dl}</dd></div><div><dt>Салон</dt><dd>${s.n}<br><span class="sec">${s.a}</span><br><a class="maplink" href="${mapUrl(s.a)}" target="_blank" rel="noopener">Відкрити в Google Maps<svg class="ic"><use href="#i-ext"/></svg></a></dd></div><div><dt>Дата</dt><dd>${st.date?fmtDate(st.date):'—'}</dd></div><div><dt>Час</dt><dd>${st.time||'—'}</dd></div></dl>`;}
 const dForm=document.getElementById('dForm');
 function valid3(){const f=dForm.elements;return f.name.value.trim().length>1&&f.phone.value.replace(/\D/g,'').length>=9&&f.ok.checked;}
 function updFoot(){const s=st.step;nextB.disabled=(s===2&&!(st.date&&st.time))||(s===3&&!valid3());
