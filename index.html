@@ -8,405 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg-page:#FFFFFF; --bg-alt:#FBEFF2; --bg-inverse:#A3475F; --surface:#FFFFFF;
-  --text:#2B2226; --text-2:#5E4A51; --muted:#7B656C; --inverse:#FFFFFF;
-  --border:#EED9DF; --strong:#A3475F; --success:#3F7A55; --strong-hover:#8E3B52; --strong-press:#7A3346; --alt-hover:#F6E1E7; --shadow-pop:0 4px 12px rgba(43,34,38,.06); --shadow-bar:0 -4px 20px rgba(43,34,38,.12);
-  --pad:120px; --gap:48px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-[hidden]{display:none!important}
-html{scroll-behavior:smooth}
-body{font-family:'Jost',system-ui,sans-serif;color:var(--text);background:var(--bg-page);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-.wrap{max-width:1440px;margin:0 auto;padding:0 var(--pad)}
-.caps{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;line-height:1.4}
-.muted{color:var(--muted)} .sec{color:var(--text-2)}
-.s{font-size:14px;line-height:1.5}
-.lead{font-size:18px;line-height:1.6;margin-top:16px}
-.lead-gap{margin-top:16px}
-.u{text-decoration:underline;text-underline-offset:3px}
-h1.display{font-weight:300;font-size:40px;line-height:1.1;letter-spacing:.04em;text-transform:uppercase}
-h2{font-weight:400;font-size:32px;line-height:1.2;letter-spacing:.06em;text-transform:uppercase}
-h3{font-weight:400;font-size:20px;line-height:1.3}
-.ic{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.ic.sm{width:18px;height:18px}
-.btn{transition:background-color .15s ease-out,border-color .15s ease-out,color .15s ease-out,transform .1s ease-out;display:flex;align-items:center;justify-content:center;gap:12px;height:56px;padding:0 32px;font-size:14px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;width:100%;transition:opacity .2s,background .2s}
-.btn-primary{background:var(--bg-inverse);color:var(--inverse)}
-.btn-secondary{border:1px solid var(--strong);color:var(--text)}
-.btn-tonal{background:var(--bg-alt)}
-.btn-inverse{background:#fff;color:var(--text);width:auto}
-.circ{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#fff;flex:none}
-.circ.line{background:transparent;border:1px solid var(--border);width:36px;height:36px}
-.chip{display:inline-block;padding:6px 12px;background:#fff;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
-.chip.inv{background:var(--bg-inverse);color:#fff}
-.rule{height:1px;background:var(--border)}
-
-/* header */
-.topbar{background:var(--bg-alt)}
-.topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
-.topbar nav{display:flex;gap:32px}
-.langs{display:flex;gap:16px}
-.navbar{border-bottom:1px solid var(--border);background:#fff;position:sticky;top:0;z-index:20}
-.navbar .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding-top:20px;padding-bottom:20px}
-.navbar .left{display:flex;gap:40px;font-size:15px;letter-spacing:.02em}
-.navbar .right{display:flex;gap:24px;justify-content:flex-end}
-.logo{text-align:center;text-decoration:none;line-height:1}
-.logo b{display:block;font-weight:300;font-size:26px;letter-spacing:.3em}
-.logo small{display:block;font-size:9px;letter-spacing:.4em;color:var(--muted);margin-top:4px}
-.burger{display:none}
-.crumbs{display:flex;gap:12px;padding-top:24px;padding-bottom:24px;font-size:14px;color:var(--muted)}
-.crumbs span:last-child{color:var(--text)}
-.crumbs-m{display:none}
-
-/* hero */
-.hero{display:grid;grid-template-columns:704px 1fr;gap:var(--gap);padding-bottom:96px;align-items:start}
-.gallery{display:grid;grid-template-columns:88px 600px;gap:16px}
-.thumbs{display:flex;flex-direction:column;gap:12px}
-.thumbs button{position:relative;width:88px;height:118px;opacity:.75;transition:opacity .2s;outline:1.5px solid transparent;outline-offset:-1.5px}
-.thumbs button img{width:100%;height:100%;object-fit:cover}
-.thumbs button.on{opacity:1;outline-color:var(--strong)}
-.thumbs .play{position:absolute;inset:0;margin:auto;width:36px;height:36px}
-.main{position:relative;width:600px;height:900px;overflow:hidden;background:var(--bg-alt)}
-.main img{width:100%;height:100%;object-fit:cover}
-.main .tl{position:absolute;top:20px;left:20px;display:flex;gap:8px}
-.main .prev,.main .next{position:absolute;top:50%;transform:translateY(-50%)}
-.main .prev{left:20px} .main .next{right:20px}
-.main .bl{position:absolute;left:20px;bottom:20px}
-.main .br{position:absolute;right:20px;bottom:20px}
-.main .vid{position:absolute;right:20px;bottom:20px;display:none;gap:6px;align-items:center;padding:6px 12px;background:#fff}
-.dots{display:none}
-.cap{padding-left:104px;margin-top:16px}
-.buy{display:flex;flex-direction:column;gap:28px;position:sticky;top:100px}
-.buy-head{display:flex;flex-direction:column;gap:16px}
-.row{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.switch{display:flex;align-items:center;gap:12px;white-space:nowrap;flex:none}
-.price{display:flex;align-items:baseline;gap:12px}
-.price b{font-weight:400;font-size:32px;line-height:1.2}
-.swatches{display:flex;gap:12px;margin-top:16px}
-.swatches{gap:16px}
-.sw{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:14px;color:var(--text-2)}
-.sw .dot{width:40px;height:40px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;border:1.5px solid transparent}
-.sw i{width:28px;height:28px;border-radius:50%;border:1px solid #D8C6CC}
-.sw.on{color:var(--text)}
-.sw.on .dot{border-color:var(--strong)}
-.sw.off{opacity:.5;cursor:not-allowed;color:var(--muted)}
-.sw.off .dot::after{content:"";position:absolute;width:30px;height:1.5px;background:var(--muted);transform:rotate(-45deg)}
-.sizes{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:16px}
-.size{height:48px;border:1px solid var(--border);background:#fff;font-size:16px}
-.size.on{border:1.5px solid var(--strong);font-weight:500}
-.size.off{background:var(--bg-alt);border-color:var(--bg-alt);color:var(--muted);text-decoration:line-through;cursor:not-allowed}
-.avail{display:flex;align-items:center;gap:12px;margin-top:16px}
-.avail::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--success)}
-.cta{display:flex;flex-direction:column;gap:12px}
-.cta .note{text-align:center}
-.util{display:flex;justify-content:center;gap:32px}
-.util button{display:flex;align-items:center;gap:8px;font-size:14px}
-.trust{background:var(--bg-alt);padding:24px;display:flex;flex-direction:column;gap:16px}
-.trust div{display:flex;align-items:center;gap:16px;font-size:14px}
-.links a{display:flex;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--border);text-decoration:none}
-.links a span{flex:1}
-
-/* sections */
-section.block{padding:96px 0}
-section.alt{background:var(--bg-alt)}
-section.top-line{border-top:1px solid var(--border)}
-.two{display:grid;grid-template-columns:1fr 448px;gap:96px}
-.two>*,.faq>*{min-width:0}
-.details-img{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
-.details-img img{aspect-ratio:2/3;object-fit:cover;width:100%}
-.details-img p{margin-top:12px}
-.specs dl div{display:flex;justify-content:space-between;gap:24px;padding:16px 0;border-bottom:1px solid var(--border);font-size:14px}
-.specs dt{color:var(--muted)} .specs dd{text-align:right}
-.steps>div{display:flex;gap:24px;padding:20px 0;border-bottom:1px solid var(--border)}
-.steps .n{font-weight:300;font-size:32px;line-height:1.1;color:var(--muted);letter-spacing:.04em}
-.stylist{display:flex;align-items:center;gap:20px}
-.stylist img{width:72px;height:72px;border-radius:50%;object-fit:cover}
-.loc{display:flex;gap:12px}
-.form{background:#fff;padding:40px;display:flex;flex-direction:column;gap:20px;align-self:start}
-.sel{display:flex;gap:12px;align-items:center;background:var(--bg-page);border:1px solid var(--border);padding:12px}
-.sel img{width:40px;height:60px;object-fit:cover}
-.form label{display:flex;flex-direction:column;gap:8px}
-.form input{height:52px;border:1px solid var(--border);padding:0 16px;font:inherit;color:var(--text)}
-.form input:focus{outline:1.5px solid var(--strong);outline-offset:-1px}
-.head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:48px}
-.rating{display:flex;align-items:center;gap:16px;margin-top:16px}
-.score{display:flex;align-items:center;gap:8px}
-.rating b{font-weight:400;font-size:32px}
-.stars{display:flex;gap:2px;color:var(--text)}
-.stars svg{width:16px;height:16px;fill:currentColor}
-.vdiv{width:1px;height:40px;background:var(--border)}
-.fitbar{width:200px;height:4px;background:var(--border);margin-top:8px}
-.fitbar i{display:block;height:100%;width:92%;background:var(--text)}
-.ugc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.ugc figure{position:relative}
-.ugc img{aspect-ratio:3/4;object-fit:cover;width:100%}
-.ugc figcaption{position:absolute;left:16px;bottom:16px;background:#fff;padding:5px 12px;font-size:14px}
-.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
-.review{background:var(--bg-alt);padding:32px;display:flex;flex-direction:column;gap:16px}
-.rv-c{display:flex;flex-direction:column;gap:4px}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.card{text-decoration:none;display:flex;flex-direction:column;gap:16px}
-.card .im{position:relative}
-.card img{aspect-ratio:3/4;object-fit:cover;width:100%}
-.card .fav{position:absolute;top:16px;right:16px;width:36px;height:36px}
-.card .meta{display:flex;flex-direction:column;gap:0}
-.card .meta span:last-child{margin-top:8px}
-.faq{display:grid;grid-template-columns:384px 1fr;gap:96px}
-.fit-l{display:flex;flex-direction:column;gap:24px;align-items:flex-start}
-.fit-l>.btn{margin-top:16px}
-.faq-l{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
-.faq-l .btn{margin-top:8px}
-.faq-l .btn{width:auto}
-details{border-bottom:1px solid var(--border);padding:24px 0}
-summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:20px;cursor:pointer}
-summary::-webkit-details-marker{display:none}
-
-details[open] .pm .p,details:not([open]) .pm .m{display:none}
-details p{margin-top:12px;color:var(--text-2)}
-.tabs{display:flex;gap:40px;align-items:flex-end}
-.tabs button{text-transform:uppercase;letter-spacing:.06em;font-size:20px;color:var(--muted);padding-bottom:12px;border-bottom:2px solid transparent}
-.tabs button.on{font-size:32px;color:var(--text);border-color:var(--strong);padding-bottom:12px;line-height:1.2}
-.navs{display:flex;align-items:center;gap:12px}
-.final{display:grid;grid-template-columns:1fr 1fr;background:var(--bg-inverse);color:#fff}
-.final img{width:100%;height:600px;object-fit:cover}
-.final .txt{padding:0 120px 0 96px;display:flex;flex-direction:column;justify-content:center;gap:24px}
-.final .txt p{opacity:.85;font-size:18px}
-.final .acts{display:flex;align-items:center;gap:32px;margin-top:8px}
-footer{background:var(--bg-alt);padding:80px 0 40px}
-.fcols{display:grid;grid-template-columns:repeat(4,1fr);gap:48px}
-.fcols ul{list-style:none;display:flex;flex-direction:column;gap:16px;margin-top:16px}
-.fbot{display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:24px;margin-top:56px}
-.sticky{display:none}
-.seg{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border)}
-.seg button{height:44px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2)}
-.seg button.on{background:var(--bg-inverse);color:#fff}
-.cfields{display:flex;flex-direction:column;gap:20px}
-.form textarea{border:1px solid var(--border);padding:16px 16px;font:inherit;color:var(--text);resize:vertical}
-.form textarea:focus{outline:1.5px solid var(--strong);outline-offset:-1px}
-.form[data-mode=consult] .w-only,.form[data-mode=wholesale] .c-only{display:none}
-.okic{width:56px;height:56px;border-radius:50%;background:var(--bg-alt);color:var(--strong);display:flex;align-items:center;justify-content:center}
-.cdone,.done{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
-.ovl{position:fixed;inset:0;background:rgba(43,34,38,.45);opacity:0;pointer-events:none;transition:opacity .25s;z-index:40}
-.ovl.on{opacity:1;pointer-events:auto}
-.drawer{position:fixed;top:0;right:0;bottom:0;width:520px;max-width:100%;background:#fff;z-index:50;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s ease;visibility:hidden}
-.drawer.on{transform:none;visibility:visible}
-.dw-head{display:flex;justify-content:space-between;align-items:flex-start;padding:28px 32px 20px}
-.dw-head h3{font-size:24px;text-transform:uppercase;letter-spacing:.06em;margin-top:6px}
-.dw-x:focus{outline:none}.dw-x:focus-visible{outline:2px solid var(--strong)}
-.dw-x{width:40px;height:40px;display:flex;align-items:center;justify-content:center;margin:-8px -8px 0 0}
-.dw-prog{height:2px;margin:0 32px;display:flex;gap:4px}
-.dw-prog i{flex:1;height:100%;background:var(--border);transition:background .3s}
-.dw-prog i.on{background:var(--strong)}
-.dw-body{flex:1;overflow-y:auto;padding:28px 32px}
-.step{display:flex;flex-direction:column;gap:28px}
-.step[hidden]{display:none}
-.dw-foot{display:grid;grid-template-columns:1fr 2fr;gap:12px;padding:20px 32px 28px;border-top:1px solid var(--border)}
-.dw-foot .btn{height:52px}
-.dw-dress{display:flex;gap:16px;align-items:center;background:var(--bg-alt);padding:12px}
-.dw-dress img{width:56px;height:84px;object-fit:cover}
-.drawer .sizes{grid-template-columns:repeat(5,1fr)}
-.cities{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.cities button{padding:12px 16px;border:1px solid var(--border);font-size:14px}
-.cities button.on{border:1.5px solid var(--strong);font-weight:500}
-.salons{display:flex;flex-direction:column;margin-top:12px;border:1px solid var(--border)}
-.salon{display:flex;gap:16px;padding:16px;border-bottom:1px solid var(--border);cursor:pointer;text-align:left}
-.salon:last-child{border-bottom:0}
-.salon .rd{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--muted);flex:none;margin-top:2px;position:relative}
-.salon.on{background:var(--bg-alt)}
-.salon.on .rd{border-color:var(--strong)}
-.salon.on .rd::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--strong)}
-.salon .nm{font-weight:500}
-.maplink{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-size:14px;text-decoration:underline;text-underline-offset:3px;color:var(--strong)}
-.maplink .ic{width:16px;height:16px}
-.cal{border:1px solid var(--border);padding:16px}
-.cal-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.cal-h b{font-weight:500;text-transform:capitalize}
-.cal-w,.cal-g{display:grid;grid-template-columns:repeat(7,1fr);text-align:center}
-.cal-w span{font-size:12px;color:var(--muted);padding:6px 0}
-.cal-g button{height:40px;font-size:15px}
-.cal-g button:disabled{color:#CBB7BD;cursor:default}
-.cal-g button.on{background:var(--bg-inverse);color:#fff}
-.slot-g{margin-top:8px}
-.slot-g p{margin:16px 0 8px}
-.slot-r{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.slot-r button{height:44px;border:1px solid var(--border);font-size:15px}
-.slot-r button:disabled{background:var(--bg-alt);border-color:var(--bg-alt);color:#CBB7BD;cursor:not-allowed}
-.slot-r button.on{border:1.5px solid var(--strong);font-weight:500}
-.dform{display:flex;flex-direction:column;gap:18px}
-.dform label{display:flex;flex-direction:column;gap:8px}
-.dform input:not([type=checkbox]){height:52px;border:1px solid var(--border);padding:0 16px;font:inherit;color:var(--text)}
-.dform input:focus{outline:1.5px solid var(--strong);outline-offset:-1px}
-.dform .chk{flex-direction:row;align-items:flex-start;gap:12px}
-.dform .chk input{width:20px;height:20px;accent-color:var(--strong);flex:none;margin-top:2px}
-.sum{background:var(--bg-alt);padding:20px;display:flex;flex-direction:column;gap:12px;width:100%}
-.sum div{display:grid;grid-template-columns:110px 1fr;gap:12px;font-size:14px}
-.sum dt{color:var(--muted)}
-body.lock{overflow:hidden}
-.logo img{height:52px;width:auto;display:block;margin:0 auto}
-.flogo img{height:56px;margin:0}
-.dd{position:relative}
-.dd-t{display:flex;align-items:center;gap:6px;font-size:15px;letter-spacing:.02em;padding:6px 0}
-.dd-t .chev{width:16px;height:16px;transition:transform .2s}
-.dd.open .dd-t .chev{transform:rotate(180deg)}
-.dd-m{position:absolute;top:calc(100% + 12px);left:-20px;min-width:260px;background:#fff;border:1px solid var(--border);box-shadow:var(--shadow-pop);padding:8px 0;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(-4px);transition:.18s;z-index:30}
-.dd.open .dd-m{opacity:1;visibility:visible;transform:none}
-.dd-m a{padding:12px 20px;font-size:15px;color:var(--text)}
-.dd-m a.on{color:var(--strong);font-weight:500}
-.lang .dd-t{font-size:12px;padding:0}
-.lang .dd-m{left:-12px;min-width:180px;top:calc(100% + 12px)}
-.mmenu{position:fixed;inset:0;background:#fff;z-index:55;display:flex;flex-direction:column;transform:translateX(-100%);transition:transform .3s;visibility:hidden}
-.mmenu.on{transform:none;visibility:visible}
-.mm-head{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--border)}
-.mm-head .logo img{height:40px;margin:0}
-.mm-body{flex:1;overflow-y:auto;padding:8px 20px 32px}
-.mm-body summary{font-size:18px;padding:4px 0}
-.mm-l{display:flex;flex-direction:column;margin-top:8px}
-.mm-l a{padding:12px 0;font-size:16px;color:var(--text-2)}
-.mm-l a.on{color:var(--strong);font-weight:500}
-.mm-links{display:flex;flex-direction:column;gap:16px;padding:24px 0;border-bottom:1px solid var(--border)}
-.mm-lang{display:flex;gap:20px;padding-top:24px}
-.mm-lang a{color:var(--muted)} .mm-lang a.on{color:var(--text)}
-.fav,.favmain{transition:transform .15s}
-.fav:active,.favmain:active{transform:scale(.92)}
-.fav.on svg,.favmain.on svg{fill:var(--strong);stroke:var(--strong)}
-.favhead{position:relative}
-.cnt{position:absolute;top:-6px;right:-8px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--strong);color:#fff;font-size:11px;line-height:18px;text-align:center}
-.toast{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);background:var(--text);color:#fff;padding:12px 20px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:60}
-.toast.on{opacity:1;transform:translate(-50%,0)}
-@media (max-width:1100px){.toast{bottom:110px}}
-.form.lead .stylist{align-items:flex-start;gap:16px}
-.form.lead .stylist img{width:56px;height:56px}
-.b2b{border-top:1px solid var(--border)}
-.perks{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:28px 32px}
-.perks li{display:flex;gap:16px;align-items:flex-start}
-.perks .ic{color:var(--strong);margin-top:2px}
-.b2b .form{background:var(--bg-alt)}
-.b2b .form input{background:#fff}
-
-/* mobile */
-@media (max-width:1100px){
-  :root{--pad:20px;--gap:24px}
-  body{font-size:16px}
-  .lead{font-size:16px}
-  .topbar,.crumbs,.navbar .left .dd{display:none}
-  .logo img{height:40px}
-  .navbar .wrap{grid-template-columns:1fr auto 1fr;padding-top:16px;padding-bottom:16px}
-  .burger{display:block}
-  .navbar .right{gap:16px}
-  .navbar .right .acc{display:none}
-  .logo b{font-size:20px} .logo small{font-size:7px}
-  .crumbs-m{display:flex;align-items:center;gap:8px;padding:12px 20px;font-size:14px;color:var(--text-2)}
-  .hero.wrap{display:block;padding:0 0 48px}
-  .gallery{display:block}
-  .thumbs,.cap{display:none}
-  .main{width:100%;height:auto;aspect-ratio:3/4}
-  .main .prev,.main .next{width:40px;height:40px}
-  .main .prev{left:16px}.main .next{right:16px}
-  .main .tl{top:16px;left:16px}
-  .main .bl,.main .br{display:none}
-  .main .vid{display:flex;right:16px;bottom:16px}
-  .dots{display:flex;gap:6px;position:absolute;left:16px;bottom:26px}
-  .dots i{width:6px;height:2px;background:#fff;opacity:.6}
-  .dots i.on{width:20px;opacity:1}
-  .buy{position:static;padding:24px 20px 0;gap:24px}
-  .buy-head{gap:12px}
-  .buy-head .price{margin-top:12px}
-  h1.display{font-size:32px}
-  .vdiv{display:none}
-  h2{font-size:24px}
-  .price b{font-size:28px}
-  .sizes{grid-template-columns:repeat(5,1fr)}
-  section.block{padding:48px 0}
-  .two,.faq{grid-template-columns:1fr;gap:32px}
-  .faq{display:flex;flex-direction:column;gap:16px}
-  .faq-l{display:contents}
-  .faq-l h2{order:1}.faq-l p{order:2}.faq>div:last-child{order:3}.faq-l .btn{order:4;margin-top:16px;width:100%}
-  .details-img{display:flex;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory}
-  .details-img figure{flex:0 0 150px}
-  .form{padding:24px 20px}
-  .head{flex-direction:column;align-items:flex-start;margin-bottom:24px;gap:16px}
-  .rating{flex-wrap:wrap}
-  .ugc,.cards{display:flex;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;margin-right:-20px;padding-right:20px}
-  .ugc figure{flex:0 0 140px}
-  .cards .card{flex:0 0 160px;scroll-snap-align:start}
-  .reviews{grid-template-columns:1fr}
-  .perks{grid-template-columns:1fr;gap:20px}
-  .review:nth-child(n+2){display:none}
-  .review{padding:20px}
-  summary{font-size:16px}
-  .tabs button:not(.on){display:none}
-  .tabs button.on{font-size:24px;border:0;padding:0}
-  .navs .circ{display:none}
-  .final{grid-template-columns:1fr}
-  .final img{height:300px}
-  .final .txt{padding:32px 20px 40px;gap:16px}
-  .final .acts{flex-direction:column;align-items:stretch;gap:16px}
-  .final .acts .btn{width:100%}
-  .fcols{grid-template-columns:1fr;gap:28px}
-  .fbot{flex-direction:column;gap:12px;margin-top:28px}
-  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;align-items:center;gap:12px;padding:12px 16px calc(16px + env(safe-area-inset-bottom));background:#fff;box-shadow:var(--shadow-bar);transform:translateY(110%);transition:transform .25s}
-  .sticky.show{transform:none}
-  .sticky .p{line-height:1.3}
-  .sticky .p b{font-weight:500}
-  .sticky .btn{flex:1;padding:0 12px}
-  .drawer{width:100%}
-  .dw-head{padding:20px 20px 16px}.dw-prog{margin:0 20px}.dw-body{padding:24px 20px}.dw-foot{padding:16px 20px calc(16px + env(safe-area-inset-bottom))}
-}
-@media (min-width:1101px) and (max-width:1440px){
-  :root{--pad:60px}
-  .hero{grid-template-columns:minmax(0,704px) 1fr}
-  .gallery{grid-template-columns:88px minmax(0,600px)}
-  .main{width:100%;height:auto;aspect-ratio:2/3}
-}
-/* ---------- interaction states ---------- */
-:where(a,button,input,textarea,summary,[tabindex="0"]):focus-visible{outline:2px solid var(--strong);outline-offset:2px}
-.circ,.size,.sw .dot,.cities button,.slot-r button,.cal-g button,.salon,.dd-t,.dd-m a,.links a,.util button,.thumbs button,.tabs button,.u,summary,.card img,.mm-l a{transition:background-color .15s ease-out,border-color .15s ease-out,color .15s ease-out,opacity .15s ease-out,transform .3s ease-out}
-.btn:active:not(:disabled){transform:scale(.98)}
-.btn-primary:active:not(:disabled){background:var(--strong-press)}
-.btn:disabled,.btn[aria-disabled="true"]{opacity:.4;cursor:not-allowed;transform:none}
-.main:hover .circ:disabled,.circ:disabled,.fav:disabled,.favmain:disabled,.cities button:disabled,.dd-t:disabled{opacity:.4;cursor:not-allowed}
-button:disabled{cursor:not-allowed}
-@media (hover:hover){
-  .btn-primary:hover:not(:disabled){background:var(--strong-hover)}
-  .btn-secondary:hover:not(:disabled){background:var(--bg-alt)}
-  .btn-tonal:hover:not(:disabled){background:var(--alt-hover)}
-  .btn-inverse:hover:not(:disabled){background:var(--bg-alt)}
-  .circ:not(:disabled):hover{background:var(--bg-alt)}
-  .circ.line:not(:disabled):hover{border-color:var(--strong);background:var(--bg-alt)}
-  .main .prev,.main .next,.main .br{opacity:0;transition:opacity .2s ease-out,background-color .15s ease-out,transform .2s ease-out}
-  .main:hover .prev,.main:hover .next,.main:hover .br,.main:focus-within .prev,.main:focus-within .next,.main:focus-within .br{opacity:1}
-  .main .circ{cursor:pointer}
-  .main .prev:hover,.main .next:hover{background:#fff;transform:translateY(-50%) scale(1.06)}
-  .main .br:hover,.card .fav:hover{transform:scale(1.06)}
-  .fav:not(:disabled):hover svg,.favmain:not(:disabled):hover svg{stroke:var(--strong)}
-  .favmain:hover,.util button:hover{color:var(--strong)}
-  .size:not(.off):not(.on):hover{border-color:var(--muted)}
-  .sw:not(.off):not(.on):hover .dot{border-color:var(--border)}
-  .cities button:not(.on):not(:disabled):hover{border-color:var(--muted)}
-  .slot-r button:not(:disabled):not(.on):hover{border-color:var(--muted)}
-  .cal-g button:not(:disabled):not(.on):hover{background:var(--bg-alt)}
-  .salon:not(.on):hover{background:#FDF7F9}
-  .maplink:hover{color:var(--strong-hover)}
-  .dd-t:hover,.navbar .right button:hover,.tabs button:not(.on):hover{color:var(--strong)}
-  .dd-m a:hover{background:var(--bg-alt)}
-  .links a:hover span,.links a:hover .ic{color:var(--strong)}
-  .u:hover,.crumbs a:hover,.topbar nav a:hover,footer a:hover,.mm-l a:hover{color:var(--strong)}
-  summary:hover{color:var(--strong)}
-  .thumbs button:hover{opacity:1}
-  .card:hover img{transform:scale(1.03)}
-  .card:hover .meta span:first-child{color:var(--strong)}
-  .dw-x:hover,#mmClose:hover{color:var(--strong)}
-}
-.card .im{overflow:hidden}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
-}
-</style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 
@@ -444,10 +46,11 @@ button:disabled{cursor:not-allowed}
   </div></div>
   <div class="navbar"><div class="wrap">
     <div class="left"><button class="burger" aria-label="Меню"><svg class="ic"><use href="#i-menu"/></svg></button><div class="dd"><button class="dd-t" aria-haspopup="true" aria-expanded="false">Весільні сукні<svg class="ic chev"><use href="#i-down"/></svg></button><div class="dd-m" role="menu"><a href="#" role="menuitem">Усі сукні</a><a href="#" role="menuitem">Endless Grace 2027</a><a href="#" role="menuitem" class="on">Dazzle 2026</a><a href="#" role="menuitem">Lumiere 2026</a><a href="#" role="menuitem">Dreams 2025</a><a href="#" role="menuitem">Muse 2024</a></div></div><div class="dd"><button class="dd-t" aria-haspopup="true" aria-expanded="false">Аксесуари<svg class="ic chev"><use href="#i-down"/></svg></button><div class="dd-m" role="menu"><a href="#" role="menuitem">Усі аксесуари</a><a href="#" role="menuitem">Біжутерія та прикраси для волосся</a><a href="#" role="menuitem">Фати 2026</a><a href="#" role="menuitem">Фати 2023</a></div></div></div>
-    <a class="logo" href="#"><img src="assets/logo-jeorjett.png" alt="Jeorjett Fashion Group"></a>
+    <a class="logo" href="index.html"><img src="assets/logo-jeorjett.png" alt="Jeorjett Fashion Group"></a>
     <div class="right">
       <button aria-label="Пошук"><svg class="ic"><use href="#i-search"/></svg></button>
       <button aria-label="Обране" class="favhead"><svg class="ic"><use href="#i-heart"/></svg><span class="cnt" id="favCnt" hidden>0</span></button>
+      <a href="fitting.html" class="fithead" aria-label="Примірка"><svg class="ic"><use href="#i-hanger"/></svg><span class="cnt" id="fitCnt" hidden>0</span></a>
       <button class="acc" aria-label="Кабінет"><svg class="ic"><use href="#i-user"/></svg></button>
     </div>
   </div></div>
@@ -506,7 +109,8 @@ button:disabled{cursor:not-allowed}
       </div>
 
       <div class="cta">
-        <button class="btn btn-primary" data-fit>Записатися на примірку</button>
+        <button class="btn btn-primary" id="addFit" data-addfit>Додати до примірки</button>
+        <p class="infit" id="inFit" hidden><svg class="ic"><use href="#i-check"/></svg><span>У списку примірки · <span id="inFitSel">44 · айворі</span></span><button type="button" id="rmFit" class="u">Прибрати</button></p>
         <button class="btn btn-secondary" data-contact="consult">Отримати консультацію</button>
       </div>
       <div class="util">
@@ -557,14 +161,14 @@ button:disabled{cursor:not-allowed}
     <div class="fit-l">
       <div>
         <h2>Як проходить примірка</h2>
-        <p class="sec lead">Примірка безкоштовна і ні до чого не зобов’язує. Ми підготуємо сукню вашого розміру та кілька схожих моделей.</p>
+        <p class="sec lead">Примірка безкоштовна і ні до чого не зобов’язує. Додайте до списку до 5 суконь, і ми підготуємо їх у вашому розмірі до візиту.</p>
       </div>
       <div class="steps" style="align-self:stretch">
-        <div><span class="n">01</span><div><h3>Оберіть салон, дату й час</h3><p class="sec">2 хвилини онлайн, без дзвінків</p></div></div>
-        <div><span class="n">02</span><div><h3>Менеджер підтвердить запис</h3><p class="sec">Зателефонує протягом 15 хвилин, щоб уточнити деталі</p></div></div>
-        <div><span class="n">03</span><div><h3>Приміряйте та оберіть деталі</h3><p class="sec">Шлейф, накидка, підгонка: обговорюємо на місці</p></div></div>
+        <div><span class="n">01</span><div><h3>Додайте сукні до примірки</h3><p class="sec">До 5 моделей за один візит, розмір можна уточнити пізніше</p></div></div>
+        <div><span class="n">02</span><div><h3>Оберіть салон, дату й час</h3><p class="sec">2 хвилини онлайн, без дзвінків</p></div></div>
+        <div><span class="n">03</span><div><h3>Менеджер підтвердить запис</h3><p class="sec">Зателефонує протягом 15 хвилин, щоб уточнити деталі</p></div></div>
       </div>
-      <button class="btn btn-primary" data-fit style="width:auto">Записатися на примірку</button>
+      <button class="btn btn-primary" data-addfit style="width:auto">Додати до примірки</button>
     </div>
     <form class="form lead" id="consult" novalidate>
       <div class="stylist"><img src="https://lucesposa.com/_nuxt/image-anna.-CMbvi40.jpg" alt="Стилістка Ганна"><div><h3>Залишились питання?</h3><p class="s sec">Ганна, стилістка шоуруму, відповість про модель, розмір і терміни пошиття</p></div></div>
@@ -640,10 +244,10 @@ button:disabled{cursor:not-allowed}
       <div class="navs"><a class="u" href="#">Вся колекція</a><span style="width:12px"></span><button class="circ line" aria-label="Назад"><svg class="ic sm"><use href="#i-left"/></svg></button><button class="circ line" aria-label="Вперед"><svg class="ic sm"><use href="#i-right"/></svg></button></div>
     </div>
     <div class="cards">
-      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Bijou/Bijou_(4).jpg?width=600" alt="J-1166"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button></div><div class="meta"><span>J-1166</span><span class="s muted">Dazzle 2026 · Русалка</span><span>39 900 ₴</span></div></a>
-      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Debora/Debora_(1).jpg?width=600" alt="J-1167"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button></div><div class="meta"><span>J-1167</span><span class="s muted">Dazzle 2026 · Пряма</span><span>36 500 ₴</span></div></a>
-      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Elegance/Elegance_(6ROTATE).jpg?width=600" alt="J-1170"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button></div><div class="meta"><span>J-1170</span><span class="s muted">Dazzle 2026 · Русалка</span><span>44 900 ₴</span></div></a>
-      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Gabi/Gabi_(2).jpg?width=600" alt="J-1172"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button></div><div class="meta"><span>J-1172</span><span class="s muted">Dazzle 2026 · Корсет</span><span>41 200 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Bijou/Bijou_(4).jpg?width=600" alt="J-1166"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button><button type="button" class="circ fitb" data-fitadd="J-1166" aria-label="Додати до примірки" aria-pressed="false"><svg class="ic sm"><use href="#i-hanger"/></svg></button></div><div class="meta"><span>J-1166</span><span class="s muted">Dazzle 2026 · Русалка</span><span>39 900 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Debora/Debora_(1).jpg?width=600" alt="J-1167"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button><button type="button" class="circ fitb" data-fitadd="J-1167" aria-label="Додати до примірки" aria-pressed="false"><svg class="ic sm"><use href="#i-hanger"/></svg></button></div><div class="meta"><span>J-1167</span><span class="s muted">Dazzle 2026 · Пряма</span><span>36 500 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Elegance/Elegance_(6ROTATE).jpg?width=600" alt="J-1170"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button><button type="button" class="circ fitb" data-fitadd="J-1170" aria-label="Додати до примірки" aria-pressed="false"><svg class="ic sm"><use href="#i-hanger"/></svg></button></div><div class="meta"><span>J-1170</span><span class="s muted">Dazzle 2026 · Русалка</span><span>44 900 ₴</span></div></a>
+      <a class="card" href="#"><div class="im"><img loading="lazy" src="https://luce.b-cdn.net/storage/shop/category/JardindeLumiere/Gabi/Gabi_(2).jpg?width=600" alt="J-1172"><button type="button" class="circ fav" aria-label="Додати в обране" aria-pressed="false"><svg class="ic sm"><use href="#i-heart"/></svg></button><button type="button" class="circ fitb" data-fitadd="J-1172" aria-label="Додати до примірки" aria-pressed="false"><svg class="ic sm"><use href="#i-hanger"/></svg></button></div><div class="meta"><span>J-1172</span><span class="s muted">Dazzle 2026 · Корсет</span><span>41 200 ₴</span></div></a>
     </div>
   </div></section>
 
@@ -653,7 +257,7 @@ button:disabled{cursor:not-allowed}
       <p class="caps" style="opacity:1;font-size:12px">Персональний підбір</p>
       <h2>Не впевнені, що це ваша сукня?</h2>
       <p>Розкажіть про дату весілля та побажання, і стилістка підбере 3–5 моделей і зателефонує протягом 15 хвилин.</p>
-      <div class="acts"><button class="btn btn-inverse" data-fit>Записатися на примірку</button></div>
+      <div class="acts"><a class="btn btn-inverse" href="fitting.html">Записатися на примірку</a></div>
     </div>
   </section>
 
@@ -700,7 +304,7 @@ button:disabled{cursor:not-allowed}
 </div></footer>
 
 <div class="mmenu" id="mmenu" aria-hidden="true">
-  <div class="mm-head"><a class="logo" href="#"><img src="assets/logo-jeorjett.png" alt="Jeorjett Fashion Group"></a><button class="dw-x" id="mmClose" aria-label="Закрити меню"><svg class="ic"><use href="#i-close"/></svg></button></div>
+  <div class="mm-head"><a class="logo" href="index.html"><img src="assets/logo-jeorjett.png" alt="Jeorjett Fashion Group"></a><button class="dw-x" id="mmClose" aria-label="Закрити меню"><svg class="ic"><use href="#i-close"/></svg></button></div>
   <div class="mm-body">
     <details open><summary>Весільні сукні <svg class="ic pm" aria-hidden="true"><use class="p" href="#i-plus"/><use class="m" href="#i-minus"/></svg></summary><div class="mm-l"><a href="#" role="menuitem">Усі сукні</a><a href="#" role="menuitem">Endless Grace 2027</a><a href="#" role="menuitem" class="on">Dazzle 2026</a><a href="#" role="menuitem">Lumiere 2026</a><a href="#" role="menuitem">Dreams 2025</a><a href="#" role="menuitem">Muse 2024</a></div></details>
     <details><summary>Аксесуари <svg class="ic pm" aria-hidden="true"><use class="p" href="#i-plus"/><use class="m" href="#i-minus"/></svg></summary><div class="mm-l"><a href="#" role="menuitem">Усі аксесуари</a><a href="#" role="menuitem">Біжутерія та прикраси для волосся</a><a href="#" role="menuitem">Фати 2026</a><a href="#" role="menuitem">Фати 2023</a></div></details>
@@ -708,58 +312,15 @@ button:disabled{cursor:not-allowed}
     <div class="mm-lang caps"><a href="#" class="on">UA</a><a href="#">RO</a><a href="#">EN</a><a href="#">RU</a></div>
   </div>
 </div>
-<div class="ovl" id="ovl"></div>
-<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dwTitle" aria-hidden="true">
-  <div class="dw-head">
-    <div><p class="caps muted" id="dwStep">Крок 1 / 3</p><h3 id="dwTitle">Сукня і салон</h3></div>
-    <button class="dw-x" id="dwClose" aria-label="Закрити"><svg class="ic"><use href="#i-close"/></svg></button>
-  </div>
-  <div class="dw-prog" id="dwBar"><i></i><i></i><i></i></div>
-  <div class="dw-body" id="dwBody">
-    <div class="step" data-step="1">
-      <div class="dw-dress"><img src="https://luce.b-cdn.net/storage/shop/category/LaBoheme2026/Amanda/Amanda(1).jpg?width=200" alt=""><div><p>Весільна сукня J-1165</p><p class="s muted">Колекція Dazzle 2026</p></div></div>
-      <div><p><span class="caps muted">Колір</span>&nbsp; <span class="s" id="dColorName">Айворі</span></p><div class="swatches" id="dSwatches"></div></div>
-      <div><div class="row"><p><span class="caps muted">Розмір EU</span>&nbsp; <span class="s" id="dSizeName">44</span></p><a class="s u" href="#" onclick="return false">Таблиця розмірів</a></div><div class="sizes" id="dSizes"></div></div>
-      <div class="rule"></div>
-      <div><p class="caps muted">Місто</p><div class="cities" id="dCities"></div></div>
-      <div><p class="caps muted">Салон</p><div class="salons" id="dSalons"></div></div>
-    </div>
-    <div class="step" data-step="2" hidden>
-      <div class="cal">
-        <div class="cal-h"><button type="button" class="circ line" id="calPrev" aria-label="Попередній місяць"><svg class="ic sm"><use href="#i-left"/></svg></button><b id="calTitle"></b><button type="button" class="circ line" id="calNext" aria-label="Наступний місяць"><svg class="ic sm"><use href="#i-right"/></svg></button></div>
-        <div class="cal-w"><span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Нд</span></div>
-        <div class="cal-g" id="calGrid"></div>
-      </div>
-      <div id="slots"><p class="s muted">Оберіть дату, щоб побачити вільний час</p></div>
-    </div>
-    <div class="step" data-step="3" hidden>
-      <form id="dForm" class="dform" novalidate>
-        <label><span class="caps muted">Ім’я та прізвище</span><input name="name" required placeholder="Олена Коваль"></label>
-        <label><span class="caps muted">Телефон</span><input name="phone" type="tel" required placeholder="+380"></label>
-        <label><span class="caps muted">Email · необов’язково</span><input name="email" type="email" placeholder="name@mail.com"></label>
-        <label><span class="caps muted">Дата весілля · необов’язково</span><input name="wd" placeholder="дд.мм.рррр"></label>
-        <label class="chk"><input type="checkbox" name="ok" required><span class="s">Я погоджуюсь на обробку персональних даних та з <a class="u" href="#" onclick="return false">політикою конфіденційності</a></span></label>
-      </form>
-      <div class="sum" id="dSum"></div>
-    </div>
-    <div class="step" data-step="4" hidden>
-      <div class="done">
-        <span class="okic"><svg class="ic"><use href="#i-check"/></svg></span>
-        <h3>Заявку на примірку прийнято</h3>
-        <p class="sec">Менеджер зв’яжеться з вами протягом 15 хвилин, щоб уточнити деталі та підтвердити запис.</p>
-        <div class="sum" id="dSum2"></div>
-      </div>
-    </div>
-  </div>
-  <div class="dw-foot"><button class="btn btn-secondary" id="dwBack">Назад</button><button class="btn btn-primary" id="dwNext">Далі</button></div>
-</aside>
+
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="sticky" id="sticky">
   <div class="p"><b>42 500 ₴</b><br><span class="s muted" id="stickySel">44 · айворі</span></div>
-  <button class="btn btn-primary" data-fit>Записатися на примірку</button>
+  <button class="btn btn-primary" id="stickyFit" data-addfit>Додати до примірки</button>
 </div>
 
+<script src="assets/site.js"></script>
 <script>
 const B='https://luce.b-cdn.net/storage/shop/category/LaBoheme2026/Amanda/Amanda';
 const photos=[
@@ -789,78 +350,35 @@ mainEl.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
 mainEl.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40)show(cur+(d<0?1:-1));});
 show(0);
 
-// ---------- selection (page + drawer share state) ----------
-const SIZES=[34,36,38,40,42,44,46,48,50],OFF_SIZES=[48,50];
+// ---------- selection ----------
+const ID='J-1165',OFF_SIZES=CATALOG[ID].off;
 const COLORS=[{n:'Білий',c:'#FFFFFF'},{n:'Айворі',c:'#F3ECDF'},{n:'Шампань',c:'#E6D3B8',off:true}];
-const st={size:44,color:'Айворі',city:'Чернівці',salon:0,date:null,time:null,step:1,view:null};
-function renderSizes(el,onPick){el.innerHTML='';SIZES.forEach(s=>{const b=document.createElement('button');b.type='button';b.className='size'+(s===st.size?' on':'')+(OFF_SIZES.includes(s)?' off':'');b.textContent=s;
+const saved=fit.get(ID);
+const st={size:saved&&saved.size?saved.size:44,color:saved?saved.color:'Айворі'};
+function renderSizes(el){el.innerHTML='';SIZES.forEach(s=>{const b=document.createElement('button');b.type='button';b.className='size'+(s===st.size?' on':'')+(OFF_SIZES.includes(s)?' off':'');b.textContent=s;
   if(OFF_SIZES.includes(s)){b.disabled=true;b.setAttribute('aria-label',s+', немає в наявності');}else b.setAttribute('aria-pressed',s===st.size);
   b.onclick=()=>{st.size=s;syncAll();};el.appendChild(b);});}
 function renderSwatches(el){el.innerHTML='';COLORS.forEach(o=>{const b=document.createElement('button');b.type='button';b.className='sw'+(o.n===st.color?' on':'')+(o.off?' off':'');
   b.innerHTML=`<span class="dot"><i style="background:${o.c}"></i></span><span class="lbl">${o.n}</span>`;if(o.off){b.disabled=true;b.setAttribute('aria-label',o.n+', немає в наявності');}
   b.onclick=()=>{st.color=o.n;syncAll();};el.appendChild(b);});}
+const selText=()=>st.size+' · '+st.color.toLowerCase();
 function syncAll(){
   renderSizes(document.getElementById('sizes'));renderSwatches(document.getElementById('swatches'));
-  renderSizes(document.getElementById('dSizes'));renderSwatches(document.getElementById('dSwatches'));
-  ['sizeName','dSizeName'].forEach(id=>document.getElementById(id).textContent=st.size);
-  ['colorName','dColorName'].forEach(id=>document.getElementById(id).textContent=st.color);
-  document.getElementById('stickySel').textContent=st.size+' · '+st.color.toLowerCase();}
+  document.getElementById('sizeName').textContent=st.size;document.getElementById('colorName').textContent=st.color;
+  document.getElementById('stickySel').textContent=selText();
+  // a dress already in the list follows the current size and colour
+  if(fit.has(ID)){const x=fit.get(ID);if(x.size!==st.size||x.color!==st.color)fit.update(ID,{size:st.size,color:st.color});}
+  paintCta();}
 
-// ---------- salons ----------
-const SALONS={
-  'Чернівці':[{n:'Шоурум Jeorjett',a:'Чернівці, вул. Головна, 120',h:'Пн–Сб 10:00–19:00'}],
-  'Київ':[{n:'Салон-партнер «Bianca»',a:'Київ, вул. Велика Васильківська, 45',h:'Щодня 10:00–20:00'},{n:'Салон-партнер «White Room»',a:'Київ, просп. Берестейський, 12',h:'Пн–Сб 11:00–19:00'}],
-  'Львів':[{n:'Салон-партнер «Aurelia»',a:'Львів, вул. Городоцька, 30',h:'Пн–Сб 10:00–19:00'}],
-  'Одеса':[{n:'Салон-партнер «Mare»',a:'Одеса, вул. Дерибасівська, 15',h:'Щодня 10:00–19:00'}]};
-const mapUrl=a=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(a);
-function renderCities(){const el=document.getElementById('dCities');el.innerHTML='';Object.keys(SALONS).forEach(c=>{const b=document.createElement('button');b.type='button';b.textContent=c;b.className=c===st.city?'on':'';b.onclick=()=>{st.city=c;st.salon=0;renderCities();renderSalons();};el.appendChild(b);});}
-function renderSalons(){const el=document.getElementById('dSalons');el.innerHTML='';SALONS[st.city].forEach((s,i)=>{const d=document.createElement('div');d.className='salon'+(i===st.salon?' on':'');d.setAttribute('role','radio');d.setAttribute('aria-checked',i===st.salon);d.tabIndex=0;
-  d.innerHTML=`<span class="rd"></span><div><p class="nm">${s.n}</p><p class="s sec">${s.a}</p><p class="s muted">${s.h}</p><a class="maplink" href="${mapUrl(s.a)}" target="_blank" rel="noopener">Відкрити в Google Maps<svg class="ic"><use href="#i-ext"/></svg></a></div>`;
-  d.onclick=e=>{if(e.target.closest('a'))return;st.salon=i;renderSalons();};d.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();d.click();}};el.appendChild(d);});}
-
-// ---------- calendar ----------
-const MONTHS=['січень','лютий','березень','квітень','травень','червень','липень','серпень','вересень','жовтень','листопад','грудень'];
-const today=new Date();today.setHours(0,0,0,0);const maxDay=new Date(today);maxDay.setDate(maxDay.getDate()+60);
-st.view=new Date(today.getFullYear(),today.getMonth(),1);
-const avail=d=>d>today&&d<=maxDay&&d.getDay()!==0;
-function renderCal(){const g=document.getElementById('calGrid');g.innerHTML='';const v=st.view;document.getElementById('calTitle').textContent=MONTHS[v.getMonth()]+' '+v.getFullYear();
-  const first=(new Date(v.getFullYear(),v.getMonth(),1).getDay()+6)%7;const days=new Date(v.getFullYear(),v.getMonth()+1,0).getDate();
-  for(let i=0;i<first;i++)g.appendChild(document.createElement('span'));
-  for(let d=1;d<=days;d++){const dt=new Date(v.getFullYear(),v.getMonth(),d);const b=document.createElement('button');b.type='button';b.textContent=d;b.disabled=!avail(dt);
-    if(st.date&&+st.date===+dt)b.className='on';b.onclick=()=>{st.date=dt;st.time=null;renderCal();renderSlots();updFoot();};g.appendChild(b);}
-  document.getElementById('calPrev').disabled=v<=new Date(today.getFullYear(),today.getMonth(),1);
-  document.getElementById('calNext').disabled=new Date(v.getFullYear(),v.getMonth()+1,1)>maxDay;}
-document.getElementById('calPrev').onclick=()=>{st.view=new Date(st.view.getFullYear(),st.view.getMonth()-1,1);renderCal();};
-document.getElementById('calNext').onclick=()=>{st.view=new Date(st.view.getFullYear(),st.view.getMonth()+1,1);renderCal();};
-const SLOTS={'Ранок':['09:00','09:30','10:00','10:30','11:00','11:30'],'День':['12:00','12:30','13:00','14:00','14:30','15:00'],'Вечір':['16:00','16:30','17:00','17:30','18:00','18:30']};
-function renderSlots(){const el=document.getElementById('slots');if(!st.date){return;}el.innerHTML='';let k=st.date.getDate();
-  Object.entries(SLOTS).forEach(([grp,ts])=>{const w=document.createElement('div');w.className='slot-g';w.innerHTML=`<p class="caps muted">${grp}</p>`;const r=document.createElement('div');r.className='slot-r';
-    ts.forEach((t,i)=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.disabled=((k+i*5)%4===0);if(st.time===t)b.className='on';b.onclick=()=>{st.time=t;renderSlots();updFoot();};r.appendChild(b);});w.appendChild(r);el.appendChild(w);});}
-
-// ---------- drawer flow ----------
-const drawer=document.getElementById('drawer'),ovl=document.getElementById('ovl'),nextB=document.getElementById('dwNext'),backB=document.getElementById('dwBack');
-const TITLES={1:'Сукня і салон',2:'Дата і час',3:'Ваші контакти',4:'Готово'};
-const fmtDate=d=>d.getDate()+' '+['січня','лютого','березня','квітня','травня','червня','липня','серпня','вересня','жовтня','листопада','грудня'][d.getMonth()]+', '+['нд','пн','вт','ср','чт','пт','сб'][d.getDay()];
-function summary(){const s=SALONS[st.city][st.salon];return `<dl><div><dt>Сукня</dt><dd>J-1165 · ${st.color.toLowerCase()} · ${st.size} EU</dd></div><div><dt>Салон</dt><dd>${s.n}<br><span class="sec">${s.a}</span><br><a class="maplink" href="${mapUrl(s.a)}" target="_blank" rel="noopener">Відкрити в Google Maps<svg class="ic"><use href="#i-ext"/></svg></a></dd></div><div><dt>Дата</dt><dd>${st.date?fmtDate(st.date):'—'}</dd></div><div><dt>Час</dt><dd>${st.time||'—'}</dd></div></dl>`;}
-const dForm=document.getElementById('dForm');
-function valid3(){const f=dForm.elements;return f.name.value.trim().length>1&&f.phone.value.replace(/\D/g,'').length>=9&&f.ok.checked;}
-function updFoot(){const s=st.step;nextB.disabled=(s===2&&!(st.date&&st.time))||(s===3&&!valid3());
-  nextB.textContent=s===3?'Записатися':s===4?'Повернутися до сукні':'Далі';backB.style.display=(s===1||s===4)?'none':'';
-  document.querySelector('.dw-foot').style.gridTemplateColumns=(s===1||s===4)?'1fr':'1fr 2fr';}
-function go(s){st.step=s;drawer.querySelectorAll('.step').forEach(x=>x.hidden=+x.dataset.step!==s);
-  document.getElementById('dwTitle').textContent=TITLES[s];document.getElementById('dwStep').textContent=s<4?'Крок '+s+' / 3':'Запис на примірку';
-  document.querySelectorAll('#dwBar i').forEach((b,k)=>b.classList.toggle('on',k<Math.min(s,3)));
-  if(s===2){renderCal();renderSlots();} if(s===3)document.getElementById('dSum').innerHTML=summary(); if(s===4)document.getElementById('dSum2').innerHTML=summary();
-  document.getElementById('dwBody').scrollTop=0;updFoot();}
-let lastFocus=null;
-function openFit(){lastFocus=document.activeElement;syncAll();renderCities();renderSalons();go(1);drawer.classList.add('on');ovl.classList.add('on');drawer.setAttribute('aria-hidden','false');document.body.classList.add('lock');stick();setTimeout(()=>document.getElementById('dwClose').focus(),300);}
-function closeFit(){drawer.classList.remove('on');ovl.classList.remove('on');drawer.setAttribute('aria-hidden','true');document.body.classList.remove('lock');if(st.step===4){st.date=null;st.time=null;dForm.reset();document.getElementById('slots').innerHTML='<p class="s muted">Оберіть дату, щоб побачити вільний час</p>';}stick();lastFocus&&lastFocus.focus();}
-document.querySelectorAll('[data-fit]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();openFit();}));
-document.getElementById('dwClose').onclick=closeFit;ovl.onclick=closeFit;
-addEventListener('keydown',e=>{if(e.key==='Escape'&&drawer.classList.contains('on'))closeFit();});
-nextB.onclick=()=>{if(st.step===4)return closeFit();if(st.step===3&&!valid3())return;go(st.step+1);};
-backB.onclick=()=>go(Math.max(1,st.step-1));
-dForm.addEventListener('input',updFoot);dForm.addEventListener('change',updFoot);
+// ---------- add to fitting ----------
+function paintCta(){const inList=fit.has(ID),n=fit.items.length;
+  document.querySelectorAll('[data-addfit]').forEach(b=>{b.textContent=inList?'Перейти до примірки · '+n:'Додати до примірки';});
+  document.getElementById('inFit').hidden=!inList;document.getElementById('inFitSel').textContent=selText();}
+document.querySelectorAll('[data-addfit]').forEach(b=>b.addEventListener('click',()=>{
+  if(fit.has(ID)){location.href='fitting.html';return;}
+  fit.add({id:ID,color:st.color,size:st.size});}));
+document.getElementById('rmFit').onclick=()=>{fit.remove(ID);say(ID+' прибрано з примірки');};
+document.addEventListener('fit:change',paintCta);
 
 // ---------- lead forms: consultation + wholesale ----------
 const forms={consult:document.getElementById('consult'),wholesale:document.getElementById('wform')};
@@ -870,43 +388,18 @@ Object.values(forms).forEach(f=>f.addEventListener('submit',e=>{e.preventDefault
 document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',()=>{const f=forms[b.dataset.contact];
   f.querySelectorAll('.cfields,.lead>p.s').forEach(n=>n.hidden=false);f.querySelector('.cdone').hidden=true;
   f.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});setTimeout(()=>f.elements.name.focus({preventScroll:true}),500);}));
-const cForm=forms.consult;
 
 // ---------- sticky bar (mobile) ----------
-const sticky=document.getElementById('sticky'),mainCta=document.querySelector('.cta .btn-primary');
+const sticky=document.getElementById('sticky'),mainCta=document.getElementById('addFit');
 const inView=el=>{const r=el.getBoundingClientRect();return r.top<innerHeight&&r.bottom>0;};
 function stick(){const c=mainCta.getBoundingClientRect();
-  const show=c.bottom<0&&!inView(forms.consult)&&!inView(forms.wholesale)&&!drawer.classList.contains('on');sticky.classList.toggle('show',show);}
+  sticky.classList.toggle('show',c.bottom<0&&!inView(forms.consult)&&!inView(forms.wholesale));}
 addEventListener('scroll',stick,{passive:true});addEventListener('resize',stick);
 
-// ---------- favourites ----------
-const favs=new Set();const toast=document.getElementById('toast');let tt;
-function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('on'),2000);}
-function toggleFav(key,btn,label){const on=!favs.has(key);on?favs.add(key):favs.delete(key);
-  document.querySelectorAll(`[data-fav="${CSS.escape(key)}"]`).forEach(b=>{b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);b.setAttribute('aria-label',on?'Прибрати з обраного':'Додати в обране');const s=b.querySelector('span');if(s&&b.classList.contains('favmain'))s.textContent=on?'Збережено':'Зберегти';});
-  const c=document.getElementById('favCnt');c.textContent=favs.size;c.hidden=!favs.size;say(on?label+': додано в обране':label+': прибрано з обраного');}
-document.querySelector('.favmain').dataset.fav='J-1165';
-document.querySelectorAll('.card').forEach(card=>{const b=card.querySelector('.fav');const name=card.querySelector('.meta span').textContent;b.dataset.fav=name;});
-document.querySelectorAll('[data-fav]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const k=b.dataset.fav;toggleFav(k,b,k==='J-1165'?'Сукня J-1165':k);}));
-// demo links: don't jump to top
-document.querySelectorAll('a[href="#"]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
-
-// ---------- dropdowns & mobile menu ----------
-document.querySelectorAll('.dd').forEach(dd=>{const t=dd.querySelector('.dd-t');let tm;
-  const set=o=>{dd.classList.toggle('open',o);t.setAttribute('aria-expanded',o);};
-  t.addEventListener('click',e=>{e.stopPropagation();const o=!dd.classList.contains('open');document.querySelectorAll('.dd.open').forEach(x=>x!==dd&&x.classList.remove('open'));set(o);});
-  dd.addEventListener('mouseenter',()=>{if(matchMedia('(hover:hover)').matches){clearTimeout(tm);set(true);}});
-  dd.addEventListener('mouseleave',()=>{if(matchMedia('(hover:hover)').matches)tm=setTimeout(()=>set(false),150);});
-  dd.querySelectorAll('.dd-m a').forEach(a=>a.addEventListener('click',()=>{if(dd.classList.contains('lang')){t.firstChild.textContent=a.dataset.code;dd.querySelectorAll('a').forEach(x=>x.classList.toggle('on',x===a));}set(false);}));});
-document.addEventListener('click',()=>document.querySelectorAll('.dd.open').forEach(d=>{d.classList.remove('open');d.querySelector('.dd-t').setAttribute('aria-expanded',false);}));
-addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.dd.open').forEach(d=>d.classList.remove('open'));});
-const mmenu=document.getElementById('mmenu');
-document.querySelector('.burger').onclick=()=>{mmenu.classList.add('on');mmenu.setAttribute('aria-hidden','false');document.body.classList.add('lock');setTimeout(()=>document.getElementById('mmClose').focus(),300);};
-document.getElementById('mmClose').onclick=()=>{mmenu.classList.remove('on');mmenu.setAttribute('aria-hidden','true');document.body.classList.remove('lock');document.querySelector('.burger').focus();};
-function trap(panel,e){if(e.key!=='Tab')return;const f=[...panel.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),textarea,[tabindex="0"]')].filter(x=>x.offsetParent!==null);if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}}
-drawer.addEventListener('keydown',e=>trap(drawer,e));
-mmenu.addEventListener('keydown',e=>{trap(mmenu,e);if(e.key==='Escape')document.getElementById('mmClose').click();});
-document.querySelectorAll('.mm-lang a').forEach(a=>a.addEventListener('click',()=>document.querySelectorAll('.mm-lang a').forEach(x=>x.classList.toggle('on',x===a))));
+// ---------- favourites keys ----------
+document.querySelector('.favmain').dataset.fav=ID;
+document.querySelectorAll('.card').forEach(card=>{card.querySelector('.fav').dataset.fav=card.querySelector('.meta span').textContent;});
+bindFavs();
 
 // tabs
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b)));
