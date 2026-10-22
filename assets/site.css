@@ -459,3 +459,8 @@ button:disabled{cursor:not-allowed}
 }
 .dw-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
 .fl #flDone{margin-bottom:32px}
+/* card actions appear on hover (desktop); stay visible when active or focused */
+@media (hover:hover) and (min-width:1101px){
+  .card .fav,.card .fitb{opacity:0;transition:opacity .2s ease-out,transform .2s ease-out,background-color .15s ease-out}
+  .card:hover .fav,.card:hover .fitb,.card:focus-within .fav,.card:focus-within .fitb,.card .fav.on,.card .fitb.on{opacity:1}
+}
