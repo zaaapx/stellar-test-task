@@ -7,7 +7,7 @@
 <meta name="description" content="Список суконь для примірки: до 5 моделей за один візит, запис у шоурум або салон-партнер.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -148,11 +148,11 @@
     </div>
     <div class="step" data-step="3" hidden>
       <form id="dForm" class="dform" novalidate>
-        <label><span class="caps muted">Ім’я та прізвище</span><input name="name" required placeholder="Олена Коваль"></label>
-        <label><span class="caps muted">Телефон</span><input name="phone" type="tel" required placeholder="+380"></label>
-        <label><span class="caps muted">Email · необов’язково</span><input name="email" type="email" placeholder="name@mail.com"></label>
-        <label><span class="caps muted">Дата весілля · необов’язково</span><input name="wd" placeholder="дд.мм.рррр"></label>
-        <label class="chk"><input type="checkbox" name="ok" required><span class="s">Я погоджуюсь на обробку персональних даних та з <a class="u" href="#" onclick="return false">політикою конфіденційності</a></span></label>
+        <label><span class="caps muted">Ім’я та прізвище<span class="req" aria-hidden="true">*</span></span><input name="name" required placeholder="Олена Коваль"></label>
+        <label><span class="caps muted">Телефон<span class="req" aria-hidden="true">*</span></span><input name="phone" type="tel" required placeholder="+380"></label>
+        <label><span class="caps muted">Email</span><input name="email" type="email" placeholder="name@mail.com"></label>
+        <label><span class="caps muted">Дата весілля</span><input name="wd" placeholder="дд.мм.рррр"></label>
+        <label class="chk"><input type="checkbox" name="ok" required><span class="s">Я погоджуюсь на обробку персональних даних та з <a class="u" href="#" onclick="return false">політикою конфіденційності</a><span class="req" aria-hidden="true">*</span></span></label>
       </form>
       <div class="sum" id="dSum"></div>
     </div>
