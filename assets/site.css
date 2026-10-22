@@ -264,7 +264,7 @@ body.lock{overflow:hidden}
 .fav:active,.favmain:active{transform:scale(.92)}
 .fav.on svg,.favmain.on svg{fill:var(--strong);stroke:var(--strong)}
 .favhead{position:relative}
-.cnt{position:absolute;top:-6px;right:-8px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--strong);color:#fff;font-size:11px;line-height:18px;text-align:center}
+.cnt{position:absolute;top:-6px;right:-8px;min-width:18px;height:18px;padding:0 4px;border-radius:9px;background:var(--strong);color:#fff;font-size:11px;line-height:18px;text-align:center}
 .toast{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);background:var(--text);color:#fff;padding:12px 20px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:60}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 @media (max-width:1100px){.toast{bottom:110px}}
@@ -419,7 +419,7 @@ button:disabled{cursor:not-allowed}
 .fl-price{margin-top:8px}
 .fl-opts{display:flex;gap:16px;margin-top:auto;padding-top:16px;flex-wrap:wrap}
 .fl-opts label{display:flex;flex-direction:column;gap:6px}
-.fl-opts select{height:44px;min-width:160px;border:1px solid var(--border);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232B2226' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/16px;padding:0 40px 0 14px;font:inherit;font-size:15px;color:var(--text);appearance:none;cursor:pointer}
+.fl-opts select{height:44px;min-width:160px;border:1px solid var(--border);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232B2226' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/16px;padding:0 40px 0 16px;font:inherit;font-size:15px;color:var(--text);appearance:none;cursor:pointer}
 .fl-opts select:focus-visible{outline:1.5px solid var(--strong);outline-offset:-1px}
 .fl-rm{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--muted);align-self:start;padding:4px 0}
 .fl-rm .ic{width:18px;height:18px}
@@ -472,5 +472,5 @@ button:disabled{cursor:not-allowed}
 .cards.rel .card{scroll-snap-align:start}
 @media (max-width:1100px){.navs .arrows{display:none}}
 .fl-empty .okic{background:#fff}
-.req{color:var(--strong);margin-left:3px;font-size:16px;line-height:0;font-weight:500;letter-spacing:0;vertical-align:-1px}
+.req{color:var(--strong);margin-left:4px;font-size:24px;line-height:0;font-weight:500;letter-spacing:0;vertical-align:-4px}
 .cfields>.req-note,.dform>.req-note{font-size:14px;color:var(--muted)}
