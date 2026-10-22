@@ -198,7 +198,6 @@ footer{background:var(--bg-alt);padding:80px 0 40px}
 .step[hidden]{display:none}
 .dw-foot{display:grid;grid-template-columns:1fr 2fr;gap:12px;padding:20px 32px 28px;border-top:1px solid var(--border)}
 .dw-foot .btn{height:52px}
-.dw-foot .btn:disabled{opacity:.4;cursor:not-allowed}
 .dw-dress{display:flex;gap:16px;align-items:center;background:var(--bg-alt);padding:12px}
 .dw-dress img{width:56px;height:84px;object-fit:cover}
 .drawer .sizes{grid-template-columns:repeat(5,1fr)}
@@ -355,24 +354,26 @@ body.lock{overflow:hidden}
 .circ,.size,.sw .dot,.cities button,.slot-r button,.cal-g button,.salon,.dd-t,.dd-m a,.links a,.util button,.thumbs button,.tabs button,.u,summary,.card img,.mm-l a{transition:background-color .15s ease-out,border-color .15s ease-out,color .15s ease-out,opacity .15s ease-out,transform .3s ease-out}
 .btn:active:not(:disabled){transform:scale(.98)}
 .btn-primary:active:not(:disabled){background:var(--strong-press)}
-.btn:disabled{cursor:not-allowed}
+.btn:disabled,.btn[aria-disabled="true"]{opacity:.4;cursor:not-allowed;transform:none}
+.circ:disabled,.fav:disabled,.favmain:disabled,.cities button:disabled,.dd-t:disabled{opacity:.4;cursor:not-allowed}
+button:disabled{cursor:not-allowed}
 @media (hover:hover){
   .btn-primary:hover:not(:disabled){background:var(--strong-hover)}
   .btn-secondary:hover:not(:disabled){background:var(--bg-alt)}
-  .btn-tonal:hover{background:var(--alt-hover)}
-  .btn-inverse:hover{background:var(--bg-alt)}
-  .circ:hover{background:var(--bg-alt)}
-  .circ.line:hover{border-color:var(--strong);background:var(--bg-alt)}
+  .btn-tonal:hover:not(:disabled){background:var(--alt-hover)}
+  .btn-inverse:hover:not(:disabled){background:var(--bg-alt)}
+  .circ:not(:disabled):hover{background:var(--bg-alt)}
+  .circ.line:not(:disabled):hover{border-color:var(--strong);background:var(--bg-alt)}
   .main .prev,.main .next,.main .br{opacity:0;transition:opacity .2s ease-out,background-color .15s ease-out,transform .2s ease-out}
   .main:hover .prev,.main:hover .next,.main:hover .br,.main:focus-within .prev,.main:focus-within .next,.main:focus-within .br{opacity:1}
   .main .circ{cursor:pointer}
   .main .prev:hover,.main .next:hover{background:#fff;transform:translateY(-50%) scale(1.06)}
   .main .br:hover,.card .fav:hover{transform:scale(1.06)}
-  .fav:hover svg,.favmain:hover svg{stroke:var(--strong)}
+  .fav:not(:disabled):hover svg,.favmain:not(:disabled):hover svg{stroke:var(--strong)}
   .favmain:hover,.util button:hover{color:var(--strong)}
   .size:not(.off):not(.on):hover{border-color:var(--muted)}
   .sw:not(.off):not(.on):hover .dot{border-color:var(--border)}
-  .cities button:not(.on):hover{border-color:var(--muted)}
+  .cities button:not(.on):not(:disabled):hover{border-color:var(--muted)}
   .slot-r button:not(:disabled):not(.on):hover{border-color:var(--muted)}
   .cal-g button:not(:disabled):not(.on):hover{background:var(--bg-alt)}
   .salon:not(.on):hover{background:#FDF7F9}
