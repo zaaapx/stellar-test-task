@@ -49,7 +49,7 @@ document.addEventListener('fit:change',renderFitCount);
 // ---------- toast ----------
 const toastEl=document.getElementById('toast');let toastT;
 function say(msg,link){toastEl.innerHTML='';const s=document.createElement('span');s.textContent=msg;toastEl.appendChild(s);
-  if(link){const a=document.createElement('a');a.href=link.href;a.textContent=link.label;toastEl.appendChild(a);}
+  if(link){const a=document.createElement('a');a.href=link.href;a.innerHTML=link.label+'<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg>';toastEl.appendChild(a);}
   toastEl.classList.toggle('link',!!link);toastEl.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>toastEl.classList.remove('on'),link?4000:2200);}
 
 // ---------- favourites ----------

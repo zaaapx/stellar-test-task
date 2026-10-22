@@ -405,7 +405,11 @@ button:disabled{cursor:not-allowed}
 .infit .ic{width:18px;height:18px;color:var(--success)}
 .infit button{margin-left:auto;font-size:14px;color:var(--muted)}
 .toast{display:flex;align-items:center;gap:16px}
-.toast a{color:#fff;text-decoration:underline;text-underline-offset:3px;font-weight:500;white-space:nowrap}
+.toast{padding:8px 8px 8px 20px}
+.toast:not(.link){padding:12px 20px}
+.toast a{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px 0 16px;background:#fff;color:var(--text);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;transition:background-color .15s ease-out}
+.toast a .ic{width:16px;height:16px}
+@media (hover:hover){.toast a:hover{background:var(--bg-alt)}}
 .toast.on.link{pointer-events:auto}
 .fl{padding-bottom:96px}
 .fl-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:40px}
