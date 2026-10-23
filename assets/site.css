@@ -131,11 +131,9 @@ section.top-line{border-top:1px solid var(--border)}
 .vdiv{width:1px;height:40px;background:var(--border)}
 .fitbar{width:200px;height:4px;background:var(--border);margin-top:8px}
 .fitbar i{display:block;height:100%;width:92%;background:var(--text)}
-.ugc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.ugc figure{position:relative}
-.ugc img{aspect-ratio:3/4;object-fit:cover;width:100%}
-.ugc figcaption{position:absolute;left:16px;bottom:16px;background:#fff;padding:5px 12px;font-size:14px}
-.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rv-ph{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rv-ph img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
 .review{background:var(--bg-alt);padding:32px;display:flex;flex-direction:column;gap:16px}
 .rv-c{display:flex;flex-direction:column;gap:4px}
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
@@ -320,13 +318,11 @@ body.lock{overflow:hidden}
   .form{padding:24px 20px}
   .head{flex-direction:column;align-items:flex-start;margin-bottom:24px;gap:16px}
   .rating{flex-wrap:wrap}
-  .ugc,.cards{display:flex;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;margin-right:-20px;padding-right:20px}
-  .ugc figure{flex:0 0 140px}
+  .reviews,.cards{display:flex;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;margin-right:-20px;padding-right:20px}
+  .review{flex:0 0 300px;scroll-snap-align:start}
   .cards .card{flex:0 0 160px;scroll-snap-align:start}
-  .reviews{grid-template-columns:1fr}
   .perks{grid-template-columns:1fr;gap:20px}
-  .review:nth-child(n+2){display:none}
-  .review{padding:20px}
+  .review{padding:24px}
   summary{font-size:16px}
   .tabs button:not(.on){display:none}
   .tabs button.on{font-size:24px;border:0;padding:0}
@@ -505,9 +501,9 @@ button:disabled{cursor:not-allowed}
 }
 @media (max-width:1100px){
   /* swipeable rows run to the screen edge instead of being cut by the page padding */
-  .details-img,.ugc,.cards{margin-right:calc(-1 * var(--pad));padding-right:var(--pad);scroll-padding-left:0;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
-  .details-img::-webkit-scrollbar,.ugc::-webkit-scrollbar,.cards::-webkit-scrollbar{display:none}
-  .details-img figure,.ugc figure{scroll-snap-align:start}
+  .details-img,.reviews,.cards{margin-right:calc(-1 * var(--pad));padding-right:var(--pad);scroll-padding-left:0;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
+  .details-img::-webkit-scrollbar,.reviews::-webkit-scrollbar,.cards::-webkit-scrollbar{display:none}
+  .details-img figure{scroll-snap-align:start}
   .details-img figure{flex:0 0 150px}
 }
 @media (max-width:1100px){
@@ -538,8 +534,10 @@ button:disabled{cursor:not-allowed}
 .toast{width:max-content;max-width:calc(100vw - 32px);justify-content:space-between}
 .toast span{white-space:nowrap}
 @media (max-width:1100px){
-  .toast{left:16px;right:16px;width:auto;max-width:none;transform:translateY(20px)}
+  /* slides up from the bottom edge; sits above the sticky bar when it is shown */
+  .toast{left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));width:auto;max-width:none;transform:translateY(calc(100% + 32px))}
   .toast.on{transform:none}
+  body:has(.sticky.show) .toast{bottom:calc(var(--sticky-h,84px) + 12px)}
   .toast span{white-space:normal}
 }
 .okic{flex:none}
