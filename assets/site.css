@@ -497,3 +497,8 @@ button:disabled{cursor:not-allowed}
   .details-img figure,.ugc figure{scroll-snap-align:start}
   .details-img figure{flex:0 0 150px}
 }
+@media (max-width:1100px){
+  /* compact card: actions 8px from the photo edge, stacked with 8px gap (Figma: Product card / Compact) */
+  .card .fav{top:8px;right:8px}
+  .card .fitb{top:52px;right:8px}
+}
