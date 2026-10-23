@@ -545,3 +545,7 @@ button:disabled{cursor:not-allowed}
 .okic{flex:none}
 /* on pink surfaces the icon circle is white so it stays visible */
 .b2b .form .okic,.fl-empty .okic,.sum~.okic{background:#fff}
+@media (max-width:1100px){
+  /* leave room for the sticky bar so the end of the page is not covered */
+  body:has(.sticky) footer{padding-bottom:calc(40px + 92px + env(safe-area-inset-bottom))}
+}
