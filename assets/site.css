@@ -132,7 +132,6 @@ section.top-line{border-top:1px solid var(--border)}
 .fitbar{width:200px;height:4px;background:var(--border);margin-top:8px}
 .fitbar i{display:block;height:100%;width:92%;background:var(--text)}
 .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.rv-ph{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .rv-ph img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
 .review{background:var(--bg-alt);padding:32px;display:flex;flex-direction:column;gap:16px}
 .rv-c{display:flex;flex-direction:column;gap:4px}
