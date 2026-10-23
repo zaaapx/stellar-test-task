@@ -542,3 +542,6 @@ button:disabled{cursor:not-allowed}
   .toast.on{transform:none}
   .toast span{white-space:normal}
 }
+.okic{flex:none}
+/* on pink surfaces the icon circle is white so it stays visible */
+.b2b .form .okic,.fl-empty .okic,.sum~.okic{background:#fff}
