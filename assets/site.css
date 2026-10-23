@@ -133,8 +133,9 @@ section.top-line{border-top:1px solid var(--border)}
 .fitbar i{display:block;height:100%;width:92%;background:var(--text)}
 .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .rv-ph img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
-.review{background:var(--bg-alt);padding:32px;display:flex;flex-direction:column;gap:16px}
+.review{background:var(--bg-alt);padding:24px;display:flex;flex-direction:column;gap:16px}
 .rv-c{display:flex;flex-direction:column;gap:4px}
+.review>p.s{margin-top:auto}
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .card{text-decoration:none;display:flex;flex-direction:column;gap:16px}
 .card .im{position:relative}
