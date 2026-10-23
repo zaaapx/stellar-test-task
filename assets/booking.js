@@ -2,19 +2,25 @@
 const listEl=document.getElementById('flList'),emptyEl=document.getElementById('flEmpty'),gridEl=document.getElementById('flGrid');
 const fitSticky=document.getElementById('sticky');
 
+let csUid=0;
+// custom select (same look as the header dropdowns)
+function csHTML(k,label,id,opts,val){const u='cs'+(++csUid);const cur=opts.find(o=>String(o.v)===String(val))||opts[0];
+  return `<div class="cs" data-k="${k}"><span class="caps muted" id="${u}l">${label}</span>
+    <button type="button" class="cs-t" aria-haspopup="listbox" aria-expanded="false" aria-controls="${u}m" aria-labelledby="${u}l ${u}v" data-key="${id}-${k}"><span id="${u}v">${cur.t}</span><svg class="ic chev" aria-hidden="true"><use href="#i-down"/></svg></button>
+    <ul class="cs-m" id="${u}m" role="listbox" tabindex="-1" aria-labelledby="${u}l">${opts.map(o=>`<li role="option" data-v="${o.v}" aria-selected="${String(o.v)===String(cur.v)}"${o.off?' aria-disabled="true"':''}>${o.t}</li>`).join('')}</ul></div>`;}
 function itemHTML(x){const d=CATALOG[x.id];
-  const sizeOpts=d.acc?'':['<option value="">Підберемо в салоні</option>'].concat(SIZES.map(s=>`<option value="${s}"${x.size===s?' selected':''}${d.off.includes(s)?' disabled':''}>${s}${d.off.includes(s)?' · немає':''}</option>`)).join('');
-  const colorOpts=d.colors.map(c=>`<option${x.color===c?' selected':''}>${c}</option>`).join('');
+  const colorOpts=d.colors.map(c=>({v:c,t:c}));
+  const sizeOpts=d.acc?[]:[{v:'',t:'Підберемо в салоні'}].concat(SIZES.map(s=>({v:s,t:d.off.includes(s)?s+' · немає':String(s),off:d.off.includes(s)})));
   return `<article class="fl-item" data-id="${x.id}">
     <a href="${d.url||'#'}"><img src="${d.img}" alt="${d.name}" width="120" height="180"></a>
     <div class="fl-info">
       <h3><a href="${d.url||'#'}">${d.name.replace(x.id,'<span style="white-space:nowrap">'+x.id+'</span>')}</a></h3>
       <p class="s muted">${metaOf(x.id)}</p>
       <p class="fl-price">${money(d.price)}</p>
-      <div class="fl-opts">
-        <label><span class="caps muted">Колір</span><select data-k="color" aria-label="Колір, ${x.id}">${colorOpts}</select></label>
-        ${d.acc?'':`<label><span class="caps muted">Розмір EU</span><select data-k="size" aria-label="Розмір, ${x.id}">${sizeOpts}</select></label>`}
-      </div>
+    </div>
+    <div class="fl-opts">
+      ${csHTML('color','Колір',x.id,colorOpts,x.color)}
+      ${d.acc?'':csHTML('size','Розмір EU',x.id,sizeOpts,x.size??'')}
     </div>
     <button type="button" class="fl-rm" aria-label="Прибрати ${x.id} з примірки"><svg class="ic"><use href="#i-close"/></svg><span>Прибрати</span></button>
   </article>`;}
@@ -28,8 +34,27 @@ function renderList(){const n=fit.items.length;
   document.getElementById('sumLeft').textContent=nd<FIT_MAX?'Суконь можна додати ще '+(FIT_MAX-nd)+' з '+FIT_MAX:'Суконь максимум, аксесуари можна додавати';
   document.getElementById('stickyCount').textContent=n?fitSummary(fit.items):'Підбір стилістки';
   renderMore();stick();}
-listEl.addEventListener('change',e=>{const sel=e.target.closest('select');if(!sel)return;const id=sel.closest('.fl-item').dataset.id;
-  fit.update(id,{[sel.dataset.k]:sel.dataset.k==='size'?(sel.value?+sel.value:null):sel.value});});
+// custom select behaviour: mouse + keyboard (listbox pattern)
+let csRefocus=null;
+function csClose(cs,focus){if(!cs)return;cs.classList.remove('open');const t=cs.querySelector('.cs-t');t.setAttribute('aria-expanded','false');cs.querySelectorAll('li.act').forEach(l=>l.classList.remove('act'));if(focus)t.focus();}
+function csOpen(cs){document.querySelectorAll('.cs.open').forEach(o=>o!==cs&&csClose(o));const r=cs.querySelector('.cs-t').getBoundingClientRect(),mh=Math.min(296,cs.querySelector('.cs-m').scrollHeight),bar=fitSticky.classList.contains('show')?fitSticky.offsetHeight:0;cs.classList.toggle('up',innerHeight-bar-r.bottom<mh+8&&r.top>mh+8);cs.classList.add('open');cs.querySelector('.cs-t').setAttribute('aria-expanded','true');
+  const m=cs.querySelector('.cs-m');const sel=m.querySelector('[aria-selected="true"]')||m.querySelector('li:not([aria-disabled])');csAct(cs,sel);m.focus({preventScroll:true});}
+function csAct(cs,li){cs.querySelectorAll('li.act').forEach(l=>l.classList.remove('act'));if(!li)return;li.classList.add('act');const m=cs.querySelector('.cs-m');if(!li.id)li.id=m.id+'-'+[...m.children].indexOf(li);m.setAttribute('aria-activedescendant',li.id);li.scrollIntoView({block:'nearest'});}
+function csPick(cs,li){if(!li||li.getAttribute('aria-disabled'))return;const id=cs.closest('.fl-item').dataset.id,k=cs.dataset.k,v=li.dataset.v;
+  csRefocus=cs.querySelector('.cs-t').dataset.key;csClose(cs);fit.update(id,{[k]:k==='size'?(v?+v:null):v});}
+listEl.addEventListener('click',e=>{const t=e.target.closest('.cs-t');if(t){e.stopPropagation();const cs=t.closest('.cs');cs.classList.contains('open')?csClose(cs):csOpen(cs);return;}
+  const li=e.target.closest('.cs-m li');if(li){e.stopPropagation();csPick(li.closest('.cs'),li);}});
+listEl.addEventListener('keydown',e=>{const cs=e.target.closest('.cs');if(!cs)return;const open=cs.classList.contains('open');
+  if(e.target.classList.contains('cs-t')&&['ArrowDown','ArrowUp','Enter',' '].includes(e.key)){e.preventDefault();csOpen(cs);return;}
+  if(!open)return;const items=[...cs.querySelectorAll('li:not([aria-disabled])')];const act=cs.querySelector('li.act');let i=items.indexOf(act);
+  if(e.key==='ArrowDown'){e.preventDefault();csAct(cs,items[Math.min(items.length-1,i+1)]);}
+  else if(e.key==='ArrowUp'){e.preventDefault();csAct(cs,items[Math.max(0,i-1)]);}
+  else if(e.key==='Home'){e.preventDefault();csAct(cs,items[0]);}else if(e.key==='End'){e.preventDefault();csAct(cs,items[items.length-1]);}
+  else if(e.key==='Enter'||e.key===' '){e.preventDefault();csPick(cs,act);}
+  else if(e.key==='Escape'){e.preventDefault();csClose(cs,true);}else if(e.key==='Tab'){csClose(cs);}});
+listEl.addEventListener('mouseover',e=>{const li=e.target.closest('.cs-m li:not([aria-disabled])');if(li)csAct(li.closest('.cs'),li);});
+document.addEventListener('click',()=>document.querySelectorAll('.cs.open').forEach(c=>csClose(c)));
+document.addEventListener('fit:change',()=>setTimeout(()=>{if(csRefocus){const t=listEl.querySelector(`.cs-t[data-key="${csRefocus}"]`);csRefocus=null;t&&t.focus();}}));
 listEl.addEventListener('click',e=>{const b=e.target.closest('.fl-rm');if(!b)return;const id=b.closest('.fl-item').dataset.id;fit.remove(id);
   say(id+' прибрано з примірки');const first=listEl.querySelector('.fl-rm');(first||document.querySelector('.fl-empty .btn'))?.focus();});
 

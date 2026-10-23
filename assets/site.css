@@ -416,15 +416,27 @@ button:disabled{cursor:not-allowed}
 .fl-head p{margin-top:16px;max-width:560px}
 .fl-grid{display:grid;grid-template-columns:1fr 400px;gap:64px;align-items:start}
 .fl-list{display:flex;flex-direction:column;border-top:1px solid var(--border)}
-.fl-item{display:grid;grid-template-columns:120px 1fr auto;gap:24px;padding:24px 0;border-bottom:1px solid var(--border)}
+.fl-item{display:grid;grid-template-columns:120px 1fr auto;grid-template-rows:auto 1fr;column-gap:24px;padding:24px 0;border-bottom:1px solid var(--border)}
+.fl-item>a{grid-row:1/3}
+.fl-item .fl-opts{grid-column:2;grid-row:2;align-self:end}
 .fl-item img{width:120px;height:180px;object-fit:cover;background:var(--bg-alt)}
 .fl-info{display:flex;flex-direction:column;gap:4px;min-width:0}
 .fl-info h3 a:hover{color:var(--strong)}
 .fl-price{margin-top:8px}
-.fl-opts{display:flex;gap:16px;margin-top:auto;padding-top:16px;flex-wrap:wrap}
-.fl-opts label{display:flex;flex-direction:column;gap:6px}
-.fl-opts select{height:44px;min-width:160px;border:1px solid var(--border);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232B2226' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/16px;padding:0 40px 0 16px;font:inherit;font-size:15px;color:var(--text);appearance:none;cursor:pointer}
-.fl-opts select:focus-visible{outline:1.5px solid var(--strong);outline-offset:-1px}
+.fl-opts{display:flex;gap:16px;padding-top:16px;flex-wrap:wrap}
+.fl-opts .cs{display:flex;flex-direction:column;gap:6px;position:relative}
+.cs-t{height:44px;min-width:160px;display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--border);background:#fff;padding:0 12px 0 16px;font-size:15px;color:var(--text);text-align:left;transition:border-color .15s ease-out}
+.cs-t .chev{width:16px;height:16px;transition:transform .2s}
+.cs.open .cs-t{border-color:var(--strong)}
+.cs.open .cs-t .chev{transform:rotate(180deg)}
+.cs-m{list-style:none;position:absolute;top:calc(100% + 4px);left:0;min-width:100%;max-height:296px;overflow-y:auto;background:#fff;border:1px solid var(--border);box-shadow:var(--shadow-pop);padding:8px 0;z-index:30;opacity:0;visibility:hidden;transform:translateY(-4px);transition:.18s}
+.cs-m:focus{outline:none}
+.cs.open .cs-m{opacity:1;visibility:visible;transform:none}
+.cs-m li{padding:12px 16px;font-size:15px;color:var(--text);cursor:pointer;white-space:nowrap}
+.cs-m li[aria-selected="true"]{color:var(--strong);font-weight:500}
+.cs-m li.act{background:var(--bg-alt)}
+.cs-m li[aria-disabled="true"]{color:#CBB7BD;cursor:not-allowed;background:none}
+@media (hover:hover){.cs-t:hover{border-color:var(--muted)}.cs.open .cs-t:hover{border-color:var(--strong)}}
 .fl-rm{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--muted);align-self:start;padding:4px 0}
 .fl-rm .ic{width:18px;height:18px}
 .fl-sum{position:sticky;top:125px;background:var(--bg-alt);padding:32px;display:flex;flex-direction:column;gap:20px}
@@ -449,13 +461,14 @@ button:disabled{cursor:not-allowed}
   .fl{padding-bottom:48px}
   .fl-head{flex-direction:column;align-items:flex-start;gap:12px;margin:8px 0 24px}
   .fl-grid{grid-template-columns:1fr;gap:32px}
-  .fl-item{grid-template-columns:96px 1fr;gap:16px;position:relative;padding:20px 0}
+  .fl-item{grid-template-columns:96px 1fr;column-gap:16px;row-gap:0;position:relative;padding:20px 0}
   .fl-item img{width:96px;height:144px}
   .fl-info h3{font-size:18px;padding-right:32px}
   .fl-rm{position:absolute;top:16px;right:-8px;padding:8px}
   .fl-rm span{display:none}
-  .fl-opts{grid-column:1/-1;padding-top:4px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .fl-opts select{min-width:0;width:100%}
+  .fl-item>a{grid-row:1}
+  .fl-item .fl-opts{grid-column:1/-1;grid-row:2;padding-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .fl-opts .cs-t{min-width:0;width:100%}
   .fl-sum{position:static;padding:24px 20px}
   .fl-empty{padding:32px 20px}
   .fl-empty .acts{flex-direction:column;align-self:stretch}
@@ -502,3 +515,7 @@ button:disabled{cursor:not-allowed}
   .card .fav{top:8px;right:8px}
   .card .fitb{top:52px;right:8px}
 }
+.fl-opts .cs:last-child:not(:first-child) .cs-m{left:auto;right:0}
+.cs.up .cs-m{top:auto;bottom:48px;transform:translateY(4px)}
+.cs.up.open .cs-m{transform:none}
+@media (max-width:1100px){.fl-item .fl-opts .cs:only-child{grid-column:1/-1}}
