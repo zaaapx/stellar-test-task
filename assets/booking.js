@@ -101,7 +101,7 @@ function renderSlots(){const el=document.getElementById('slots');if(!st.date)ret
     ts.forEach((t,i)=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.disabled=((k+i*5)%4===0);if(st.time===t)b.className='on';b.onclick=()=>{st.time=t;renderSlots();updFoot();};r.appendChild(b);});w.appendChild(r);el.appendChild(w);});}
 
 const drawer=document.getElementById('drawer'),ovl=document.getElementById('ovl'),nextB=document.getElementById('dwNext'),backB=document.getElementById('dwBack');
-const TITLES={1:'Місто і салон',2:'Дата і час',3:'Ваші контакти',4:'Готово'};
+const TITLES={1:'Місто і салон',2:'Дата і час',3:'Ваші контакти'};
 const fmtDate=d=>d.getDate()+' '+['січня','лютого','березня','квітня','травня','червня','липня','серпня','вересня','жовтня','листопада','грудня'][d.getMonth()]+', '+['нд','пн','вт','ср','чт','пт','сб'][d.getDay()];
 let booked=[];
 function summary(items){const s=SALONS[st.city][st.salon];
@@ -110,27 +110,35 @@ function summary(items){const s=SALONS[st.city][st.salon];
 const dForm=document.getElementById('dForm');
 function valid3(){const f=dForm.elements;return f.name.value.trim().length>1&&f.phone.value.replace(/\D/g,'').length>=9&&f.ok.checked;}
 function updFoot(){const s=st.step;nextB.disabled=(s===2&&!(st.date&&st.time))||(s===3&&!valid3());
-  nextB.textContent=s===3?'Записатися':s===4?'Готово':'Далі';backB.style.display=(s===1||s===4)?'none':'';
-  document.querySelector('.dw-foot').style.gridTemplateColumns=(s===1||s===4)?'1fr':'1fr 2fr';}
+  nextB.textContent=s===3?'Записатися':'Далі';backB.style.display=s===1?'none':'';
+  document.querySelector('.dw-foot').style.gridTemplateColumns=s===1?'1fr':'1fr 2fr';}
 function go(s){st.step=s;drawer.querySelectorAll('.step').forEach(x=>x.hidden=+x.dataset.step!==s);
-  document.getElementById('dwTitle').textContent=TITLES[s];document.getElementById('dwStep').textContent=s<4?'Крок '+s+' / 3':'Запис на примірку';
+  document.getElementById('dwTitle').textContent=TITLES[s];document.getElementById('dwStep').textContent='Крок '+s+' / 3';
   document.querySelectorAll('#dwBar i').forEach((b,k)=>b.classList.toggle('on',k<Math.min(s,3)));
   if(s===2){renderCal();renderSlots();}
   if(s===3)document.getElementById('dSum').innerHTML=summary(fit.items);
-  if(s===4){booked=fit.items.map(x=>({...x}));document.getElementById('dSum2').innerHTML=summary(booked);}
   document.getElementById('dwBody').scrollTop=0;updFoot();}
 let lastFocus=null;
 function openFit(){lastFocus=document.activeElement;renderDressList();renderCities();renderSalons();go(1);drawer.classList.add('on');ovl.classList.add('on');drawer.setAttribute('aria-hidden','false');document.body.classList.add('lock');stick();setTimeout(()=>document.getElementById('dwClose').focus(),300);}
-function closeFit(){drawer.classList.remove('on');ovl.classList.remove('on');drawer.setAttribute('aria-hidden','true');document.body.classList.remove('lock');
-  if(st.step===4){st.date=null;st.time=null;dForm.reset();document.getElementById('slots').innerHTML='<p class="s muted">Оберіть дату, щоб побачити вільний час</p>';fit.clear();document.getElementById('flDone').hidden=false;}
-  stick();lastFocus&&document.contains(lastFocus)&&lastFocus.focus();}
+function closeFit(toModal){drawer.classList.remove('on');ovl.classList.remove('on');drawer.setAttribute('aria-hidden','true');document.body.classList.remove('lock');
+  stick();if(!toModal&&lastFocus&&document.contains(lastFocus))lastFocus.focus();}
 document.querySelectorAll('[data-book]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();openFit();}));
-document.getElementById('dwClose').onclick=closeFit;ovl.onclick=closeFit;
+document.getElementById('dwClose').onclick=()=>closeFit();ovl.onclick=()=>closeFit();
 addEventListener('keydown',e=>{if(e.key==='Escape'&&drawer.classList.contains('on'))closeFit();});
-nextB.onclick=()=>{if(st.step===4)return closeFit();if(st.step===3&&!valid3())return;go(st.step+1);};
+nextB.onclick=()=>{if(st.step===3){if(valid3())submitBooking();return;}go(st.step+1);};
 backB.onclick=()=>go(Math.max(1,st.step-1));
 dForm.addEventListener('input',updFoot);dForm.addEventListener('change',updFoot);
 drawer.addEventListener('keydown',e=>trap(drawer,e));
+
+// ---------- confirmation popup over the fitting page ----------
+const modal=document.getElementById('doneModal');let modalBack=null;
+function submitBooking(){booked=fit.items.map(x=>({...x}));document.getElementById('dmSum').innerHTML=summary(booked);
+  closeFit(true);st.date=null;st.time=null;dForm.reset();document.getElementById('slots').innerHTML='<p class="s muted">Оберіть дату, щоб побачити вільний час</p>';
+  fit.clear();modalBack=document.querySelector('.fl-empty .btn')||document.body;modal.hidden=false;document.body.classList.add('lock');requestAnimationFrame(()=>modal.classList.add('on'));setTimeout(()=>document.getElementById('dmOk').focus(),50);stick();}
+function closeModal(){modal.classList.remove('on');document.body.classList.remove('lock');setTimeout(()=>{modal.hidden=true;modalBack&&modalBack.focus&&modalBack.focus();},200);}
+document.getElementById('dmOk').onclick=closeModal;document.getElementById('dmClose').onclick=closeModal;
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+modal.addEventListener('keydown',e=>{trap(modal,e);if(e.key==='Escape')closeModal();});
 
 // sticky bar (mobile): shown while the summary button is off-screen
 const sumBtn=document.getElementById('sumBook');

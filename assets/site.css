@@ -519,3 +519,26 @@ button:disabled{cursor:not-allowed}
 .cs.up .cs-m{top:auto;bottom:48px;transform:translateY(4px)}
 .cs.up.open .cs-m{transform:none}
 @media (max-width:1100px){.fl-item .fl-opts .cs:only-child{grid-column:1/-1}}
+/* booking confirmation popup */
+.modal{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(43,34,38,.45);opacity:0;transition:opacity .2s}
+.modal.on{opacity:1}
+.modal-box{position:relative;background:#fff;width:100%;max-width:520px;max-height:calc(100vh - 40px);overflow-y:auto;padding:40px;display:flex;flex-direction:column;gap:20px;transform:translateY(8px);transition:transform .2s}
+.modal.on .modal-box{transform:none}
+.modal-x{position:absolute;top:16px;right:16px;margin:0}
+.modal-box .ok-row{padding-right:32px}
+.modal-acts{display:flex;gap:12px}
+.modal-acts .btn{flex:1;padding:0 16px}
+@media (max-width:1100px){
+  .modal{align-items:flex-end;padding:0}
+  .modal-box{max-width:none;max-height:90vh;padding:32px 20px calc(24px + env(safe-area-inset-bottom));transform:translateY(24px)}
+  .modal-acts{flex-direction:column}
+  .modal-acts .btn{flex:none}
+}
+/* toast: one line on desktop, full width on mobile */
+.toast{width:max-content;max-width:calc(100vw - 32px);justify-content:space-between}
+.toast span{white-space:nowrap}
+@media (max-width:1100px){
+  .toast{left:16px;right:16px;width:auto;max-width:none;transform:translateY(20px)}
+  .toast.on{transform:none}
+  .toast span{white-space:normal}
+}

@@ -69,7 +69,6 @@
       <p class="caps muted" id="flCount"></p>
     </div>
 
-    <div class="fl-empty" id="flDone" hidden role="status"><div class="ok-row"><span class="okic"><svg class="ic"><use href="#i-check"/></svg></span><h3>Заявку на примірку прийнято</h3></div><p class="sec">Менеджер зателефонує протягом 15 хвилин, щоб підтвердити запис.</p></div>
 
     <div class="fl-grid" id="flGrid">
       <div class="fl-list" id="flList"></div>
@@ -155,17 +154,19 @@
       </form>
       <div class="sum" id="dSum"></div>
     </div>
-    <div class="step" data-step="4" hidden>
-      <div class="done">
-        <div class="ok-row"><span class="okic"><svg class="ic"><use href="#i-check"/></svg></span><h3>Заявку на примірку прийнято</h3></div>
-        <p class="sec">Менеджер зв’яжеться з вами протягом 15 хвилин, щоб уточнити деталі та підтвердити запис.</p>
-        <div class="sum" id="dSum2"></div>
-      </div>
-    </div>
   </div>
   <div class="dw-foot"><button class="btn btn-secondary" id="dwBack">Назад</button><button class="btn btn-primary" id="dwNext">Далі</button></div>
 </aside>
 
+<div class="modal" id="doneModal" role="dialog" aria-modal="true" aria-labelledby="dmTitle" aria-describedby="dmText" hidden>
+  <div class="modal-box">
+    <button class="dw-x modal-x" id="dmClose" aria-label="Закрити"><svg class="ic"><use href="#i-close"/></svg></button>
+    <div class="ok-row"><span class="okic"><svg class="ic"><use href="#i-check"/></svg></span><h3 id="dmTitle">Заявку на примірку прийнято</h3></div>
+    <p class="sec" id="dmText">Менеджер зателефонує протягом 15 хвилин, щоб підтвердити запис. Сукні з вашого списку підготуємо до візиту.</p>
+    <div class="sum" id="dmSum"></div>
+    <div class="modal-acts"><button class="btn btn-primary" id="dmOk">Добре</button><a class="btn btn-secondary" href="index.html">Переглянути сукні</a></div>
+  </div>
+</div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="sticky" id="sticky">
   <div class="p"><b>Примірка</b><br><span class="s muted" id="stickyCount"></span></div>
